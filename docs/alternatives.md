@@ -21,7 +21,7 @@ It provides a better alternative than reading the *CLI Parameters* as a `list` o
 
 Hug is a library to create APIs and CLIs, it uses parameters in functions to declare the required data.
 
-It inspired a lot of the ideas in **FastAPI** and **Cligenius**.
+It inspired a lot of the ideas in **ReadyAPI** and **Cligenius**.
 
 !!! check "Inspired **Cligenius** to"
     Use function parameters to declare *CLI arguments* and *CLI options* as it simplifies a lot the development experience.
@@ -37,9 +37,9 @@ Plac is another library to create CLIs using parameters in functions, similar to
 
 Pydantic is a library to handle data validation using standard modern Python type annotations.
 
-It powers **FastAPI** underneath.
+It powers **ReadyAPI** underneath.
 
-It is not used by **Cligenius**, but it inspired a lot of the design (through **FastAPI**).
+It is not used by **Cligenius**, but it inspired a lot of the design (through **ReadyAPI**).
 
 !!! check "Inspired **Cligenius** to"
     Use standard Python type annotations to declare types instead of library-specific types or classes and use them for data validation and documentation.
@@ -74,10 +74,10 @@ And now **Cligenius** improved it to have new features, tests, some bug fixes (f
 !!! check "Inspired **Cligenius** to"
     Provide auto completion for all the shells.
 
-### <a href="https://fastapi.khulnasoft.com/" class="external-link" target="_blank">FastAPI</a>
+### <a href="https://readyapi.khulnasoft.com/" class="external-link" target="_blank">ReadyAPI</a>
 
-I created **FastAPI** to provide an easy way to build APIs with autocompletion for everything in the code (and some other <a href="https://fastapi.khulnasoft.com/features/" class="external-link" target="_blank">features</a>).
+I created **ReadyAPI** to provide an easy way to build APIs with autocompletion for everything in the code (and some other <a href="https://readyapi.khulnasoft.com/features/" class="external-link" target="_blank">features</a>).
 
-**Cligenius** is the "FastAPI of CLIs".
+**Cligenius** is the "ReadyAPI of CLIs".
 
-It uses the same design and usage of FastAPI as much as possible. So, if you have used FastAPI, you know how to use Cligenius.
+It uses the same design and usage of ReadyAPI as much as possible. So, if you have used ReadyAPI, you know how to use Cligenius.

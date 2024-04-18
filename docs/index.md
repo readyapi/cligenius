@@ -39,9 +39,9 @@ The key features are:
 * **Grow large**: Grow in complexity as much as you want, create arbitrarily complex trees of commands and groups of subcommands, with options and arguments.
 * **Run scripts**: Cligenius includes a `cligenius` command/program that you can use to run scripts, automatically converting them to CLIs, even if they don't use Cligenius internally.
 
-## FastAPI of CLIs
+## ReadyAPI of CLIs
 
-**Cligenius** is <a href="https://fastapi.khulnasoft.com" class="external-link" target="_blank">FastAPI</a>'s little sibling, it's the FastAPI of CLIs.
+**Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
 
 ## Installation
 

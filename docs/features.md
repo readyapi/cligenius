@@ -1,16 +1,16 @@
-## Design based on **FastAPI**
+## Design based on **ReadyAPI**
 
-<a href="https://fastapi.khulnasoft.com" target="_blank"><img src="https://fastapi.khulnasoft.com/img/logo-margin/logo-teal.png" style="width: 20%;"></a>
+<a href="https://readyapi.khulnasoft.com" target="_blank"><img src="https://readyapi.khulnasoft.com/img/logo-margin/logo-teal.png" style="width: 20%;"></a>
 
-**Cligenius** is <a href="https://fastapi.khulnasoft.com" class="external-link" target="_blank">FastAPI</a>'s little sibling.
+**Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling.
 
-It follows the same design and ideas. If you know **FastAPI**, you already know **Cligenius**... more or less.
+It follows the same design and ideas. If you know **ReadyAPI**, you already know **Cligenius**... more or less.
 
 ## Just Modern Python
 
 It's all based on standard **Python type** declarations. No new syntax to learn. Just standard modern Python.
 
-If you need a 2 minute refresher of how to use Python types (even if you don't use FastAPI or Cligenius), check the FastAPI tutorial section: <a href="https://fastapi.khulnasoft.com/python-types/" class="external-link" target="_blank">Python types intro</a>.
+If you need a 2 minute refresher of how to use Python types (even if you don't use ReadyAPI or Cligenius), check the ReadyAPI tutorial section: <a href="https://readyapi.khulnasoft.com/python-types/" class="external-link" target="_blank">Python types intro</a>.
 
 You will also see a 20 seconds refresher on the section [Tutorial - User Guide: First Steps](tutorial/first-steps.md){.internal-link target=_blank}.
 

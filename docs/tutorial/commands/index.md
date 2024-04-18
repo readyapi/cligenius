@@ -258,7 +258,7 @@ When you use `@app.command()` the function under the decorator is registered in 
 
 But Cligenius doesn't modify that function itself, the function is left as is.
 
-That means that if your function is simple enough that you could create it without using `cligenius.Option()` or `cligenius.Argument()`, you could use the same function for a **Cligenius** application and a **FastAPI** application putting both decorators on top, or similar tricks.
+That means that if your function is simple enough that you could create it without using `cligenius.Option()` or `cligenius.Argument()`, you could use the same function for a **Cligenius** application and a **ReadyAPI** application putting both decorators on top, or similar tricks.
 
 !!! note "Click Technical Details"
     This behavior is a design difference with Click.

@@ -379,7 +379,7 @@ For example, one way to call `pip` is:
 <div class="termy">
 
 ```console
-$ pip install fastapi
+$ pip install readyapi
 ```
 
 </div>
@@ -389,14 +389,14 @@ But you can also call Python with the `-m` *CLI Option* and pass a module for it
 <div class="termy">
 
 ```console
-$ python -m pip install fastapi
+$ python -m pip install readyapi
 ```
 
 </div>
 
-Here we pass `pip` as the value for `-m`, so, Python will execute the module `pip` as if it was a script. And then it will pass the rest of the *CLI Parameters* (`install fastapi`) to it.
+Here we pass `pip` as the value for `-m`, so, Python will execute the module `pip` as if it was a script. And then it will pass the rest of the *CLI Parameters* (`install readyapi`) to it.
 
-These two are more or less equivalent, the `install fastapi` will be passed to `pip`.
+These two are more or less equivalent, the `install readyapi` will be passed to `pip`.
 
 !!! tip
     In the case of `pip`, in many occasions it's actually recommended that you run it with `python -m`, because if you create a virtual environment with its own `python`, that will ensure that you use the `pip` from *that* environment.

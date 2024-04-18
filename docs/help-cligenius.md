@@ -10,9 +10,9 @@ And there are several ways to get help too.
 
 ## Subscribe to the newsletter
 
-You can subscribe to the (infrequent) [**FastAPI and friends** newsletter](/newsletter/){.internal-link target=_blank} to stay updated about:
+You can subscribe to the (infrequent) [**ReadyAPI and friends** newsletter](/newsletter/){.internal-link target=_blank} to stay updated about:
 
-* News about FastAPI and friends, including Cligenius 🚀
+* News about ReadyAPI and friends, including Cligenius 🚀
 * Guides 📝
 * Features ✨
 * Breaking changes 🚨
@@ -205,7 +205,7 @@ If you can help me with that, **you are helping me maintain Cligenius** and maki
 
 ## Join the chat
 
-Join the 👥 <a href="https://discord.gg/VQjSZaeJmf" class="external-link" target="_blank">FastAPI and Friends Discord chat server</a> 👥 and hang out with others in the community. There's a `#cligenius` channel.
+Join the 👥 <a href="https://discord.gg/VQjSZaeJmf" class="external-link" target="_blank">ReadyAPI and Friends Discord chat server</a> 👥 and hang out with others in the community. There's a `#cligenius` channel.
 
 !!! tip
     For questions, ask them in <a href="https://github.com/khulnasoft/cligenius/discussions/new?category=questions" class="external-link" target="_blank">GitHub Discussions</a>, there's a much better chance you will receive help there.
