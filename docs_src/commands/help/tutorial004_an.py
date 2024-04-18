@@ -1,13 +1,13 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types(rich_markup_mode="rich")
+app = cligenius.Cligenius(rich_markup_mode="rich")
 
 
 @app.command()
 def create(
     username: Annotated[
-        str, types.Argument(help="The username to be [green]created[/green]")
+        str, cligenius.Argument(help="The username to be [green]created[/green]")
     ],
 ):
     """
@@ -21,10 +21,10 @@ def create(
 @app.command(help="[bold red]Delete[/bold red] a user with [italic]USERNAME[/italic].")
 def delete(
     username: Annotated[
-        str, types.Argument(help="The username to be [red]deleted[/red]")
+        str, cligenius.Argument(help="The username to be [red]deleted[/red]")
     ],
     force: Annotated[
-        bool, types.Option(help="Force the [bold red]deletion[/bold red] :boom:")
+        bool, cligenius.Option(help="Force the [bold red]deletion[/bold red] :boom:")
     ] = False,
 ):
     """

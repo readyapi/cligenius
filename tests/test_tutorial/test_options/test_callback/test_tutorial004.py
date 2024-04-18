@@ -2,14 +2,14 @@ import os
 import subprocess
 import sys
 
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from docs_src.options.callback import tutorial004 as mod
 
 runner = CliRunner()
 
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 

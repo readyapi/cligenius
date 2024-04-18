@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from docs_src.subcommands.callback_override import tutorial003 as mod
 

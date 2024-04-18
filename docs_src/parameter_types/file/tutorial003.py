@@ -1,7 +1,7 @@
-import types
+import cligenius
 
 
-def main(file: types.FileBinaryRead = types.Option(...)):
+def main(file: cligenius.FileBinaryRead = cligenius.Option(...)):
     processed_total = 0
     for bytes_chunk in file:
         # Process the bytes in bytes_chunk
@@ -10,4 +10,4 @@ def main(file: types.FileBinaryRead = types.Option(...)):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -71,13 +71,13 @@ MAX_WIDTH = int(_TERMINAL_WIDTH) if _TERMINAL_WIDTH else None
 COLOR_SYSTEM: Optional[
     Literal["auto", "standard", "256", "truecolor", "windows"]
 ] = "auto"  # Set to None to disable colors
-_TYPES_FORCE_DISABLE_TERMINAL = getenv("_TYPES_FORCE_DISABLE_TERMINAL")
+_CLIGENIUS_FORCE_DISABLE_TERMINAL = getenv("_CLIGENIUS_FORCE_DISABLE_TERMINAL")
 FORCE_TERMINAL = (
     True
     if getenv("GITHUB_ACTIONS") or getenv("FORCE_COLOR") or getenv("PY_COLORS")
     else None
 )
-if _TYPES_FORCE_DISABLE_TERMINAL:
+if _CLIGENIUS_FORCE_DISABLE_TERMINAL:
     FORCE_TERMINAL = False
 
 # Fixed strings
@@ -238,7 +238,7 @@ def _get_parameter_help(
     applicable.
     """
     # import here to avoid cyclic imports
-    from .core import TypesArgument, TypesOption
+    from .core import CligeniusArgument, CligeniusOption
 
     items: List[Union[Text, Markdown]] = []
 
@@ -284,8 +284,8 @@ def _get_parameter_help(
         items.append(Text(ENVVAR_STRING.format(var_str), style=STYLE_OPTION_ENVVAR))
 
     # Default value
-    # This uses Types's specific param._get_default_string
-    if isinstance(param, (TypesOption, TypesArgument)):
+    # This uses Cligenius's specific param._get_default_string
+    if isinstance(param, (CligeniusOption, CligeniusArgument)):
         if param.show_default:
             show_default_is_str = isinstance(param.show_default, str)
             default_value = param._extract_default_help_str(ctx=ctx)

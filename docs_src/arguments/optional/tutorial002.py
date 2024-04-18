@@ -1,9 +1,9 @@
 from typing import Optional
 
-import types
+import cligenius
 
 
-def main(name: Optional[str] = types.Argument(default=None)):
+def main(name: Optional[str] = cligenius.Argument(default=None)):
     if name is None:
         print("Hello World!")
     else:
@@ -11,4 +11,4 @@ def main(name: Optional[str] = types.Argument(default=None)):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

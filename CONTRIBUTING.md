@@ -1,1 +1,1 @@
-Please read the [Development - Contributing](https://types.khulnasoft.com/contributing/) guidelines in the documentation site.
+Please read the [Development - Contributing](https://cligenius.khulnasoft.com/contributing/) guidelines in the documentation site.

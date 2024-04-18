@@ -1,6 +1,6 @@
 ## Python types
 
-If you need a refresher about how to use Python type hints, check the first part of <a href="https://readyapi.khulnasoft.com/python-types/" class="external-link" target="_blank">ReadyAPI's Python types intro</a>.
+If you need a refresher about how to use Python type hints, check the first part of <a href="https://fastapi.khulnasoft.com/python-types/" class="external-link" target="_blank">FastAPI's Python types intro</a>.
 
 You can also check the <a href="https://mypy.readthedocs.io/en/latest/cheat_sheet_py3.html" class="external-link" target="_blank">mypy cheat sheet</a>.
 
@@ -13,7 +13,7 @@ def type_example(name: str, formal: bool = False, intro: Optional[str] = None):
     pass
 ```
 
-And your editor (and **Types**) will know that:
+And your editor (and **Cligenius**) will know that:
 
 * `name` is of type `str` and is a required parameter.
 * `formal` is a `bool` and is by default `False`.
@@ -21,11 +21,11 @@ And your editor (and **Types**) will know that:
 
 These type hints are what give you autocomplete in your editor and several other features.
 
-**Types** is based on these type hints.
+**Cligenius** is based on these type hints.
 
 ## Intro
 
-This tutorial shows you how to use **Types** with all its features, step by step.
+This tutorial shows you how to use **Cligenius** with all its features, step by step.
 
 Each section gradually builds on the previous ones, but it's structured to separate topics, so that you can go directly to any specific one to solve your specific CLI needs.
 
@@ -51,7 +51,7 @@ $ python main.py
 
 It is **HIGHLY encouraged** that you write or copy the code, edit it and run it locally.
 
-Using it in your editor is what really shows you the benefits of **Types**, seeing how little code you have to write, all the type checks, autocompletion, etc.
+Using it in your editor is what really shows you the benefits of **Cligenius**, seeing how little code you have to write, all the type checks, autocompletion, etc.
 
 And running the examples is what will really help you understand what is going on.
 
@@ -59,31 +59,31 @@ You can learn a lot more by running some examples and playing around with them t
 
 ---
 
-## Install **Types**
+## Install **Cligenius**
 
-The first step is to install **Types**:
+The first step is to install **Cligenius**:
 
 <div class="termy">
 
 ```console
-$ pip install types
+$ pip install cligenius
 ---> 100%
-Successfully installed types click shellingham rich
+Successfully installed cligenius click shellingham rich
 ```
 
 </div>
 
-By default, `types` comes with `rich` and `shellingham`.
+By default, `cligenius` comes with `rich` and `shellingham`.
 
 !!! note
-    If you are an advanced user and want to opt out of these default extra dependencies, you can instead install `types-slim`.
+    If you are an advanced user and want to opt out of these default extra dependencies, you can instead install `cligenius-slim`.
 
     ```bash
-    pip install types
+    pip install cligenius
     ```
 
     ...includes the same optional dependencies as:
 
     ```bash
-    pip install "types-slim[standard]"
+    pip install "cligenius-slim[standard]"
     ```

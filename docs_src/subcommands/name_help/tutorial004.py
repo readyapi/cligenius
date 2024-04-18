@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 def old_callback():
@@ -9,8 +9,8 @@ def old_callback():
     """
 
 
-users_app = types.Types(callback=old_callback)
-app.add_types(users_app)
+users_app = cligenius.Cligenius(callback=old_callback)
+app.add_cligenius(users_app)
 
 
 @users_app.callback()

@@ -1,4 +1,4 @@
-import types
+import cligenius
 
 
 def main(name: str, age: int = 20, height_meters: float = 1.89, female: bool = True):
@@ -9,4 +9,4 @@ def main(name: str, age: int = 20, height_meters: float = 1.89, female: bool = T
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

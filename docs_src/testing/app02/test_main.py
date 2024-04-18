@@ -1,4 +1,4 @@
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from .main import app
 

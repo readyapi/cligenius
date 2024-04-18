@@ -1,4 +1,4 @@
-"""Types, build great CLIs. Easy to code. Based on Python type hints."""
+"""Cligenius, build great CLIs. Easy to code. Based on Python type hints."""
 
 __version__ = "0.12.3"
 
@@ -27,7 +27,7 @@ from click.utils import get_text_stream as get_text_stream
 from click.utils import open_file as open_file
 
 from . import colors as colors
-from .main import Types as Types
+from .main import Cligenius as Cligenius
 from .main import run as run
 from .models import CallbackParam as CallbackParam
 from .models import Context as Context

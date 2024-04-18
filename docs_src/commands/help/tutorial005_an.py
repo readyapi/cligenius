@@ -1,12 +1,12 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types(rich_markup_mode="markdown")
+app = cligenius.Cligenius(rich_markup_mode="markdown")
 
 
 @app.command()
 def create(
-    username: Annotated[str, types.Argument(help="The username to be **created**")],
+    username: Annotated[str, cligenius.Argument(help="The username to be **created**")],
 ):
     """
     **Create** a new *shinny* user. :sparkles:
@@ -17,15 +17,15 @@ def create(
 
     ---
 
-    Learn more at the [Types docs website](https://types.khulnasoft.com)
+    Learn more at the [Cligenius docs website](https://cligenius.khulnasoft.com)
     """
     print(f"Creating user: {username}")
 
 
 @app.command(help="**Delete** a user with *USERNAME*.")
 def delete(
-    username: Annotated[str, types.Argument(help="The username to be **deleted**")],
-    force: Annotated[bool, types.Option(help="Force the **deletion** :boom:")] = False,
+    username: Annotated[str, cligenius.Argument(help="The username to be **deleted**")],
+    force: Annotated[bool, cligenius.Option(help="Force the **deletion** :boom:")] = False,
 ):
     """
     Some internal utility function to delete.

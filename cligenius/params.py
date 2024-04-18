@@ -274,7 +274,7 @@ def Argument(
     default_factory: Optional[Callable[[], Any]] = None,
     # Custom type
     parser: Optional[Callable[[str], Any]] = None,
-    # TypesArgument
+    # CligeniusArgument
     show_default: Union[bool, str] = True,
     show_choices: bool = True,
     show_envvar: bool = True,
@@ -330,7 +330,7 @@ def Argument(
     default_factory: Optional[Callable[[], Any]] = None,
     # Custom type
     click_type: Optional[click.ParamType] = None,
-    # TypesArgument
+    # CligeniusArgument
     show_default: Union[bool, str] = True,
     show_choices: bool = True,
     show_envvar: bool = True,
@@ -385,7 +385,7 @@ def Argument(
     # Custom type
     parser: Optional[Callable[[str], Any]] = None,
     click_type: Optional[click.ParamType] = None,
-    # TypesArgument
+    # CligeniusArgument
     show_default: Union[bool, str] = True,
     show_choices: bool = True,
     show_envvar: bool = True,
@@ -434,7 +434,7 @@ def Argument(
         # Custom type
         parser=parser,
         click_type=click_type,
-        # TypesArgument
+        # CligeniusArgument
         show_default=show_default,
         show_choices=show_choices,
         show_envvar=show_envvar,

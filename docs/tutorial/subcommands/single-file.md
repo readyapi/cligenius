@@ -10,7 +10,7 @@ There are several things to notice here...
 
 ## Apps at the top
 
-First, you can create `types.Types()` objects and add them to another one at the top.
+First, you can create `cligenius.Cligenius()` objects and add them to another one at the top.
 
 It doesn't have to be done after creating the subcommands:
 
@@ -18,7 +18,7 @@ It doesn't have to be done after creating the subcommands:
 {!../docs_src/subcommands/tutorial002/main.py!}
 ```
 
-You can add the commands (subcommands) to each `types.Types()` app later and it will still work.
+You can add the commands (subcommands) to each `cligenius.Cligenius()` app later and it will still work.
 
 ## Function names
 

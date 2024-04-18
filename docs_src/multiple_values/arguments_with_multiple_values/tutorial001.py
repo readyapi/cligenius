@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import List
 
-import types
+import cligenius
 
 
 def main(files: List[Path], celebration: str):
@@ -12,4 +12,4 @@ def main(files: List[Path], celebration: str):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

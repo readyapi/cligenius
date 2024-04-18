@@ -1,10 +1,10 @@
 from pathlib import Path
 
-import types
+import cligenius
 
 
 def main(
-    config: Path = types.Option(
+    config: Path = cligenius.Option(
         ...,
         exists=True,
         file_okay=True,
@@ -19,4 +19,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

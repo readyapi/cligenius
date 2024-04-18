@@ -5,13 +5,13 @@ from pathlib import Path
 from unittest import mock
 
 import shellingham
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from docs_src.commands.index import tutorial001 as mod
 
 runner = CliRunner()
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 
@@ -22,7 +22,7 @@ def test_completion_install_no_shell():
         encoding="utf-8",
         env={
             **os.environ,
-            "_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     assert "Option '--install-completion' requires an argument" in result.stderr
@@ -47,7 +47,7 @@ def test_completion_install_bash():
         encoding="utf-8",
         env={
             **os.environ,
-            "_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = bash_completion_path.read_text()
@@ -88,7 +88,7 @@ def test_completion_install_zsh():
         encoding="utf-8",
         env={
             **os.environ,
-            "_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = completion_path.read_text()
@@ -123,7 +123,7 @@ def test_completion_install_fish():
         encoding="utf-8",
         env={
             **os.environ,
-            "_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = completion_path.read_text()
@@ -134,7 +134,7 @@ def test_completion_install_fish():
 
 
 runner = CliRunner()
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 
@@ -158,7 +158,7 @@ def test_completion_install_powershell():
             ),
         ):
             result = runner.invoke(app, ["--install-completion"])
-    install_script = "Register-ArgumentCompleter -Native -CommandName mocked-types-testing-app -ScriptBlock $scriptblock"
+    install_script = "Register-ArgumentCompleter -Native -CommandName mocked-cligenius-testing-app -ScriptBlock $scriptblock"
     parent: Path = completion_path.parent
     parent.mkdir(parents=True, exist_ok=True)
     completion_path.write_text(install_script)

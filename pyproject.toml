@@ -3,9 +3,9 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [project]
-name = "types"
+name = "cligenius"
 dynamic = ["version"]
-description = "Types, build great CLIs. Easy to code. Based on Python type hints."
+description = "Cligenius, build great CLIs. Easy to code. Based on Python type hints."
 authors = [
     {name = "KhulnaSoft DevOps", email = "info@khulnasoft.com"},
 ]
@@ -37,8 +37,8 @@ dependencies = [
 ]
 readme = "README.md"
 [project.urls]
-Documentation = "https://types.khulnasoft.com/"
-homepage = "https://github.com/khulnasoft/types"
+Documentation = "https://cligenius.khulnasoft.com/"
+homepage = "https://github.com/khulnasoft/cligenius"
 
 [project.optional-dependencies]
 standard = [
@@ -47,7 +47,7 @@ standard = [
 ]
 
 [tool.pdm]
-version = { source = "file", path = "types/__init__.py" }
+version = { source = "file", path = "cligenius/__init__.py" }
 distribution = true
 
 [tool.pdm.build]
@@ -60,32 +60,32 @@ source-includes = [
 
 [tool.khulnasoft._internal-slim-build]
 sync-dependencies = [
-    "types-slim[standard]",
-    "types-cli",
-    "types"
+    "cligenius-slim[standard]",
+    "cligenius-cli",
+    "cligenius"
 ]
 
-[tool.khulnasoft._internal-slim-build.packages.types-slim.project]
-name = "types-slim"
+[tool.khulnasoft._internal-slim-build.packages.cligenius-slim.project]
+name = "cligenius-slim"
 
-[tool.khulnasoft._internal-slim-build.packages.types]
+[tool.khulnasoft._internal-slim-build.packages.cligenius]
 include-optional-dependencies = ["standard"]
 
-[tool.khulnasoft._internal-slim-build.packages.types.project]
+[tool.khulnasoft._internal-slim-build.packages.cligenius.project]
 optional-dependencies = {}
 
-[tool.khulnasoft._internal-slim-build.packages.types.project.scripts]
-types = "types.cli:main"
+[tool.khulnasoft._internal-slim-build.packages.cligenius.project.scripts]
+cligenius = "cligenius.cli:main"
 
-[tool.khulnasoft._internal-slim-build.packages.types-cli.project]
-name = "types-cli"
-readme = "types-cli/README.md"
+[tool.khulnasoft._internal-slim-build.packages.cligenius-cli.project]
+name = "cligenius-cli"
+readme = "cligenius-cli/README.md"
 dependencies = [
-    "types",
+    "cligenius",
 ]
 optional-dependencies = {}
 
-[tool.khulnasoft._internal-slim-build.packages.types-cli.tool.pdm.build]
+[tool.khulnasoft._internal-slim-build.packages.cligenius-cli.tool.pdm.build]
 # excludes needs to explicitly exclude the top level python packages,
 # otherwise PDM includes them by default
 # A "*" glob pattern can't be used here because in PDM internals, the patterns are put
@@ -95,7 +95,7 @@ optional-dependencies = {}
 # than the one for a default included file.
 # By not using "*" and explicitly excluding the top level packages, they get a higher
 # score than the default inclusion
-excludes = ["types", "tests", "pdm_build.py"]
+excludes = ["cligenius", "tests", "pdm_build.py"]
 # source-includes needs to explicitly define some value because PDM will check the
 # truthy value of the list, and if empty, will include some defaults, including "tests",
 # an empty string doesn't match anything, but makes the list truthy, so that PDM
@@ -112,7 +112,7 @@ junit_family = "xunit2"
 filterwarnings = [
     "error",
     # TODO: until I refactor completion to use the new shell_complete
-    "ignore:'autocompletion' is renamed to 'shell_complete'. The old name is deprecated and will be removed in Click 8.1. See the docs about 'Parameter' for information about new behavior.:DeprecationWarning:types",
+    "ignore:'autocompletion' is renamed to 'shell_complete'. The old name is deprecated and will be removed in Click 8.1. See the docs about 'Parameter' for information about new behavior.:DeprecationWarning:cligenius",
     # For pytest-xdist
     'ignore::DeprecationWarning:xdist',
 ]
@@ -123,10 +123,10 @@ data_file = "coverage/.coverage"
 source = [
     "docs_src",
     "tests",
-    "types"
+    "cligenius"
 ]
 omit = [
-    "types/_typing.py"
+    "cligenius/_typing.py"
 ]
 context = '${CONTEXT}'
 
@@ -190,10 +190,10 @@ ignore = [
 "docs_src/using_click/tutorial001.py" = ["B007"]
 
 # TODO: refactor _typing.py, remove unnecessary code
-"types/_typing.py" = ["UP036", "F822"]
+"cligenius/_typing.py" = ["UP036", "F822"]
 
 [tool.ruff.lint.isort]
-known-third-party = ["types", "click"]
+known-third-party = ["cligenius", "click"]
 # For docs_src/subcommands/tutorial003/
 known-first-party = ["reigns", "towns", "lands", "items", "users"]
 

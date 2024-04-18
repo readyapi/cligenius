@@ -10,7 +10,7 @@ def test_script():
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "tests/assets/cli/func_other_name.py",
             "run",
             "--name",

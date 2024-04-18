@@ -1,8 +1,8 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(name: Annotated[str, types.Argument(hidden=True)] = "World"):
+def main(name: Annotated[str, cligenius.Argument(hidden=True)] = "World"):
     """
     Say hi to NAME very gently, like Dirk.
     """
@@ -10,4 +10,4 @@ def main(name: Annotated[str, types.Argument(hidden=True)] = "World"):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

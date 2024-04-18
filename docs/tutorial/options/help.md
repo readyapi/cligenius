@@ -17,20 +17,20 @@ Let's now do the same for *CLI options*:
     {!> ../docs_src/options/help/tutorial001.py!}
     ```
 
-The same way as with `types.Argument()`, we can put `types.Option()` inside of `Annotated`.
+The same way as with `cligenius.Argument()`, we can put `cligenius.Option()` inside of `Annotated`.
 
 We can then pass the `help` keyword parameter:
 
 ```Python
-lastname: Annotated[str, types.Option(help="this option does this and that")] = ""
+lastname: Annotated[str, cligenius.Option(help="this option does this and that")] = ""
 ```
 
 ...to create the help for that *CLI option*.
 
-The same way as with `types.Argument()`, **Types** also supports the old style using the function parameter default value:
+The same way as with `cligenius.Argument()`, **Cligenius** also supports the old style using the function parameter default value:
 
 ```Python
-lastname: str = types.Option(default="", help="this option does this and that")
+lastname: str = cligenius.Option(default="", help="this option does this and that")
 ```
 
 Copy that example from above to a file `main.py`.
@@ -124,7 +124,7 @@ If you are in a hurry you can jump there, but otherwise, it would be better to c
 
 ## Hide default from help
 
-You can tell Types to not show the default value in the help text with `show_default=False`:
+You can tell Cligenius to not show the default value in the help text with `show_default=False`:
 
 === "Python 3.7+"
 
@@ -167,7 +167,7 @@ Options:
 !!! note "Technical Details"
     In Click applications the default values are hidden by default. 🙈
 
-    In **Types** these default values are shown by default. 👀
+    In **Cligenius** these default values are shown by default. 👀
 
 ## Custom default string
 

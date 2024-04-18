@@ -1,10 +1,10 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
-def main(name: str, email: str = types.Option(..., prompt=True)):
+def main(name: str, email: str = cligenius.Option(..., prompt=True)):
     print(f"Hello {name}, your email is: {email}")
 
 

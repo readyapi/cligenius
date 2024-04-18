@@ -1,10 +1,10 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(name: Annotated[str, types.Argument(metavar="✨username✨")] = "World"):
+def main(name: Annotated[str, cligenius.Argument(metavar="✨username✨")] = "World"):
     print(f"Hello {name}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

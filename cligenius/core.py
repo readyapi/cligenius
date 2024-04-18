@@ -52,7 +52,7 @@ def _split_opt(opt: str) -> Tuple[str, str]:
     return first, opt[1:]
 
 
-def _types_param_setup_autocompletion_compat(
+def _cligenius_param_setup_autocompletion_compat(
     self: click.Parameter,
     *,
     autocompletion: Optional[
@@ -93,7 +93,7 @@ def _types_param_setup_autocompletion_compat(
 
 
 def _get_default_string(
-    obj: Union["TypesArgument", "TypesOption"],
+    obj: Union["CligeniusArgument", "CligeniusOption"],
     *,
     ctx: click.Context,
     show_default_is_str: bool,
@@ -114,10 +114,10 @@ def _get_default_string(
         default_string = str(default_value.value)
     elif inspect.isfunction(default_value):
         default_string = _("(dynamic)")
-    elif isinstance(obj, TypesOption) and obj.is_bool_flag and obj.secondary_opts:
+    elif isinstance(obj, CligeniusOption) and obj.is_bool_flag and obj.secondary_opts:
         # For boolean flags that have distinct True/False opts,
         # use the opt without prefix instead of the value.
-        # Types override, original commented
+        # Cligenius override, original commented
         # default_string = click.parser.split_opt(
         #     (self.opts if self.default else self.secondary_opts)[0]
         # )[1]
@@ -128,9 +128,9 @@ def _get_default_string(
                 default_string = str(default_value)
         else:
             default_string = _split_opt(obj.secondary_opts[0])[1]
-        # Types override end
+        # Cligenius override end
     elif (
-        isinstance(obj, TypesOption)
+        isinstance(obj, CligeniusOption)
         and obj.is_bool_flag
         and not obj.secondary_opts
         and not default_value
@@ -142,7 +142,7 @@ def _get_default_string(
 
 
 def _extract_default_help_str(
-    obj: Union["TypesArgument", "TypesOption"], *, ctx: click.Context
+    obj: Union["CligeniusArgument", "CligeniusOption"], *, ctx: click.Context
 ) -> Optional[Union[Any, Callable[[], Any]]]:
     # Extracted from click.core.Option.get_help_record() to be reused by
     # rich_utils avoiding RegEx hacks
@@ -169,7 +169,7 @@ def _main(
     windows_expand_args: bool = True,
     **extra: Any,
 ) -> Any:
-    # Types override, duplicated from click.main() to handle custom rich exceptions
+    # Cligenius override, duplicated from click.main() to handle custom rich exceptions
     # Verify that the environment is configured correctly, or reject
     # further execution to avoid a broken script.
     if args is None:
@@ -207,12 +207,12 @@ def _main(
         except click.ClickException as e:
             if not standalone_mode:
                 raise
-            # Types override
+            # Cligenius override
             if rich:
                 rich_utils.rich_format_error(e)
             else:
                 e.show()
-            # Types override end
+            # Cligenius override end
             sys.exit(e.exit_code)
         except OSError as e:
             if e.errno == errno.EPIPE:
@@ -237,16 +237,16 @@ def _main(
     except click.Abort:
         if not standalone_mode:
             raise
-        # Types override
+        # Cligenius override
         if rich:
             rich_utils.rich_abort_error()
         else:
             click.echo(_("Aborted!"), file=sys.stderr)
-        # Types override end
+        # Cligenius override end
         sys.exit(1)
 
 
-class TypesArgument(click.core.Argument):
+class CligeniusArgument(click.core.Argument):
     def __init__(
         self,
         *,
@@ -268,7 +268,7 @@ class TypesArgument(click.core.Argument):
             ]
         ] = None,
         autocompletion: Optional[Callable[..., Any]] = None,
-        # TypesArgument
+        # CligeniusArgument
         show_default: Union[bool, str] = True,
         show_choices: bool = True,
         show_envvar: bool = True,
@@ -297,7 +297,7 @@ class TypesArgument(click.core.Argument):
             envvar=envvar,
             shell_complete=shell_complete,
         )
-        _types_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
 
     def _get_default_string(
         self,
@@ -328,7 +328,7 @@ class TypesArgument(click.core.Argument):
         extra = []
         if self.show_envvar:
             envvar = self.envvar
-            # allow_from_autoenv is currently not supported in Types for CLI Arguments
+            # allow_from_autoenv is currently not supported in Cligenius for CLI Arguments
             if envvar is not None:
                 var_str = (
                     ", ".join(str(d) for d in envvar)
@@ -337,24 +337,24 @@ class TypesArgument(click.core.Argument):
                 )
                 extra.append(f"env var: {var_str}")
 
-        # Types override:
+        # Cligenius override:
         # Extracted to _extract_default_help_str() to allow re-using it in rich_utils
         default_value = self._extract_default_help_str(ctx=ctx)
-        # Types override end
+        # Cligenius override end
 
         show_default_is_str = isinstance(self.show_default, str)
 
         if show_default_is_str or (
             default_value is not None and (self.show_default or ctx.show_default)
         ):
-            # Types override:
+            # Cligenius override:
             # Extracted to _get_default_string() to allow re-using it in rich_utils
             default_string = self._get_default_string(
                 ctx=ctx,
                 show_default_is_str=show_default_is_str,
                 default_value=default_value,
             )
-            # Types override end
+            # Cligenius override end
             if default_string:
                 extra.append(_("default: {default}").format(default=default_string))
         if self.required:
@@ -380,7 +380,7 @@ class TypesArgument(click.core.Argument):
         return var
 
 
-class TypesOption(click.core.Option):
+class CligeniusOption(click.core.Option):
     def __init__(
         self,
         *,
@@ -447,7 +447,7 @@ class TypesOption(click.core.Option):
             prompt_required=prompt_required,
             shell_complete=shell_complete,
         )
-        _types_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
         self.rich_help_panel = rich_help_panel
 
     def _get_default_string(
@@ -471,8 +471,8 @@ class TypesOption(click.core.Option):
 
     def get_help_record(self, ctx: click.Context) -> Optional[Tuple[str, str]]:
         # Duplicate all of Click's logic only to modify a single line, to allow boolean
-        # flags with only names for False values as it's currently supported by Types
-        # Ref: https://types.khulnasoft.com/tutorial/parameter-types/bool/#only-names-for-false
+        # flags with only names for False values as it's currently supported by Cligenius
+        # Ref: https://cligenius.khulnasoft.com/tutorial/parameter-types/bool/#only-names-for-false
         if self.hidden:
             return None
 
@@ -518,24 +518,24 @@ class TypesOption(click.core.Option):
                 )
                 extra.append(_("env var: {var}").format(var=var_str))
 
-        # Types override:
+        # Cligenius override:
         # Extracted to _extract_default() to allow re-using it in rich_utils
         default_value = self._extract_default_help_str(ctx=ctx)
-        # Types override end
+        # Cligenius override end
 
         show_default_is_str = isinstance(self.show_default, str)
 
         if show_default_is_str or (
             default_value is not None and (self.show_default or ctx.show_default)
         ):
-            # Types override:
+            # Cligenius override:
             # Extracted to _get_default_string() to allow re-using it in rich_utils
             default_string = self._get_default_string(
                 ctx=ctx,
                 show_default_is_str=show_default_is_str,
                 default_value=default_value,
             )
-            # Types override end
+            # Cligenius override end
             if default_string:
                 extra.append(_("default: {default}").format(default=default_string))
 
@@ -555,7 +555,7 @@ class TypesOption(click.core.Option):
         return ("; " if any_prefix_is_slash else " / ").join(rv), help
 
 
-def _types_format_options(
+def _cligenius_format_options(
     self: click.core.Command, *, ctx: click.Context, formatter: click.HelpFormatter
 ) -> None:
     args = []
@@ -576,7 +576,7 @@ def _types_format_options(
             formatter.write_dl(opts)
 
 
-def _types_main_shell_completion(
+def _cligenius_main_shell_completion(
     self: click.core.Command,
     *,
     ctx_args: MutableMapping[str, Any],
@@ -597,7 +597,7 @@ def _types_main_shell_completion(
     sys.exit(rv)
 
 
-class TypesCommand(click.core.Command):
+class CligeniusCommand(click.core.Command):
     def __init__(
         self,
         name: Optional[str],
@@ -637,7 +637,7 @@ class TypesCommand(click.core.Command):
     def format_options(
         self, ctx: click.Context, formatter: click.HelpFormatter
     ) -> None:
-        _types_format_options(self, ctx=ctx, formatter=formatter)
+        _cligenius_format_options(self, ctx=ctx, formatter=formatter)
 
     def _main_shell_completion(
         self,
@@ -645,7 +645,7 @@ class TypesCommand(click.core.Command):
         prog_name: str,
         complete_var: Optional[str] = None,
     ) -> None:
-        _types_main_shell_completion(
+        _cligenius_main_shell_completion(
             self, ctx_args=ctx_args, prog_name=prog_name, complete_var=complete_var
         )
 
@@ -678,7 +678,7 @@ class TypesCommand(click.core.Command):
         )
 
 
-class TypesGroup(click.core.Group):
+class CligeniusGroup(click.core.Group):
     def __init__(
         self,
         *,
@@ -698,7 +698,7 @@ class TypesGroup(click.core.Group):
     def format_options(
         self, ctx: click.Context, formatter: click.HelpFormatter
     ) -> None:
-        _types_format_options(self, ctx=ctx, formatter=formatter)
+        _cligenius_format_options(self, ctx=ctx, formatter=formatter)
         self.format_commands(ctx, formatter)
 
     def _main_shell_completion(
@@ -707,7 +707,7 @@ class TypesGroup(click.core.Group):
         prog_name: str,
         complete_var: Optional[str] = None,
     ) -> None:
-        _types_main_shell_completion(
+        _cligenius_main_shell_completion(
             self, ctx_args=ctx_args, prog_name=prog_name, complete_var=complete_var
         )
 

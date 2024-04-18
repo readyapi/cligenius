@@ -1,8 +1,8 @@
 import subprocess
 import sys
 
-import types.core
-from types.testing import CliRunner
+import cligenius.core
+from cligenius.testing import CliRunner
 
 from docs_src.commands.callback import tutorial001 as mod
 
@@ -20,14 +20,14 @@ def test_help():
 
 
 def test_help_no_rich():
-    rich = types.core.rich
-    types.core.rich = None
+    rich = cligenius.core.rich
+    cligenius.core.rich = None
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     assert "Manage users in the awesome CLI app." in result.output
     assert "--verbose" in result.output
     assert "--no-verbose" in result.output
-    types.core.rich = rich
+    cligenius.core.rich = rich
 
 
 def test_create():

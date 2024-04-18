@@ -1,11 +1,11 @@
 from typing import List
 
-import types
+import cligenius
 
 
-def main(number: List[float] = types.Option([])):
+def main(number: List[float] = cligenius.Option([])):
     print(f"The sum is {sum(number)}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

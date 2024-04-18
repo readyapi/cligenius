@@ -2,14 +2,14 @@ from typing import IO, Any, Mapping, Optional, Sequence, Union
 
 from click.testing import CliRunner as ClickCliRunner  # noqa
 from click.testing import Result
-from types.main import Types
-from types.main import get_command as _get_command
+from cligenius.main import Cligenius
+from cligenius.main import get_command as _get_command
 
 
 class CliRunner(ClickCliRunner):
     def invoke(  # type: ignore
         self,
-        app: Types,
+        app: Cligenius,
         args: Optional[Union[str, Sequence[str]]] = None,
         input: Optional[Union[bytes, str, IO[Any]]] = None,
         env: Optional[Mapping[str, str]] = None,

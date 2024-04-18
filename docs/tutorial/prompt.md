@@ -1,6 +1,6 @@
 When you need to ask the user for info interactively you should normally use [*CLI Option*s with Prompt](options/prompt.md){.internal-link target=_blank}, because they allow using the CLI program in a non-interactive way (for example, a Bash script could use it).
 
-But if you absolutely need to ask for interactive information without using a *CLI option*, you can use `types.prompt()`:
+But if you absolutely need to ask for interactive information without using a *CLI option*, you can use `cligenius.prompt()`:
 
 ```Python hl_lines="5"
 {!../docs_src/prompt/tutorial001.py!}

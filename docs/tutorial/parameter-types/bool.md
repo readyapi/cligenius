@@ -1,4 +1,4 @@
-We have seen some examples of *CLI options* with `bool`, and how **Types** creates `--something` and `--no-something` automatically.
+We have seen some examples of *CLI options* with `bool`, and how **Cligenius** creates `--something` and `--no-something` automatically.
 
 But we can customize those names.
 

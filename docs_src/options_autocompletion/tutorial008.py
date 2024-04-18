@@ -1,6 +1,6 @@
 from typing import List
 
-import types
+import cligenius
 from rich.console import Console
 
 valid_completion_items = [
@@ -19,12 +19,12 @@ def complete_name(args: List[str], incomplete: str):
             yield (name, help_text)
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def main(
-    name: List[str] = types.Option(
+    name: List[str] = cligenius.Option(
         ["World"], help="The name to say hi to.", autocompletion=complete_name
     ),
 ):

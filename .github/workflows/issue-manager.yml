@@ -4,13 +4,13 @@ on:
   schedule:
     - cron: "10 4 * * *"
   issue_comment:
-    types:
+    cligenius:
       - created
   issues:
-    types:
+    cligenius:
       - labeled
   pull_request_target:
-    types:
+    cligenius:
       - labeled
   workflow_dispatch:
 

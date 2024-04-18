@@ -1,11 +1,11 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
     name: Annotated[
         str,
-        types.Argument(
+        cligenius.Argument(
             help="Who to greet", show_default="Deadpoolio the amazing's name"
         ),
     ] = "Wade Wilson",
@@ -14,4 +14,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

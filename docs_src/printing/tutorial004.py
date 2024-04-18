@@ -1,4 +1,4 @@
-import types
+import cligenius
 from rich.console import Console
 
 err_console = Console(stderr=True)
@@ -9,4 +9,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

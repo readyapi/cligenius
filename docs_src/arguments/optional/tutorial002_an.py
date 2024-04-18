@@ -1,10 +1,10 @@
 from typing import Optional
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(name: Annotated[Optional[str], types.Argument()] = None):
+def main(name: Annotated[Optional[str], cligenius.Argument()] = None):
     if name is None:
         print("Hello World!")
     else:
@@ -12,4 +12,4 @@ def main(name: Annotated[Optional[str], types.Argument()] = None):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

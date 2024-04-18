@@ -1,10 +1,10 @@
-import types
+import cligenius
 
 
-def main(config: types.FileText = types.Option(...)):
+def main(config: cligenius.FileText = cligenius.Option(...)):
     for line in config:
         print(f"Config line: {line}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

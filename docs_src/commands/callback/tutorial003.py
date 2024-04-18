@@ -1,11 +1,11 @@
-import types
+import cligenius
 
 
 def callback():
     print("Running a command")
 
 
-app = types.Types(callback=callback)
+app = cligenius.Cligenius(callback=callback)
 
 
 @app.callback()

@@ -1,12 +1,12 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 def complete(args, incomplete, ctx):
-    types.echo(f"info name is: {ctx.info_name}", err=True)
-    types.echo(f"args is: {args}", err=True)
-    types.echo(f"incomplete is: {incomplete}", err=True)
+    cligenius.echo(f"info name is: {ctx.info_name}", err=True)
+    cligenius.echo(f"args is: {args}", err=True)
+    cligenius.echo(f"incomplete is: {incomplete}", err=True)
     return [
         ("Camila", "The reader of books."),
         ("Carlos", "The writer of scripts."),
@@ -15,7 +15,7 @@ def complete(args, incomplete, ctx):
 
 
 @app.command()
-def main(name: str = types.Option("World", autocompletion=complete)):
+def main(name: str = cligenius.Option("World", autocompletion=complete)):
     print(f"Hello {name}")
 
 

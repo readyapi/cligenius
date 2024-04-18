@@ -3,7 +3,7 @@ name: Smokeshow
 on:
   workflow_run:
     workflows: [Test]
-    types: [completed]
+    cligenius: [completed]
 
 permissions:
   statuses: write

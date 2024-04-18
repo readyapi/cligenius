@@ -1,9 +1,9 @@
 from typing import List
 
 import click
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 def shell_complete(
@@ -14,10 +14,10 @@ def shell_complete(
 
 @app.command(context_settings={"auto_envvar_prefix": "TEST"})
 def main(
-    name: str = types.Option("John", hidden=True),
-    lastname: str = types.Option("Doe", "/lastname", show_default="Mr. Doe"),
-    age: int = types.Option(lambda: 42, show_default=True),
-    nickname: str = types.Option("", shell_complete=shell_complete),
+    name: str = cligenius.Option("John", hidden=True),
+    lastname: str = cligenius.Option("Doe", "/lastname", show_default="Mr. Doe"),
+    age: int = cligenius.Option(lambda: 42, show_default=True),
+    nickname: str = cligenius.Option("", shell_complete=shell_complete),
 ):
     """
     Say hello.

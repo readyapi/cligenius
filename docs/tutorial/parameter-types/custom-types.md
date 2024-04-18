@@ -1,4 +1,4 @@
-You can easily use your own custom types in your **Types** applications.
+You can easily use your own custom types in your **Cligenius** applications.
 
 The way to do it is by providing a way to <abbr title="convert from some plain format, like the input text in the CLI, into Python objects">parse</abbr> input into your own types.
 
@@ -9,7 +9,7 @@ There are two ways to achieve this:
 
 ## Type Parser
 
-`types.Argument` and `types.Option` can create custom parameter types with a `parser` <abbr title="something that can be called like a function">callable</abbr>.
+`cligenius.Argument` and `cligenius.Option` can create custom parameter types with a `parser` <abbr title="something that can be called like a function">callable</abbr>.
 
 === "Python 3.7+"
 
@@ -30,7 +30,7 @@ The function (or callable) that you pass to the parameter `parser` will receive 
 
 ## Click Custom Type
 
-If you already have a <a href="https://click.palletsprojects.com/en/8.1.x/parameters/#implementing-custom-types" class="external-link" target="_blank">Click Custom Type</a>, you can use it in `types.Argument()` and `types.Option()` with the `click_type` parameter.
+If you already have a <a href="https://click.palletsprojects.com/en/8.1.x/parameters/#implementing-custom-types" class="external-link" target="_blank">Click Custom Type</a>, you can use it in `cligenius.Argument()` and `cligenius.Option()` with the `click_type` parameter.
 
 === "Python 3.7+"
 

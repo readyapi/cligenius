@@ -1,4 +1,4 @@
-First, you might want to see the basic ways to [help Types and get help](help-types.md){.internal-link target=_blank}.
+First, you might want to see the basic ways to [help Cligenius and get help](help-cligenius.md){.internal-link target=_blank}.
 
 ## Developing
 
@@ -63,7 +63,7 @@ To check it worked, use:
     ```console
     $ which pip
 
-    some/directory/types/env/bin/pip
+    some/directory/cligenius/env/bin/pip
     ```
 
     </div>
@@ -75,7 +75,7 @@ To check it worked, use:
     ```console
     $ Get-Command pip
 
-    some/directory/types/env/bin/pip
+    some/directory/cligenius/env/bin/pip
     ```
 
     </div>
@@ -89,7 +89,7 @@ If it shows the `pip` binary at `env/bin/pip` then it worked. 🎉
 
 ### Flit
 
-**Types** uses <a href="https://flit.readthedocs.io/en/latest/index.html" class="external-link" target="_blank">Flit</a> to build, package and publish the project.
+**Cligenius** uses <a href="https://flit.readthedocs.io/en/latest/index.html" class="external-link" target="_blank">Flit</a> to build, package and publish the project.
 
 After activating the environment as described above, install `flit`:
 
@@ -133,13 +133,13 @@ And now use `flit` to install the development dependencies:
 
     </div>
 
-It will install all the dependencies and your local Types in your local environment.
+It will install all the dependencies and your local Cligenius in your local environment.
 
-#### Using your local Types
+#### Using your local Cligenius
 
-If you create a Python file that imports and uses Types, and run it with the Python from your local environment, it will use your local Types source code.
+If you create a Python file that imports and uses Cligenius, and run it with the Python from your local environment, it will use your local Cligenius source code.
 
-And if you update that local Types source code, as it is installed with `--symlink` (or `--pth-file` on Windows), when you run that Python file again, it will use the fresh version of Types you just edited.
+And if you update that local Cligenius source code, as it is installed with `--symlink` (or `--pth-file` on Windows), when you run that Python file again, it will use the fresh version of Cligenius you just edited.
 
 That way, you don't have to "install" your local version to be able to test every change.
 
@@ -157,7 +157,7 @@ $ bash scripts/format.sh
 
 It will also auto-sort all your imports.
 
-For it to sort them correctly, you need to have Types installed locally in your environment, with the command in the section above using `--symlink` (or `--pth-file` on Windows).
+For it to sort them correctly, you need to have Cligenius installed locally in your environment, with the command in the section above using `--symlink` (or `--pth-file` on Windows).
 
 ### Format imports
 

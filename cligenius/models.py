@@ -17,8 +17,8 @@ import click
 import click.shell_completion
 
 if TYPE_CHECKING:  # pragma: no cover
-    from .core import TypesCommand, TypesGroup
-    from .main import Types
+    from .core import CligeniusCommand, CligeniusGroup
+    from .main import Cligenius
 
 
 NoneType = type(None)
@@ -87,7 +87,7 @@ class CommandInfo:
         self,
         name: Optional[str] = None,
         *,
-        cls: Optional[Type["TypesCommand"]] = None,
+        cls: Optional[Type["CligeniusCommand"]] = None,
         context_settings: Optional[Dict[Any, Any]] = None,
         callback: Optional[Callable[..., Any]] = None,
         help: Optional[str] = None,
@@ -117,13 +117,13 @@ class CommandInfo:
         self.rich_help_panel = rich_help_panel
 
 
-class TypesInfo:
+class CligeniusInfo:
     def __init__(
         self,
-        types_instance: Optional["Types"] = Default(None),
+        cligenius_instance: Optional["Cligenius"] = Default(None),
         *,
         name: Optional[str] = Default(None),
-        cls: Optional[Type["TypesGroup"]] = Default(None),
+        cls: Optional[Type["CligeniusGroup"]] = Default(None),
         invoke_without_command: bool = Default(False),
         no_args_is_help: bool = Default(False),
         subcommand_metavar: Optional[str] = Default(None),
@@ -142,7 +142,7 @@ class TypesInfo:
         # Rich settings
         rich_help_panel: Union[str, None] = Default(None),
     ):
-        self.types_instance = types_instance
+        self.cligenius_instance = cligenius_instance
         self.name = name
         self.cls = cls
         self.invoke_without_command = invoke_without_command
@@ -184,7 +184,7 @@ class ParameterInfo:
         # Custom type
         parser: Optional[Callable[[str], Any]] = None,
         click_type: Optional[click.ParamType] = None,
-        # TypesArgument
+        # CligeniusArgument
         show_default: Union[bool, str] = True,
         show_choices: bool = True,
         show_envvar: bool = True,
@@ -236,7 +236,7 @@ class ParameterInfo:
         # Custom type
         self.parser = parser
         self.click_type = click_type
-        # TypesArgument
+        # CligeniusArgument
         self.show_default = show_default
         self.show_choices = show_choices
         self.show_envvar = show_envvar
@@ -346,7 +346,7 @@ class OptionInfo(ParameterInfo):
             # Custom type
             parser=parser,
             click_type=click_type,
-            # TypesArgument
+            # CligeniusArgument
             show_default=show_default,
             show_choices=show_choices,
             show_envvar=show_envvar,
@@ -411,7 +411,7 @@ class ArgumentInfo(ParameterInfo):
         # Custom type
         parser: Optional[Callable[[str], Any]] = None,
         click_type: Optional[click.ParamType] = None,
-        # TypesArgument
+        # CligeniusArgument
         show_default: Union[bool, str] = True,
         show_choices: bool = True,
         show_envvar: bool = True,
@@ -457,7 +457,7 @@ class ArgumentInfo(ParameterInfo):
             # Custom type
             parser=parser,
             click_type=click_type,
-            # TypesArgument
+            # CligeniusArgument
             show_default=show_default,
             show_choices=show_choices,
             show_envvar=show_envvar,

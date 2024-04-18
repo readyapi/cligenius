@@ -1,5 +1,5 @@
 import click
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
@@ -19,9 +19,9 @@ class CustomClassParser(click.ParamType):
 
 
 def main(
-    custom_arg: Annotated[CustomClass, types.Argument(click_type=CustomClassParser())],
+    custom_arg: Annotated[CustomClass, cligenius.Argument(click_type=CustomClassParser())],
     custom_opt: Annotated[
-        CustomClass, types.Option(click_type=CustomClassParser())
+        CustomClass, cligenius.Option(click_type=CustomClassParser())
     ] = "Foo",
 ):
     print(f"custom_arg is {custom_arg}")
@@ -29,4 +29,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

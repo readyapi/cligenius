@@ -49,7 +49,7 @@ Processing user: Morty
 
 ## Multiple `float`
 
-The same way, you can use other types and they will be converted by **Types** to their declared type:
+The same way, you can use other types and they will be converted by **Cligenius** to their declared type:
 
 === "Python 3.7+"
 

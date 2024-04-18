@@ -1,11 +1,11 @@
 import time
 
-import types
+import cligenius
 
 
 def main():
     total = 0
-    with types.progressbar(range(100)) as progress:
+    with cligenius.progressbar(range(100)) as progress:
         for value in progress:
             # Fake processing time
             time.sleep(0.01)
@@ -14,4 +14,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

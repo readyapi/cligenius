@@ -1,9 +1,9 @@
-import types
+import cligenius
 
 
 def main(
-    name: str = types.Option(..., "--name", "-n"),
-    formal: bool = types.Option(False, "--formal", "-f"),
+    name: str = cligenius.Option(..., "--name", "-n"),
+    formal: bool = cligenius.Option(False, "--formal", "-f"),
 ):
     if formal:
         print(f"Good day Ms. {name}.")
@@ -12,4 +12,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -189,7 +189,7 @@ We want our *CLI program* to have these commands/command groups:
 
 This already is a quite deeply nested "tree" of commands/command groups.
 
-But to achieve that, we just have to add the `lands` **Types** app to the same `main.py` file we already had:
+But to achieve that, we just have to add the `lands` **Cligenius** app to the same `main.py` file we already had:
 
 ```Python hl_lines="4  10"
 {!../docs_src/subcommands/tutorial003/main.py!}
@@ -285,9 +285,9 @@ Here are all the files if you want to review/copy them:
 
 ## Recap
 
-That's it, you can just add **Types** applications one inside another as much as you want and create complex *CLI programs* while writing simple code.
+That's it, you can just add **Cligenius** applications one inside another as much as you want and create complex *CLI programs* while writing simple code.
 
-You can probably achieve a simpler *CLI program* design that's easier to use than the example here. But if your requirements are complex, **Types** helps you build your *CLI app* easily.
+You can probably achieve a simpler *CLI program* design that's easier to use than the example here. But if your requirements are complex, **Cligenius** helps you build your *CLI app* easily.
 
 !!! tip
     Auto completion helps a lot, specially with complex programs.

@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types(pretty_exceptions_show_locals=False)
+app = cligenius.Cligenius(pretty_exceptions_show_locals=False)
 
 
 @app.command()

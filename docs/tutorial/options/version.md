@@ -22,11 +22,11 @@ Let's see a first version of how it could look like:
     ```
 
 !!! tip
-    Notice that we don't have to get the `types.Context` and check for `ctx.resilient_parsing` for completion to work, because we only print and modify the program when `--version` is passed, otherwise, nothing is printed or changed from the callback.
+    Notice that we don't have to get the `cligenius.Context` and check for `ctx.resilient_parsing` for completion to work, because we only print and modify the program when `--version` is passed, otherwise, nothing is printed or changed from the callback.
 
 If the `--version` *CLI option* is passed, we get a value `True` in the callback.
 
-Then we can print the version and raise `types.Exit()` to make sure the program is terminated before anything else is executed.
+Then we can print the version and raise `cligenius.Exit()` to make sure the program is terminated before anything else is executed.
 
 We also declare the explicit *CLI option* name `--version`, because we don't want an automatic `--no-version`, it would look awkward.
 
@@ -94,10 +94,10 @@ Aborted!
 </div>
 
 !!! tip
-    We don't have to check for `ctx.resilient_parsing` in the `name_callback()` for completion to work, because we are not using `types.echo()`, instead we are raising a `types.BadParameter`.
+    We don't have to check for `ctx.resilient_parsing` in the `name_callback()` for completion to work, because we are not using `cligenius.echo()`, instead we are raising a `cligenius.BadParameter`.
 
 !!! note "Technical Details"
-    `types.BadParameter` prints the error to "standard error", not to "standard output", and because the completion system only reads from "standard output", it won't break completion.
+    `cligenius.BadParameter` prints the error to "standard error", not to "standard output", and because the completion system only reads from "standard output", it won't break completion.
 
 !!! info
     If you need a refresher about what is "standard output" and "standard error" check the section in [Printing and Colors: "Standard Output" and "Standard Error"](../printing.md#standard-output-and-standard-error){.internal-link target=_blank}.
@@ -106,7 +106,7 @@ Aborted!
 
 For those cases, we can mark a *CLI parameter* (a *CLI option* or *CLI argument*) with `is_eager=True`.
 
-That will tell **Types** (actually Click) that it should process this *CLI parameter* before the others:
+That will tell **Cligenius** (actually Click) that it should process this *CLI parameter* before the others:
 
 === "Python 3.7+"
 

@@ -11,7 +11,7 @@ def test_doc():
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "tests.assets.cli.multi_app",
             "utils",
             "docs",
@@ -36,7 +36,7 @@ def test_doc_output(tmp_path: Path):
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "tests.assets.cli.multi_app",
             "utils",
             "docs",
@@ -64,7 +64,7 @@ def test_doc_title_output(tmp_path: Path):
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "tests.assets.cli.multi_app",
             "utils",
             "docs",
@@ -93,8 +93,8 @@ def test_doc_not_existing():
             "coverage",
             "run",
             "-m",
-            "types",
-            "no_types",
+            "cligenius",
+            "no_cligenius",
             "utils",
             "docs",
         ],
@@ -104,7 +104,7 @@ def test_doc_not_existing():
     assert "Could not import as Python module:" in result.stderr
 
 
-def test_doc_no_types():
+def test_doc_no_cligenius():
     result = subprocess.run(
         [
             sys.executable,
@@ -112,7 +112,7 @@ def test_doc_no_types():
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "tests/assets/cli/empty_script.py",
             "utils",
             "docs",
@@ -120,7 +120,7 @@ def test_doc_no_types():
         capture_output=True,
         encoding="utf-8",
     )
-    assert "No Types app found" in result.stderr
+    assert "No Cligenius app found" in result.stderr
 
 
 def test_doc_file_not_existing():
@@ -131,7 +131,7 @@ def test_doc_file_not_existing():
             "coverage",
             "run",
             "-m",
-            "types",
+            "cligenius",
             "assets/cli/not_existing.py",
             "utils",
             "docs",

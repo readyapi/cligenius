@@ -1,15 +1,15 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
-    name: Annotated[str, types.Argument(help="Who to greet")],
+    name: Annotated[str, cligenius.Argument(help="Who to greet")],
     lastname: Annotated[
-        str, types.Argument(help="The last name", rich_help_panel="Secondary Arguments")
+        str, cligenius.Argument(help="The last name", rich_help_panel="Secondary Arguments")
     ] = "",
     age: Annotated[
         str,
-        types.Argument(help="The user's age", rich_help_panel="Secondary Arguments"),
+        cligenius.Argument(help="The user's age", rich_help_panel="Secondary Arguments"),
     ] = "",
 ):
     """
@@ -19,4 +19,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

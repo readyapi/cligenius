@@ -1,11 +1,11 @@
-import types
+import cligenius
 
 
 def main(
-    name: str, email: str = types.Option(..., prompt=True, confirmation_prompt=True)
+    name: str, email: str = cligenius.Option(..., prompt=True, confirmation_prompt=True)
 ):
     print(f"Hello {name}, your email is {email}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)
