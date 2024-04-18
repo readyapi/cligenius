@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Types
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: KhulnaSoft
+    family-names: DevOps
+    email: info@khulnasoft.com
+identifiers:
+repository-code: 'https://github.com/khulnasoft/types'
+url: 'https://types.khulnasoft.com'
+abstract: >-
+  Types, build great CLIs. Easy to code. Based on Python type hints.
+keywords:
+  - types
+  - click
+license: MIT

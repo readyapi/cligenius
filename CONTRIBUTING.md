@@ -1,0 +1,1 @@
+Please read the [Development - Contributing](https://types.khulnasoft.com/contributing/) guidelines in the documentation site.
