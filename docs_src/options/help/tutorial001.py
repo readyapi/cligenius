@@ -1,10 +1,10 @@
-import types
+import cligenius
 
 
 def main(
     name: str,
-    lastname: str = types.Option("", help="Last name of person to greet."),
-    formal: bool = types.Option(False, help="Say hi formally."),
+    lastname: str = cligenius.Option("", help="Last name of person to greet."),
+    formal: bool = cligenius.Option(False, help="Say hi formally."),
 ):
     """
     Say hi to NAME, optionally with a --lastname.
@@ -18,4 +18,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

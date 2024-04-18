@@ -10,11 +10,11 @@ def test_traceback_no_rich():
         [sys.executable, "-m", "coverage", "run", str(file_path)],
         capture_output=True,
         encoding="utf-8",
-        env={**os.environ, "_TYPES_STANDARD_TRACEBACK": ""},
+        env={**os.environ, "_CLIGENIUS_STANDARD_TRACEBACK": ""},
     )
     assert "return get_command(self)(*args, **kwargs)" not in result.stderr
 
-    assert "types.run(main)" in result.stderr
+    assert "cligenius.run(main)" in result.stderr
     assert "print(name + 3)" in result.stderr
     assert 'TypeError: can only concatenate str (not "int") to str' in result.stderr
 
@@ -25,7 +25,7 @@ def test_traceback_no_rich_short_disable():
         [sys.executable, "-m", "coverage", "run", str(file_path)],
         capture_output=True,
         encoding="utf-8",
-        env={**os.environ, "_TYPES_STANDARD_TRACEBACK": ""},
+        env={**os.environ, "_CLIGENIUS_STANDARD_TRACEBACK": ""},
     )
     assert "return get_command(self)(*args, **kwargs)" not in result.stderr
 
@@ -40,13 +40,13 @@ def test_unmodified_traceback():
         [sys.executable, "-m", "coverage", "run", str(file_path)],
         capture_output=True,
         encoding="utf-8",
-        env={**os.environ, "_TYPES_STANDARD_TRACEBACK": ""},
+        env={**os.environ, "_CLIGENIUS_STANDARD_TRACEBACK": ""},
     )
     assert "morty" in result.stdout, "the call to the first app should work normally"
     assert "return callback(**use_params)" in result.stderr, (
-        "calling outside of Types should show the normal traceback, "
+        "calling outside of Cligenius should show the normal traceback, "
         "even after the hook is installed"
     )
-    assert "types.main.get_command(broken_app)()" in result.stderr
+    assert "cligenius.main.get_command(broken_app)()" in result.stderr
     assert "print(name + 3)" in result.stderr
     assert 'TypeError: can only concatenate str (not "int") to str' in result.stderr

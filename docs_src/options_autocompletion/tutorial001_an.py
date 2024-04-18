@@ -1,11 +1,11 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
-def main(name: Annotated[str, types.Option(help="The name to say hi to.")] = "World"):
+def main(name: Annotated[str, cligenius.Option(help="The name to say hi to.")] = "World"):
     print(f"Hello {name}")
 
 

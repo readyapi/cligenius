@@ -3,7 +3,7 @@ from typing import Any, Dict, List
 
 from pdm.backend.hooks import Context
 
-KHULNASOFT_BUILD_PACKAGE = os.getenv("KHULNASOFT_BUILD_PACKAGE", "types")
+KHULNASOFT_BUILD_PACKAGE = os.getenv("KHULNASOFT_BUILD_PACKAGE", "cligenius")
 
 
 def pdm_build_initialize(context: Context):

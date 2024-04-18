@@ -1,8 +1,8 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(file: Annotated[types.FileBinaryWrite, types.Option()]):
+def main(file: Annotated[cligenius.FileBinaryWrite, cligenius.Option()]):
     first_line_str = "some settings\n"
     # You cannot write str directly to a binary file, you have to encode it to get bytes
     first_line_bytes = first_line_str.encode("utf-8")
@@ -15,4 +15,4 @@ def main(file: Annotated[types.FileBinaryWrite, types.Option()]):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

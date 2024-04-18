@@ -1,8 +1,8 @@
-import types
+import cligenius
 
 
 def main(
-    name: str = types.Argument(
+    name: str = cligenius.Argument(
         "Wade Wilson", help="Who to greet", show_default="Deadpoolio the amazing's name"
     ),
 ):
@@ -10,4 +10,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

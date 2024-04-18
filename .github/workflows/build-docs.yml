@@ -4,7 +4,7 @@ on:
     branches:
       - master
   pull_request:
-    types:
+    cligenius:
       - opened
       - synchronize
 jobs:

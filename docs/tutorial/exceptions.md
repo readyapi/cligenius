@@ -2,7 +2,7 @@
 
 When your code has errors and you run it, it will show the error and an exception.
 
-Types does some tricks to help you detect those errors quickly.
+Cligenius does some tricks to help you detect those errors quickly.
 
 ## Example Broken App
 
@@ -16,9 +16,9 @@ This code is broken because you can't sum a string and a number (`name + 3`).
 
 ## Exceptions with Rich
 
-If you have **Rich** installed (for example if you installed `"types[all]"`), **Types** will use it to automatically show you nicely printed errors.
+If you have **Rich** installed (for example if you installed `"cligenius[all]"`), **Cligenius** will use it to automatically show you nicely printed errors.
 
-It will **omit** all the parts of the traceback (the chain of things that called your function) that come from the internal parts in Types and Click.
+It will **omit** all the parts of the traceback (the chain of things that called your function) that come from the internal parts in Cligenius and Click.
 
 So, the error you see will be **much clearer** and simpler, to help you detect the problem in your code quickly:
 
@@ -49,7 +49,7 @@ $ python main.py
 
 ## Exceptions without Rich
 
-If you don't have Rich installed, Types will still do some tricks to show you the information **as clearly as possible**:
+If you don't have Rich installed, Cligenius will still do some tricks to show you the information **as clearly as possible**:
 
 <div class="termy">
 
@@ -59,7 +59,7 @@ $ python main.py
 Traceback (most recent call last):
 
   File "main.py", line 12, in <module>
-    types.run(main)
+    cligenius.run(main)
 
   File "main.py", line 8, in main
     print(name + 3)
@@ -71,7 +71,7 @@ TypeError: can only concatenate str (not "int") to str
 
 ## Disable Local Variables for Security
 
-If your Types application handles **delicate information**, for example a **password**, a **key**, a **token**, then it could be problematic if the automatic errors show the value in those <abbr title="a variable that lives only inside a function, its value is only visible inside of it">local variables</abbr>.
+If your Cligenius application handles **delicate information**, for example a **password**, a **key**, a **token**, then it could be problematic if the automatic errors show the value in those <abbr title="a variable that lives only inside a function, its value is only visible inside of it">local variables</abbr>.
 
 This would be relevant in particular if your CLI application is being run on some CI (continuous integration) system that is recording the logs.
 
@@ -85,7 +85,7 @@ In this case, `name` is a local variable, it comes from a parameter passed to th
 
 But if it was something like a password, you would have liked to hide it.
 
-In that case, you can create the `types.Types()` application explicitly and set the parameter `pretty_exceptions_show_locals=False`:
+In that case, you can create the `cligenius.Cligenius()` application explicitly and set the parameter `pretty_exceptions_show_locals=False`:
 
 ```Python hl_lines="3"
 {!../docs_src/exceptions/tutorial002.py!}
@@ -120,7 +120,7 @@ Being able to see the values of local variables is normally very **helpful** to 
 
 ## Disable Short Output
 
-If you want to show the full exception, including the parts in Types and Click, you can use the parameter `pretty_exceptions_short=False`:
+If you want to show the full exception, including the parts in Cligenius and Click, you can use the parameter `pretty_exceptions_short=False`:
 
 ```Python hl_lines="3"
 {!../docs_src/exceptions/tutorial003.py!}
@@ -153,25 +153,25 @@ $ python main.py
 <font color="#F92672">│</font> <font color="#F4BF75">│</font>        <font color="#A6194C">__name__</font> = <font color="#F4BF75">&apos;__main__&apos;</font>                                  <font color="#F4BF75">│</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75">│</font>     <font color="#A6194C">__package__</font> = <font color="#66D9EF">None</font>                                        <font color="#F4BF75">│</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75">│</font>        <font color="#A6194C">__spec__</font> = <font color="#66D9EF">None</font>                                        <font color="#F4BF75">│</font> <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#F4BF75">│</font>             app = <b>&lt;</b><font color="#AE81FF"><b>types.main.Types</b></font> object at <font color="#66D9EF">0x7f047db51d90</font><b>&gt;</b> <font color="#F4BF75">│</font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#F4BF75">│</font>             app = <b>&lt;</b><font color="#AE81FF"><b>cligenius.main.Cligenius</b></font> object at <font color="#66D9EF">0x7f047db51d90</font><b>&gt;</b> <font color="#F4BF75">│</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75">│</font>            main = <b>&lt;</b><font color="#AE81FF"><b>function</b></font> main at <font color="#66D9EF">0x7f047db56830</font><b>&gt;</b>           <font color="#F4BF75">│</font> <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#F4BF75">│</font>           types = <b>&lt;</b><font color="#AE81FF"><b>module</b></font> <font color="#F4BF75">&apos;types&apos;</font> from                        <font color="#F4BF75">│</font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#F4BF75">│</font>           cligenius = <b>&lt;</b><font color="#AE81FF"><b>module</b></font> <font color="#F4BF75">&apos;cligenius&apos;</font> from                        <font color="#F4BF75">│</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75">│</font>                   <font color="#F4BF75">&apos;/home/user/code/superapp/env/lib/python3.…</font> <font color="#F4BF75">│</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75">╰───────────────────────────────────────────────────────────────╯</font> <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/types/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>in.py</b></font>:<font color="#66D9EF">328</font> in <font color="#A6E22E">__call__</font>                                             <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/types/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>in.py</b></font>:<font color="#66D9EF">311</font> in <font color="#A6E22E">__call__</font>                                             <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/click/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>re.py</b></font>:<font color="#66D9EF">1130</font> in <font color="#A6E22E">__call__</font>                                            <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/types/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>re.py</b></font>:<font color="#66D9EF">723</font> in <font color="#A6E22E">main</font>                                                 <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/types/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>re.py</b></font>:<font color="#66D9EF">216</font> in <font color="#A6E22E">_main</font>                                                <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/click/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
@@ -180,7 +180,7 @@ $ python main.py
 <font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/click/</font><font color="#F4BF75"><b>co</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>re.py</b></font>:<font color="#66D9EF">760</font> in <font color="#A6E22E">invoke</font>                                               <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
-<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/types/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
+<font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/</font><font color="#F4BF75"><b>ma</b></font> <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#F4BF75"><b>in.py</b></font>:<font color="#66D9EF">683</font> in <font color="#A6E22E">wrapper</font>                                              <font color="#F92672">│</font>
 <font color="#F92672">│</font>                                                                   <font color="#F92672">│</font>
 <font color="#F92672">│</font> <font color="#A37F4E">/home/user/code/superapp/</font><font color="#F4BF75"><b>main.py</b></font>:<font color="#66D9EF">8</font> in <font color="#A6E22E">main</font>                        <font color="#F92672">│</font>
@@ -220,21 +220,21 @@ $ python main.py
 Traceback (most recent call last):
   File "main.py", line 12, in <module>
     app()
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 328, in __call__
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 328, in __call__
     raise e
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 311, in __call__
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 311, in __call__
     return get_command(self)(*args, **kwargs)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 1130, in __call__
     return self.main(*args, **kwargs)
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/core.py", line 723, in main
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/core.py", line 723, in main
     **extra,
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/core.py", line 216, in _main
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/core.py", line 216, in _main
     rv = self.invoke(ctx)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 1404, in invoke
     return ctx.invoke(self.callback, **ctx.params)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 760, in invoke
     return __callback(*args, **kwargs)
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 683, in wrapper
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 683, in wrapper
     return callback(**use_params)  # type: ignore
   File "main.py", line 8, in main
     print(name + 3)
@@ -243,35 +243,35 @@ TypeError: can only concatenate str (not "int") to str
 
 </div>
 
-You could also achieve the same with the environment variable `_TYPES_STANDARD_TRACEBACK=1`.
+You could also achieve the same with the environment variable `_CLIGENIUS_STANDARD_TRACEBACK=1`.
 
-This will work for any other Types program too, in case you need to debug a problem in a Types program made by someone else:
+This will work for any other Cligenius program too, in case you need to debug a problem in a Cligenius program made by someone else:
 
 <div class="termy">
 
 ```console
-export _TYPES_STANDARD_TRACEBACK=1
+export _CLIGENIUS_STANDARD_TRACEBACK=1
 $ python main.py
 
 
 Traceback (most recent call last):
   File "main.py", line 12, in <module>
     app()
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 328, in __call__
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 328, in __call__
     raise e
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 311, in __call__
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 311, in __call__
     return get_command(self)(*args, **kwargs)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 1130, in __call__
     return self.main(*args, **kwargs)
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/core.py", line 723, in main
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/core.py", line 723, in main
     **extra,
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/core.py", line 216, in _main
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/core.py", line 216, in _main
     rv = self.invoke(ctx)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 1404, in invoke
     return ctx.invoke(self.callback, **ctx.params)
   File "/home/user/code/superapp/env/lib/python3.7/site-packages/click/core.py", line 760, in invoke
     return __callback(*args, **kwargs)
-  File "/home/user/code/superapp/env/lib/python3.7/site-packages/types/main.py", line 683, in wrapper
+  File "/home/user/code/superapp/env/lib/python3.7/site-packages/cligenius/main.py", line 683, in wrapper
     return callback(**use_params)  # type: ignore
   File "main.py", line 8, in main
     print(name + 3)

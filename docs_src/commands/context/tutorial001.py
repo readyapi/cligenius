@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
@@ -14,7 +14,7 @@ def delete(username: str):
 
 
 @app.callback()
-def main(ctx: types.Context):
+def main(ctx: cligenius.Context):
     """
     Manage users in the awesome CLI app.
     """

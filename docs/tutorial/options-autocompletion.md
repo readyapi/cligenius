@@ -1,4 +1,4 @@
-As you have seen, apps built with **Types** have completion in your shell that works when you create a Python package or using the `types` command.
+As you have seen, apps built with **Cligenius** have completion in your shell that works when you create a Python package or using the `cligenius` command.
 
 It normally completes *CLI options*, *CLI arguments*, and subcommands (that you will learn about later).
 
@@ -8,9 +8,9 @@ But you can also provide auto completion for the **values** of *CLI options* and
 
 Before checking how to provide custom completions, let's check again how it works.
 
-After installing completion for your own Python package (or using the `types` command), when you use your CLI program and start adding a *CLI option* with `--` an then hit <kbd>TAB</kbd>, your shell will show you the available *CLI options* (the same for *CLI arguments*, etc).
+After installing completion for your own Python package (or using the `cligenius` command), when you use your CLI program and start adding a *CLI option* with `--` an then hit <kbd>TAB</kbd>, your shell will show you the available *CLI options* (the same for *CLI arguments*, etc).
 
-To check it quickly without creating a new Python package, use the `types` command.
+To check it quickly without creating a new Python package, use the `cligenius` command.
 
 Then let's create small example program:
 
@@ -29,26 +29,26 @@ Then let's create small example program:
     {!> ../docs_src/options_autocompletion/tutorial001.py!}
     ```
 
-And let's try it with the `types` command to get completion:
+And let's try it with the `cligenius` command to get completion:
 
 <div class="termy">
 
 ```console
 // Hit the TAB key in your keyboard below where you see the: [TAB]
-$ types ./main.py [TAB][TAB]
+$ cligenius ./main.py [TAB][TAB]
 
 // Depending on your terminal/shell you will get some completion like this ✨
-run    -- Run the provided Types app.
-utils  -- Extra utility commands for Types apps.
+run    -- Run the provided Cligenius app.
+utils  -- Extra utility commands for Cligenius apps.
 
 // Then try with "run" and --
-$ types ./main.py run --[TAB][TAB]
+$ cligenius ./main.py run --[TAB][TAB]
 
 // You will get completion for --name, depending on your terminal it will look something like this
 --name  -- The name to say hi to.
 
 // And you can run it as if it was with Python directly
-$ types ./main.py run --name Camila
+$ cligenius ./main.py run --name Camila
 
 Hello Camila
 ```
@@ -83,7 +83,7 @@ And then we get those values when using completion:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name [TAB][TAB]
+$ cligenius ./main.py run --name [TAB][TAB]
 
 // We get the values returned from the function 🎉
 Camila     Carlos     Sebastian
@@ -123,7 +123,7 @@ Now let's try it:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Ca[TAB][TAB]
 
 // We get the values returned from the function that start with Ca 🎉
 Camila     Carlos
@@ -184,7 +184,7 @@ If you have a shell like Zsh, it would look like:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name [TAB][TAB]
+$ cligenius ./main.py run --name [TAB][TAB]
 
 // We get the completion items with their help text 🎉
 Camila     -- The reader of books.
@@ -198,7 +198,7 @@ Sebastian  -- The type hints guy.
 
 Instead of creating and returning a list with values (`str` or `tuple`), we can use `yield` with each value that we want in the completion.
 
-That way our function will be a <a href="https://docs.python.org/3.8/glossary.html#index-19" class="external-link" target="_blank">generator</a> that **Types** (actually Click) can iterate:
+That way our function will be a <a href="https://docs.python.org/3.8/glossary.html#index-19" class="external-link" target="_blank">generator</a> that **Cligenius** (actually Click) can iterate:
 
 === "Python 3.7+"
 
@@ -260,7 +260,7 @@ And then we can use it like:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name Camila --name Sebastian
+$ cligenius ./main.py run --name Camila --name Sebastian
 
 Hello Camila
 Hello Sebastian
@@ -272,9 +272,9 @@ Hello Sebastian
 
 And the same way as before, we want to provide **completion** for those names. But we don't want to provide the **same names** for completion if they were already given in previous parameters.
 
-For that, we will access and use the "Context". When you create a **Types** application it uses Click underneath. And every Click application has a special object called a <a href="https://click.palletsprojects.com/en/7.x/commands/#nested-handling-and-contexts" class="external-link" target="_blank">"Context"</a> that is normally hidden.
+For that, we will access and use the "Context". When you create a **Cligenius** application it uses Click underneath. And every Click application has a special object called a <a href="https://click.palletsprojects.com/en/7.x/commands/#nested-handling-and-contexts" class="external-link" target="_blank">"Context"</a> that is normally hidden.
 
-But you can access the context by declaring a function parameter of type `types.Context`.
+But you can access the context by declaring a function parameter of type `cligenius.Context`.
 
 And from that context you can get the current values for each parameter.
 
@@ -306,7 +306,7 @@ Check it:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name [TAB][TAB]
+$ cligenius ./main.py run --name [TAB][TAB]
 
 // The first time we trigger completion, we get all the names
 Camila     -- The reader of books.
@@ -314,14 +314,14 @@ Carlos     -- The writer of scripts.
 Sebastian  -- The type hints guy.
 
 // Add a name and trigger completion again
-$ types ./main.py run --name Sebastian --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
 
 // Now we get completion only for the names we haven't used 🎉
 Camila  -- The reader of books.
 Carlos  -- The writer of scripts.
 
 // And if we add another of the available names:
-$ types ./main.py run --name Sebastian --name Camila --name [TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Camila --name [TAB][TAB]
 
 // We get completion for the only available one
 Carlos  -- The writer of scripts.
@@ -336,7 +336,7 @@ Carlos  -- The writer of scripts.
 
 You can also get the raw *CLI parameters*, just a `list` of `str` with everything passed in the command line before the incomplete value.
 
-For example, something like `["types", "main.py", "run", "--name"]`.
+For example, something like `["cligenius", "main.py", "run", "--name"]`.
 
 !!! tip
     This would be for advanced scenarios, in most use cases you would be better off using the context.
@@ -345,7 +345,7 @@ For example, something like `["types", "main.py", "run", "--name"]`.
 
 As a simple example, let's show it on the screen before completion.
 
-Because completion is based on the output printed by your program (handled internally by **Types**), during completion we can't just print something else as we normally do.
+Because completion is based on the output printed by your program (handled internally by **Cligenius**), during completion we can't just print something else as we normally do.
 
 ### Printing to "standard error"
 
@@ -374,7 +374,7 @@ Using `stderr=True` tells **Rich** that the output should be shown in "standard 
     ```
 
 !!! info
-    If you can't install and use Rich, you can also use `print(lastname, file=sys.stderr)` or `types.echo("some text", err=True)` instead.
+    If you can't install and use Rich, you can also use `print(lastname, file=sys.stderr)` or `cligenius.echo("some text", err=True)` instead.
 
 We get all the *CLI parameters* as a raw `list` of `str` by declaring a parameter with type `List[str]`, here it's named `args`.
 
@@ -388,7 +388,7 @@ And then we just print it to "standard error".
 <div class="termy">
 
 ```console
-$ types ./main.py run --name [TAB][TAB]
+$ cligenius ./main.py run --name [TAB][TAB]
 
 // First we see the raw CLI parameters
 ['./main.py', 'run', '--name']
@@ -430,7 +430,7 @@ Check it:
 <div class="termy">
 
 ```console
-$ types ./main.py run --name [TAB][TAB]
+$ cligenius ./main.py run --name [TAB][TAB]
 
 // First we see the raw CLI parameters
 ['./main.py', 'run', '--name']
@@ -440,7 +440,7 @@ Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
 Sebastian  -- The type hints guy.
 
-$ types ./main.py run --name Sebastian --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
 
 // Again, we see the raw CLI parameters
 ['./main.py', 'run', '--name', 'Sebastian', '--name']
@@ -454,12 +454,12 @@ Carlos     -- The writer of scripts.
 
 ## Types, types everywhere
 
-**Types** uses the type declarations to detect what it has to provide to your `autocompletion` function.
+**Cligenius** uses the type declarations to detect what it has to provide to your `autocompletion` function.
 
 You can declare function parameters of these types:
 
 * `str`: for the incomplete value.
-* `types.Context`: for the current context.
+* `cligenius.Context`: for the current context.
 * `List[str]`: for the raw *CLI parameters*.
 
 It doesn't matter how you name them, in which order, or which ones of the 3 options you declare. It will all "**just work**" ✨

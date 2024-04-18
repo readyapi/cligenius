@@ -2,7 +2,7 @@ name: Publish
 
 on:
   release:
-    types:
+    cligenius:
       - created
 
 jobs:
@@ -11,9 +11,9 @@ jobs:
     strategy:
       matrix:
         package:
-          - types-slim
-          - types
-          - types-cli
+          - cligenius-slim
+          - cligenius
+          - cligenius-cli
     permissions:
       id-token: write
     steps:

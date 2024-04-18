@@ -1,6 +1,6 @@
 We'll start with the core idea.
 
-To add a `types.Types()` app inside of another.
+To add a `cligenius.Cligenius()` app inside of another.
 
 ## Manage items
 
@@ -52,7 +52,7 @@ Both parts are similar. In fact, `items.py` and `users.py` both have commands `c
 
 But we need them to be part of the same *CLI program*.
 
-In this case, as with `git remote`, we can put them together as subcommands in another `types.Types()` *CLI program*.
+In this case, as with `git remote`, we can put them together as subcommands in another `cligenius.Cligenius()` *CLI program*.
 
 Now create a `main.py` with:
 
@@ -63,9 +63,9 @@ Now create a `main.py` with:
 Here's what we do in `main.py`:
 
 * Import the other Python modules (the files `users.py` and `items.py`).
-* Create the main `types.Types()` application.
-* Use `app.add_types()` to include the `app` from `items.py` and `users.py`, each of those 2 was also created with `types.Types()`.
-* Define a `name` with the command that will be used for each of these "sub-Typess" to group their own commands.
+* Create the main `cligenius.Cligenius()` application.
+* Use `app.add_cligenius()` to include the `app` from `items.py` and `users.py`, each of those 2 was also created with `cligenius.Cligenius()`.
+* Define a `name` with the command that will be used for each of these "sub-Cligeniuss" to group their own commands.
 
 And now your *CLI program* has 2 commands:
 
@@ -158,12 +158,12 @@ Creating user: Camila
 
 That's the core idea.
 
-You can just create `types.Types()` apps and add them inside one another.
+You can just create `cligenius.Cligenius()` apps and add them inside one another.
 
 And you can do that with any levels of commands that you want.
 
-Do you need sub-sub-sub-subcommands? Go ahead, create all the `types.Types()`s you need and put them together with `app.add_types()`.
+Do you need sub-sub-sub-subcommands? Go ahead, create all the `cligenius.Cligenius()`s you need and put them together with `app.add_cligenius()`.
 
 In the next sections we'll update this with more features, but you already have the core idea.
 
-This way, in the same spirit of Click, **Types** applications are composable, each `types.Types()` can be a *CLI app* by itself, but it can also be added as a command group to another Types app.
+This way, in the same spirit of Click, **Cligenius** applications are composable, each `cligenius.Cligenius()` can be a *CLI app* by itself, but it can also be added as a command group to another Cligenius app.

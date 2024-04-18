@@ -7,7 +7,7 @@ Well, that's how they work *by default*, and that's the convention in many CLI p
 
 But if you really want, you can change that.
 
-To make a *CLI option* required, you can put `types.Option()` inside of `Annotated` and leave the parameter without a default value.
+To make a *CLI option* required, you can put `cligenius.Option()` inside of `Annotated` and leave the parameter without a default value.
 
 Let's make `--lastname` a required *CLI option*:
 
@@ -17,7 +17,7 @@ Let's make `--lastname` a required *CLI option*:
     {!> ../docs_src/options/required/tutorial001_an.py!}
     ```
 
-The same way as with `types.Argument()`, the old style of using the function parameter default value is also supported, in that case you would just not pass anything to the `default` parameter.
+The same way as with `cligenius.Argument()`, the old style of using the function parameter default value is also supported, in that case you would just not pass anything to the `default` parameter.
 
 === "Python 3.7+ non-Annotated"
 
@@ -25,7 +25,7 @@ The same way as with `types.Argument()`, the old style of using the function par
     {!> ../docs_src/options/required/tutorial001.py!}
     ```
 
-Or you can explictily pass `...` to `types.Option(default=...)`:
+Or you can explictily pass `...` to `cligenius.Option(default=...)`:
 
 === "Python 3.7+ non-Annotated"
 
@@ -36,10 +36,10 @@ Or you can explictily pass `...` to `types.Option(default=...)`:
 !!! info
     If you hadn't seen that `...` before: it is a special single value, it is <a href="https://docs.python.org/3/library/constants.html#Ellipsis" class="external-link" target="_blank">part of Python and is called "Ellipsis"</a>.
 
-That will tell **Types** that it's still a *CLI option*, but it doesn't have a default value, and it's required.
+That will tell **Cligenius** that it's still a *CLI option*, but it doesn't have a default value, and it's required.
 
 !!! tip
-    Again, prefer to use the `Annotated` version if possible. That way your code will mean the same in standard Python and in **Types**.
+    Again, prefer to use the `Annotated` version if possible. That way your code will mean the same in standard Python and in **Cligenius**.
 
 And test it:
 

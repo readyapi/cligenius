@@ -1,4 +1,4 @@
-import types
+import cligenius
 
 valid_names = ["Camila", "Carlos", "Sebastian"]
 
@@ -11,12 +11,12 @@ def complete_name(incomplete: str):
     return completion
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def main(
-    name: str = types.Option(
+    name: str = cligenius.Option(
         "World", help="The name to say hi to.", autocompletion=complete_name
     ),
 ):

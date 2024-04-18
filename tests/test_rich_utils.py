@@ -1,12 +1,12 @@
-import types
-import types.completion
-from types.testing import CliRunner
+import cligenius
+import cligenius.completion
+from cligenius.testing import CliRunner
 
 runner = CliRunner()
 
 
 def test_rich_utils_click_rewrapp():
-    app = types.Types(rich_markup_mode="markdown")
+    app = cligenius.Cligenius(rich_markup_mode="markdown")
 
     @app.command()
     def main():
@@ -39,8 +39,8 @@ def test_rich_utils_click_rewrapp():
 
 
 def test_rich_help_no_commands():
-    """Ensure that the help still works for a Types instance with no commands, but with a callback."""
-    app = types.Types(help="My cool Types app")
+    """Ensure that the help still works for a Cligenius instance with no commands, but with a callback."""
+    app = cligenius.Cligenius(help="My cool Cligenius app")
 
     @app.callback(invoke_without_command=True, no_args_is_help=True)
     def main() -> None:

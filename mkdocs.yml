@@ -1,6 +1,6 @@
-site_name: Types
-site_description: Types, build great CLIs. Easy to code. Based on Python type hints.
-site_url: https://types.khulnasoft.com/
+site_name: Cligenius
+site_description: Cligenius, build great CLIs. Easy to code. Based on Python type hints.
+site_url: https://cligenius.khulnasoft.com/
 
 theme:
   name: material
@@ -13,17 +13,17 @@ theme:
   logo: img/icon-white.svg
   favicon: img/favicon.png
 
-repo_name: khulnasoft/types
-repo_url: https://github.com/khulnasoft/types
+repo_name: khulnasoft/cligenius
+repo_url: https://github.com/khulnasoft/cligenius
 edit_uri: ""
 plugins:
   search: null
   redirects:
     redirect_maps:
-      types-cli.md: tutorial/types-command.md
+      cligenius-cli.md: tutorial/cligenius-command.md
 
 nav:
-  - Types: index.md
+  - Cligenius: index.md
   - Features: features.md
   - Tutorial - User Guide:
       - Tutorial - User Guide - Intro: tutorial/index.md
@@ -52,7 +52,7 @@ nav:
           - Command CLI Options: tutorial/commands/options.md
           - Command Help: tutorial/commands/help.md
           - Custom Command Name: tutorial/commands/name.md
-          - Types Callback: tutorial/commands/callback.md
+          - Cligenius Callback: tutorial/commands/callback.md
           - One or Multiple Commands: tutorial/commands/one-or-multiple.md
           - Using the Context: tutorial/commands/context.md
       - CLI Option autocompletion: tutorial/options-autocompletion.md
@@ -68,10 +68,10 @@ nav:
           - Custom Types: tutorial/parameter-types/custom-types.md
       - SubCommands - Command Groups:
           - SubCommands - Command Groups - Intro: tutorial/subcommands/index.md
-          - Add Types: tutorial/subcommands/add-types.md
+          - Add Cligenius: tutorial/subcommands/add-cligenius.md
           - SubCommands in a Single File: tutorial/subcommands/single-file.md
           - Nested SubCommands: tutorial/subcommands/nested-subcommands.md
-          - Sub-Types Callback Override: tutorial/subcommands/callback-override.md
+          - Sub-Cligenius Callback Override: tutorial/subcommands/callback-override.md
           - SubCommand Name and Help: tutorial/subcommands/name-and-help.md
       - Multiple Values:
           - Multiple Values Intro: tutorial/multiple-values/index.md
@@ -86,9 +86,9 @@ nav:
       - Using Click: tutorial/using-click.md
       - Building a Package: tutorial/package.md
       - tutorial/exceptions.md
-      - tutorial/types-command.md
+      - tutorial/cligenius-command.md
   - Alternatives, Inspiration and Comparisons: alternatives.md
-  - Help Types - Get Help: help-types.md
+  - Help Cligenius - Get Help: help-cligenius.md
   - Development - Contributing: contributing.md
   - Release Notes: release-notes.md
 
@@ -119,7 +119,7 @@ extra:
     property: G-T78C5GNRXK
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/khulnasoft/types
+      link: https://github.com/khulnasoft/cligenius
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/khulnasoft
     - icon: fontawesome/brands/linkedin

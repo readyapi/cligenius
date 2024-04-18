@@ -1,43 +1,43 @@
-# `types` command
+# `cligenius` command
 
-The `types` command provides ✨ completion ✨ in the Terminal for your own small scripts. Even if they don't use Types internally. Of course, it works better if you use **Types** in your script.
+The `cligenius` command provides ✨ completion ✨ in the Terminal for your own small scripts. Even if they don't use Cligenius internally. Of course, it works better if you use **Cligenius** in your script.
 
-It's probably most useful if you have a small custom Python script using **Types** (maybe as part of some project), for some small tasks, and it's not complex/important enough to create a whole installable Python package for it (something to be installed with `pip`).
+It's probably most useful if you have a small custom Python script using **Cligenius** (maybe as part of some project), for some small tasks, and it's not complex/important enough to create a whole installable Python package for it (something to be installed with `pip`).
 
-In that case, you can run your program with the `types` command in your Terminal, and it will provide completion for your script.
+In that case, you can run your program with the `cligenius` command in your Terminal, and it will provide completion for your script.
 
-The `types` command also has functionality to generate Markdown documentation for your own **Types** programs 📝.
+The `cligenius` command also has functionality to generate Markdown documentation for your own **Cligenius** programs 📝.
 
 ## Install
 
-When you install **Types** with:
+When you install **Cligenius** with:
 
 ```bash
-pip install types
+pip install cligenius
 ```
 
-...it includes the `types` command.
+...it includes the `cligenius` command.
 
-If you don't want to have the `types` command, you can install instead:
+If you don't want to have the `cligenius` command, you can install instead:
 
 ```bash
-pip install types-slim
+pip install cligenius-slim
 ```
 
-You can still use it by calling the Types library as a module with:
+You can still use it by calling the Cligenius library as a module with:
 
 ```bash
-python -m types
+python -m cligenius
 ```
 
 ## Install completion
 
-You can then install completion for the `types` command with:
+You can then install completion for the `cligenius` command with:
 
 <div class="termy">
 
 ```console
-$ types --install-completion
+$ cligenius --install-completion
 
 bash completion installed in /home/user/.bashrc.
 Completion will take effect once you restart the terminal.
@@ -47,44 +47,44 @@ Completion will take effect once you restart the terminal.
 
 ### Sample script
 
-Let's say you have a script that uses **Types** in `my_custom_script.py`:
+Let's say you have a script that uses **Cligenius** in `my_custom_script.py`:
 
 ```Python
 from typing import Optional
 
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def hello(name: Optional[str] = None):
     if name:
-        types.echo(f"Hello {name}")
+        cligenius.echo(f"Hello {name}")
     else:
-        types.echo("Hello World!")
+        cligenius.echo("Hello World!")
 
 
 @app.command()
 def bye(name: Optional[str] = None):
     if name:
-        types.echo(f"Bye {name}")
+        cligenius.echo(f"Bye {name}")
     else:
-        types.echo("Goodbye!")
+        cligenius.echo("Goodbye!")
 
 
 if __name__ == "__main__":
     app()
 ```
 
-For it to work, you would also install **Types**:
+For it to work, you would also install **Cligenius**:
 
 <div class="termy">
 
 ```console
-$ python -m pip install types
+$ python -m pip install cligenius
 ---> 100%
-Successfully installed types
+Successfully installed cligenius
 ```
 
 </div>
@@ -115,49 +115,49 @@ There's nothing wrong with using Python directly to run it. And, in fact, if som
 
 ⛔️ But in your terminal, you won't get completion when hitting <kbd>TAB</kbd> for any of the subcommands or options, like `hello`, `bye`, and `--name`.
 
-### Run with the `types` command.
+### Run with the `cligenius` command.
 
-You can also run the same script with the `types` command:
+You can also run the same script with the `cligenius` command:
 
 <div class="termy">
 
 ```console
-$ types my_custom_script.py run hello
+$ cligenius my_custom_script.py run hello
 
 Hello World!
 
-$ types my_custom_script.py run hello --name Camila
+$ cligenius my_custom_script.py run hello --name Camila
 
 Hello Camila!
 
-$ types my_custom_script.py run bye --name Camila
+$ cligenius my_custom_script.py run bye --name Camila
 
 Bye Camila
 ```
 
 </div>
 
-* Instead of using `python` directly you use the `types` command.
+* Instead of using `python` directly you use the `cligenius` command.
 * After the name of the file, add the subcommand `run`.
 
-✔️ If you installed completion for the `types` command as described above, when you hit <kbd>TAB</kbd> you will have ✨ completion for everything ✨, including all the subcommands and options of your script, like `hello`, `bye`, and `--name` 🚀.
+✔️ If you installed completion for the `cligenius` command as described above, when you hit <kbd>TAB</kbd> you will have ✨ completion for everything ✨, including all the subcommands and options of your script, like `hello`, `bye`, and `--name` 🚀.
 
 ## If main
 
-Because the `types` command won't use the block with:
+Because the `cligenius` command won't use the block with:
 
 ```Python
 if __name__ == "__main__":
     app()
 ```
 
-...you can also remove it if you are calling that script only with the `types` command.
+...you can also remove it if you are calling that script only with the `cligenius` command.
 
 ## Run other files
 
-The `types` command can run any script with **Types**, but the script doesn't even have to use **Types** at all.
+The `cligenius` command can run any script with **Cligenius**, but the script doesn't even have to use **Cligenius** at all.
 
-You could even run a file with a function that could be used with `types.run()`, even if the script doesn't use `types.run()` or anything else.
+You could even run a file with a function that could be used with `cligenius.run()`, even if the script doesn't use `cligenius.run()` or anything else.
 
 For example, a file `main.py` like this will still work:
 
@@ -174,8 +174,8 @@ Then you can call it with:
 <div class="termy">
 
 ```console
-$ types main.py run --help
-Usage: types run [OPTIONS]
+$ cligenius main.py run --help
+Usage: cligenius run [OPTIONS]
 
   Say hi to someone, by default to the World.
 
@@ -183,7 +183,7 @@ Options:
   --name TEXT
   --help       Show this message and exit.
 
-$ types main.py run --name Camila
+$ cligenius main.py run --name Camila
 
 Hello Camila
 ```
@@ -201,14 +201,14 @@ For example:
 <div class="termy">
 
 ```console
-$ types my_package.main run --help
-Usage: types run [OPTIONS]
+$ cligenius my_package.main run --help
+Usage: cligenius run [OPTIONS]
 
 Options:
   --name TEXT
   --help       Show this message and exit.
 
-$ types my_package.main run --name Camila
+$ cligenius my_package.main run --name Camila
 
 Hello Camila
 ```
@@ -219,23 +219,23 @@ Hello Camila
 
 You can specify one of the following **CLI options**:
 
-* `--app`: the name of the variable with a `Types()` object to run as the main app.
-* `--func`: the name of the variable with a function that would be used with `types.run()`.
+* `--app`: the name of the variable with a `Cligenius()` object to run as the main app.
+* `--func`: the name of the variable with a function that would be used with `cligenius.run()`.
 
 ### Defaults
 
-When your run a script with the `types` command it will use the app from the following priority:
+When your run a script with the `cligenius` command it will use the app from the following priority:
 
 * An app object from the `--app` *CLI Option*.
-* A function to convert to a **Types** app from `--func` *CLI Option* (like when using `types.run()`).
-* A **Types** app in a variable with a name of `app`, `cli`, or `main`.
-* The first **Types** app available in the file, with any name.
+* A function to convert to a **Cligenius** app from `--func` *CLI Option* (like when using `cligenius.run()`).
+* A **Cligenius** app in a variable with a name of `app`, `cli`, or `main`.
+* The first **Cligenius** app available in the file, with any name.
 * A function in a variable with a name of `main`, `cli`, or `app`.
 * The first function in the file, with any name.
 
 ## Generate docs
 
-You can also use the `types` command to generate Markdown documentation for your **Types** application.
+You can also use the `cligenius` command to generate Markdown documentation for your **Cligenius** application.
 
 ### Sample script with docs
 
@@ -245,9 +245,9 @@ For example, you could have a script like:
 {!../docs_src/commands/help/tutorial001.py!}
 ```
 
-### Generate docs with the `types` command
+### Generate docs with the `cligenius` command
 
-Then you could generate docs for it with the `types` command.
+Then you could generate docs for it with the `cligenius` command.
 
 You can use the subcommand `utils`.
 
@@ -256,16 +256,16 @@ And then the subcommand `docs`.
 <div class="termy">
 
 ```console
-$ types some_script.py utils docs
+$ cligenius some_script.py utils docs
 ```
 
 </div>
 
 !!! tip
-    If you installed only `types-slim` and you don't have the `types` command, you can still generate docs with:
+    If you installed only `cligenius-slim` and you don't have the `cligenius` command, you can still generate docs with:
 
     ```console
-    $ python -m types some_script.py utils docs
+    $ python -m cligenius some_script.py utils docs
     ```
 
 **Options**:
@@ -279,7 +279,7 @@ For example:
 <div class="termy">
 
 ```console
-$ types my_package.main utils docs --name awesome-cli --output README.md
+$ cligenius my_package.main utils docs --name awesome-cli --output README.md
 
 Docs saved to: README.md
 ```

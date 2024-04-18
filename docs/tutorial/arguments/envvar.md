@@ -1,6 +1,6 @@
 You can also configure a *CLI argument* to read a value from an environment variable if it is not provided in the command line as a *CLI argument*.
 
-To do that, use the `envvar` parameter for `types.Argument()`:
+To do that, use the `envvar` parameter for `cligenius.Argument()`:
 
 === "Python 3.7+"
 
@@ -151,4 +151,4 @@ Hello Mr. Wednesday
 !!! note "Technical Details"
     In Click applications the env vars are hidden by default. 🙈
 
-    In **Types** these env vars are shown by default. 👀
+    In **Cligenius** these env vars are shown by default. 👀

@@ -1,9 +1,9 @@
-import types
+import cligenius
 
 
-def main(name: str = types.Argument(default=...)):
+def main(name: str = cligenius.Argument(default=...)):
     print(f"Hello {name}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

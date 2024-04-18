@@ -1,4 +1,4 @@
-import types
+import cligenius
 from rich import print
 
 
@@ -7,4 +7,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

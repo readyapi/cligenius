@@ -1,4 +1,4 @@
-When you create an `app = types.Types()` it works as a group of commands.
+When you create an `app = cligenius.Cligenius()` it works as a group of commands.
 
 And you can create multiple commands with it.
 
@@ -74,7 +74,7 @@ Error: No such option: --verbose
 
 ## Adding a callback on creation
 
-It's also possible to add a callback when creating the `types.Types()` app:
+It's also possible to add a callback when creating the `cligenius.Cligenius()` app:
 
 ```Python hl_lines="4 5  8"
 {!../docs_src/commands/callback/tutorial002.py!}
@@ -97,7 +97,7 @@ Creating user: Camila
 
 ## Overriding a callback
 
-If you added a callback when creating the `types.Types()` app, it's possible to override it with `@app.callback()`:
+If you added a callback when creating the `cligenius.Cligenius()` app, it's possible to override it with `@app.callback()`:
 
 ```Python hl_lines="11 12 13"
 {!../docs_src/commands/callback/tutorial003.py!}
@@ -165,7 +165,7 @@ Creating user: Camila
 
 ## Click Group
 
-If you come from Click, this **Types** callback is the equivalent of the function in a <a href="https://click.palletsprojects.com/en/7.x/quickstart/#nesting-commands" class="external-link" target="_blank">Click Group</a>.
+If you come from Click, this **Cligenius** callback is the equivalent of the function in a <a href="https://click.palletsprojects.com/en/7.x/quickstart/#nesting-commands" class="external-link" target="_blank">Click Group</a>.
 
 For example:
 
@@ -177,9 +177,9 @@ def cli():
     pass
 ```
 
-The original function `cli` would be the equivalent of a Types callback.
+The original function `cli` would be the equivalent of a Cligenius callback.
 
 !!! note "Technical Details"
     When using Click, it converts that `cli` variable to a Click `Group` object. And then the original function no longer exists in that variable.
 
-    **Types** doesn't do that, the callback function is not modified, only registered in the `types.Types` app. This is intentional, it's part of **Types**'s design, to allow having editor auto completion and type checks.
+    **Cligenius** doesn't do that, the callback function is not modified, only registered in the `cligenius.Cligenius` app. This is intentional, it's part of **Cligenius**'s design, to allow having editor auto completion and type checks.

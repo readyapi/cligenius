@@ -1,19 +1,19 @@
 !!! warning
-    This is a more advanced topic, if you are starting with **Types**, feel free to skip it.
+    This is a more advanced topic, if you are starting with **Cligenius**, feel free to skip it.
 
     It will be mostly useful for people that already work with Click and have questions around it.
 
-**Types** is powered by <a href="https://click.palletsprojects.com" class="external-link" target="_blank">Click</a>. It does all the work underneath.
+**Cligenius** is powered by <a href="https://click.palletsprojects.com" class="external-link" target="_blank">Click</a>. It does all the work underneath.
 
 Here is some more information related to using both together.
 
-## A single app with both Click and **Types**
+## A single app with both Click and **Cligenius**
 
-If you already have a Click application and want to migrate to **Types**, or to add some Types components, you can get a Click `Command` from your Types application and then use Click directly.
+If you already have a Click application and want to migrate to **Cligenius**, or to add some Cligenius components, you can get a Click `Command` from your Cligenius application and then use Click directly.
 
 ### How Click works
 
-Before knowing how to combine Click and **Types**, let's first check a little about how Click works.
+Before knowing how to combine Click and **Cligenius**, let's first check a little about how Click works.
 
 #### Click `Command`
 
@@ -48,46 +48,46 @@ For example:
 The `cli` variable is converted by Click from a function to a `Group` object. And the original `cli` function is used by that `Group` internally.
 
 !!! tip
-    The original `cli` function would be the equivalent of a [Types Callback](./commands/callback.md){.internal-link target=_blank}.
+    The original `cli` function would be the equivalent of a [Cligenius Callback](./commands/callback.md){.internal-link target=_blank}.
 
 Then the `cli` variable, that now is a `Group` object, is used to add sub-commands.
 
-### How **Types** works
+### How **Cligenius** works
 
-Types doesn't modify the functions. You create an explicit variable of class `types.Types` and use it to *register* those functions.
+Cligenius doesn't modify the functions. You create an explicit variable of class `cligenius.Cligenius` and use it to *register* those functions.
 
-And then, when you call the app, Types goes and creates a Click `Command` (or `Group`), and then calls it.
+And then, when you call the app, Cligenius goes and creates a Click `Command` (or `Group`), and then calls it.
 
-If your app only has one command, then when you call it, **Types** creates a single Click `Command` object and calls it.
+If your app only has one command, then when you call it, **Cligenius** creates a single Click `Command` object and calls it.
 
-But **Types** creates a Click `Group` object if your app has any of:
+But **Cligenius** creates a Click `Group` object if your app has any of:
 
 * More than one command.
 * A callback.
-* Sub-Types apps (sub commands).
+* Sub-Cligenius apps (sub commands).
 
 !!! tip
     If you want to learn more about this check the section [One or Multiple Commands](./commands/one-or-multiple.md){.internal-link target=_blank}.
 
-### Combine Click and **Types**
+### Combine Click and **Cligenius**
 
-**Types** uses an internal function `types.main.get_command()` to generate a Click `Command` (or `Group`) from a `types.Types` object.
+**Cligenius** uses an internal function `cligenius.main.get_command()` to generate a Click `Command` (or `Group`) from a `cligenius.Cligenius` object.
 
 You can use it directly, and use the Click object with other Click applications.
 
-### Including a Click app in a **Types** app
+### Including a Click app in a **Cligenius** app
 
-For example, you could have a **Types** app, generate a Click `Group` from it, and then include other Click apps in it:
+For example, you could have a **Cligenius** app, generate a Click `Group` from it, and then include other Click apps in it:
 
 ```Python hl_lines="15 16  29  31  34"
 {!../docs_src/using_click/tutorial003.py!}
 ```
 
-Notice that we add a callback that does nothing (only document the CLI program), to make sure **Types** creates a Click `Group`. That way we can add sub-commands to that Click `Group`.
+Notice that we add a callback that does nothing (only document the CLI program), to make sure **Cligenius** creates a Click `Group`. That way we can add sub-commands to that Click `Group`.
 
-Then we generate a Click object from our `types.Types` app (`types_click_object`), and then we can include another Click object (`hello`) in this Click `Group`.
+Then we generate a Click object from our `cligenius.Cligenius` app (`cligenius_click_object`), and then we can include another Click object (`hello`) in this Click `Group`.
 
-And that way, our **Types** app will have a subcommand `top` built with Types, and a subcommand `hello` built with Click.
+And that way, our **Cligenius** app will have a subcommand `top` built with Cligenius, and a subcommand `hello` built with Click.
 
 Check it:
 
@@ -108,10 +108,10 @@ Commands:
   hello
   top
 
-// Call the Types part
+// Call the Cligenius part
 $ python main.py top
 
-The Types app is at the top level
+The Cligenius app is at the top level
 
 // Call the Click part
 $ python main.py hello --name Camila
@@ -121,21 +121,21 @@ Hello Camila!
 
 </div>
 
-### Including a **Types** app in a Click app
+### Including a **Cligenius** app in a Click app
 
-The same way, you can do the contrary and include a **Types** sub app in a bigger Click app:
+The same way, you can do the contrary and include a **Cligenius** sub app in a bigger Click app:
 
 ```Python hl_lines="31  33  36"
 {!../docs_src/using_click/tutorial004.py!}
 ```
 
-Notice that we don't have to add a callback or more commands, we can just create a **Types** app that generates a single Click `Command`, as we don't need to include anything under the Types app.
+Notice that we don't have to add a callback or more commands, we can just create a **Cligenius** app that generates a single Click `Command`, as we don't need to include anything under the Cligenius app.
 
-Then we generate a Click object from our `types.Types` app (`types_click_object`), and then we use **the Click `cli` to include** our Click object from our Types app.
+Then we generate a Click object from our `cligenius.Cligenius` app (`cligenius_click_object`), and then we use **the Click `cli` to include** our Click object from our Cligenius app.
 
-In this case, the original Click app includes the **Types** app.
+In this case, the original Click app includes the **Cligenius** app.
 
-And then we call the *original Click* app, not the Types app.
+And then we call the *original Click* app, not the Cligenius app.
 
 Check it:
 
@@ -144,7 +144,7 @@ Check it:
 ```console
 $ python main.py
 
-// We get our Types app down there in the sub command
+// We get our Cligenius app down there in the sub command
 Usage: main.py [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -153,7 +153,7 @@ Options:
 Commands:
   dropdb
   initdb
-  sub     A single-command Types sub app
+  sub     A single-command Cligenius sub app
 
 
 // Use the Click part
@@ -161,25 +161,25 @@ $ python main.py initdb
 
 Initialized the database
 
-// And use the Types part
+// And use the Cligenius part
 $ python main.py sub
 
-Types is now below Click, the Click app is the top level
+Cligenius is now below Click, the Click app is the top level
 ```
 
 </div>
 
 ## About Click decorators
 
-Types apps don't work with Click decorators directly.
+Cligenius apps don't work with Click decorators directly.
 
-This is because **Types** doesn't modify functions to add metadata or to convert them to another object like Click does.
+This is because **Cligenius** doesn't modify functions to add metadata or to convert them to another object like Click does.
 
 So, things like `@click.pass_context` won't work.
 
-Most of the functionality provided by decorators in Click has an alternative way of doing it in **Types**.
+Most of the functionality provided by decorators in Click has an alternative way of doing it in **Cligenius**.
 
-For example, to access the context, you can just declare a function parameter of type `types.Context`.
+For example, to access the context, you can just declare a function parameter of type `cligenius.Context`.
 
 !!! tip
     You can read more about using the context in the docs: [Commands: Using the Context](commands/context.md){.internal-link target=_blank}

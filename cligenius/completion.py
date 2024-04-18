@@ -21,7 +21,7 @@ _click_patched = False
 
 def get_completion_inspect_parameters() -> Tuple[ParamMeta, ParamMeta]:
     completion_init()
-    test_disable_detection = os.getenv("_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv("_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
     if shellingham and not test_disable_detection:
         parameters = get_params_from_function(_install_completion_placeholder_function)
     else:
@@ -51,7 +51,7 @@ def show_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any
     assert prog_name
     complete_var = "_{}_COMPLETE".format(prog_name.replace("-", "_").upper())
     shell = ""
-    test_disable_detection = os.getenv("_TYPES_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv("_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
     if isinstance(value, str):
         shell = value
     elif shellingham and not test_disable_detection:
@@ -105,7 +105,7 @@ def _install_completion_no_auto_placeholder_function(
 # Re-implement Click's shell_complete to add error message with:
 # Invalid completion instruction
 # To use 7.x instruction style for compatibility
-# And to add extra error messages, for compatibility with Types in previous versions
+# And to add extra error messages, for compatibility with Cligenius in previous versions
 # This is only called in new Command method, only used by Click 8.x+
 def shell_complete(
     cli: click.Command,
@@ -123,11 +123,11 @@ def shell_complete(
 
     # Click 8 changed the order/style of shell instructions from e.g.
     # source_bash to bash_source
-    # Types override to preserve the old style for compatibility
+    # Cligenius override to preserve the old style for compatibility
     # Original in Click 8.x commented:
     # shell, _, instruction = instruction.partition("_")
     instruction, _, shell = instruction.partition("_")
-    # Types override end
+    # Cligenius override end
 
     comp_cls = click.shell_completion.get_completion_class(shell)
 

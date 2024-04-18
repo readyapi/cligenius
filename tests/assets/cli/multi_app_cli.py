@@ -1,22 +1,22 @@
-import types
+import cligenius
 
-sub_app = types.Types()
+sub_app = cligenius.Cligenius()
 
 
 @sub_app.command()
 def hello():
-    types.echo("sub hello")
+    cligenius.echo("sub hello")
 
 
 @sub_app.command()
 def bye():
-    types.echo("sub bye")
+    cligenius.echo("sub bye")
 
 
-cli = types.Types()
-cli.add_types(sub_app, name="sub")
+cli = cligenius.Cligenius()
+cli.add_cligenius(sub_app, name="sub")
 
 
 @cli.command()
 def top():
-    types.echo("top")
+    cligenius.echo("top")

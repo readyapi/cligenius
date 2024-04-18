@@ -1,19 +1,19 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
     name: str,
-    lastname: Annotated[str, types.Option(help="Last name of person to greet.")] = "",
+    lastname: Annotated[str, cligenius.Option(help="Last name of person to greet.")] = "",
     formal: Annotated[
         bool,
-        types.Option(
+        cligenius.Option(
             help="Say hi formally.", rich_help_panel="Customization and Utils"
         ),
     ] = False,
     debug: Annotated[
         bool,
-        types.Option(
+        cligenius.Option(
             help="Enable debugging.", rich_help_panel="Customization and Utils"
         ),
     ] = False,
@@ -30,4 +30,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

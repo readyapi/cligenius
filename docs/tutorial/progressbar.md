@@ -67,32 +67,32 @@ $ python main.py
 
 You can learn more about it in the <a href="https://rich.readthedocs.io/en/stable/progress.html" class="external-link" target="_blank">Rich docs for Progress Display</a>.
 
-## Types `progressbar`
+## Cligenius `progressbar`
 
 If you can, you should use **Rich** as explained above, it has more features, it's more advanced, and can display information more beautifully. ✨
 
 !!! tip
     If you can use Rich, use the information above, the Rich docs, and skip the rest of this page. 😎
 
-But if you can't use Rich, Types (actually Click) comes with a simple utility to show progress bars.
+But if you can't use Rich, Cligenius (actually Click) comes with a simple utility to show progress bars.
 
 !!! info
-    `types.progressbar()` comes directly from Click, you can read more about it in <a href="https://click.palletsprojects.com/en/8.1.x/utils/#showing-progress-bars" class="external-link" target="_blank">Click's docs</a>.
+    `cligenius.progressbar()` comes directly from Click, you can read more about it in <a href="https://click.palletsprojects.com/en/8.1.x/utils/#showing-progress-bars" class="external-link" target="_blank">Click's docs</a>.
 
 
-### Use `types.progressbar`
+### Use `cligenius.progressbar`
 
 !!! tip
     Remember, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
 
-You can use `types.progressbar()` with a `with` statement, as in:
+You can use `cligenius.progressbar()` with a `with` statement, as in:
 
 ```Python
-with types.progressbar(something) as progress:
+with cligenius.progressbar(something) as progress:
     pass
 ```
 
-And you pass as function argument to `types.progressbar()` the thing that you would normally iterate over.
+And you pass as function argument to `cligenius.progressbar()` the thing that you would normally iterate over.
 
 ```Python hl_lines="8"
 {!../docs_src/progressbar/tutorial003.py!}
@@ -103,20 +103,20 @@ So, if you have a list of users, this could be:
 ```Python
 users = ["Camila", "Rick", "Morty"]
 
-with types.progressbar(users) as progress:
+with cligenius.progressbar(users) as progress:
     pass
 ```
 
-And the `with` statement using `types.progressbar()` gives you an object that you can iterate over, just like if it was the same thing that you would iterate over normally.
+And the `with` statement using `cligenius.progressbar()` gives you an object that you can iterate over, just like if it was the same thing that you would iterate over normally.
 
-But by iterating over this object **Types** (actually Click) will know to update the progress bar:
+But by iterating over this object **Cligenius** (actually Click) will know to update the progress bar:
 
 ```Python
 users = ["Camila", "Rick", "Morty"]
 
-with types.progressbar(users) as progress:
+with cligenius.progressbar(users) as progress:
     for user in progress:
-        types.echo(user)
+        cligenius.echo(user)
 ```
 
 !!! tip
@@ -148,7 +148,7 @@ Processed 100 things.
 
 The progress bar is generated from the length of the iterable (e.g. the list of users).
 
-But if the length is not available (for example, with something that fetches a new user from a web API each time) you can pass an explicit `length` to `types.progressbar()`.
+But if the length is not available (for example, with something that fetches a new user from a web API each time) you can pass an explicit `length` to `cligenius.progressbar()`.
 
 ```Python hl_lines="14"
 {!../docs_src/progressbar/tutorial004.py!}
@@ -211,7 +211,7 @@ Check it:
 
 ## Iterate manually
 
-If you need to manually iterate over something and update the progress bar irregularly, you can do it by not passing an iterable but just a `length` to `types.progressbar()`.
+If you need to manually iterate over something and update the progress bar irregularly, you can do it by not passing an iterable but just a `length` to `cligenius.progressbar()`.
 
 And then calling the `.update()` method in the object from the `with` statement:
 

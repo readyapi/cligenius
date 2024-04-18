@@ -1,8 +1,8 @@
 import subprocess
 import sys
 
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from docs_src.first_steps import tutorial001 as mod
 
@@ -10,7 +10,7 @@ runner = CliRunner()
 
 
 def test_cli():
-    app = types.Types()
+    app = cligenius.Cligenius()
     app.command()(mod.main)
     result = runner.invoke(app, [])
     assert result.output == "Hello World\n"

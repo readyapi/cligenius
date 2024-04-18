@@ -1,10 +1,10 @@
-import types
-import types.main
+import cligenius
+import cligenius.main
 
-types.main.rich = None
+cligenius.main.rich = None
 
 
-app = types.Types(pretty_exceptions_short=False)
+app = cligenius.Cligenius(pretty_exceptions_short=False)
 
 
 @app.command()

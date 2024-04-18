@@ -1,14 +1,14 @@
-When you create a CLI program with **Types** you probably want to create your own Python package.
+When you create a CLI program with **Cligenius** you probably want to create your own Python package.
 
 That's what allows your users to install it and have it as an independent program that they can use in their terminal.
 
-And that's also required for shell auto completion to work (unless you use your program through `types` command).
+And that's also required for shell auto completion to work (unless you use your program through `cligenius` command).
 
 Nowadays, there are several ways and tools to create Python packages (what you install with `pip install something`).
 
 You might even have your favorite already.
 
-Here's a very opinionated, short guide, showing one of the alternative ways of creating a Python package with a **Types** app, from scratch.
+Here's a very opinionated, short guide, showing one of the alternative ways of creating a Python package with a **Cligenius** app, from scratch.
 
 !!! tip
     If you already have a favorite way of creating Python packages, feel free to skip this.
@@ -44,16 +44,16 @@ cd ./rick-portal-gun
 
 ## Dependencies and environment
 
-Add `types[all]` to your dependencies:
+Add `cligenius[all]` to your dependencies:
 
 <div class="termy">
 
 ```console
-$ poetry add "types[all]"
+$ poetry add "cligenius[all]"
 
 // It creates a virtual environment for your project
 Creating virtualenv rick-portal-gun-w31dJa0b-py3.10 in /home/rick/.cache/pypoetry/virtualenvs
-Using version ^0.1.0 for types
+Using version ^0.1.0 for cligenius
 
 Updating dependencies
 Resolving dependencies... (1.2s)
@@ -78,7 +78,7 @@ Package operations: 15 installs, 0 updates, 0 removals
   - Installing shellingham (1.3.2)
   - Installing wcwidth (0.1.8)
   - Installing pytest (5.4.1)
-  - Installing types (0.0.11)
+  - Installing cligenius (0.0.11)
 
 // Activate that new virtual environment
 $ poetry shell
@@ -107,15 +107,15 @@ You can see that you have a generated project structure that looks like:
 
 ## Create your app
 
-Now let's create an extremely simple **Types** app.
+Now let's create an extremely simple **Cligenius** app.
 
 Create a file `rick_portal_gun/main.py` with:
 
 ```Python
-import types
+import cligenius
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.callback()
@@ -130,7 +130,7 @@ def shoot():
     """
     Shoot the portal gun
     """
-    types.echo("Shooting portal gun")
+    cligenius.echo("Shooting portal gun")
 
 
 @app.command()
@@ -138,7 +138,7 @@ def load():
     """
     Load the portal gun
     """
-    types.echo("Loading portal gun")
+    cligenius.echo("Loading portal gun")
 ```
 
 !!! tip
@@ -175,7 +175,7 @@ rick-portal-gun = "rick_portal_gun.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-types = {extras = ["all"], version = "^0.1.0"}
+cligenius = {extras = ["all"], version = "^0.1.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -425,7 +425,7 @@ The file would live right beside `__init__.py`:
 
 No other file has to import it, you don't have to reference it in your `pyproject.toml` or anything else, it just works by default, as it is standard Python behavior.
 
-Then in that file you can execute your **Types** program:
+Then in that file you can execute your **Cligenius** program:
 
 ```Python
 from .main import app
@@ -623,10 +623,10 @@ $ pip install --user rick-portal-gun
 // Notice that it says "Downloading" 🚀
 Collecting rick-portal-gun
   Downloading rick_portal_gun-0.1.0-py3-none-any.whl (1.8 kB)
-Requirement already satisfied: types[all]<0.0.12,>=0.0.11 in ./.local/lib/python3.10/site-packages (from rick-portal-gun) (0.0.11)
-Requirement already satisfied: click<7.2.0,>=7.1.1 in ./anaconda3/lib/python3.10/site-packages (from types[all]<0.0.12,>=0.0.11->rick-portal-gun) (7.1.1)
-Requirement already satisfied: colorama; extra == "all" in ./anaconda3/lib/python3.10/site-packages (from types[all]<0.0.12,>=0.0.11->rick-portal-gun) (0.4.3)
-Requirement already satisfied: shellingham; extra == "all" in ./anaconda3/lib/python3.10/site-packages (from types[all]<0.0.12,>=0.0.11->rick-portal-gun) (1.3.1)
+Requirement already satisfied: cligenius[all]<0.0.12,>=0.0.11 in ./.local/lib/python3.10/site-packages (from rick-portal-gun) (0.0.11)
+Requirement already satisfied: click<7.2.0,>=7.1.1 in ./anaconda3/lib/python3.10/site-packages (from cligenius[all]<0.0.12,>=0.0.11->rick-portal-gun) (7.1.1)
+Requirement already satisfied: colorama; extra == "all" in ./anaconda3/lib/python3.10/site-packages (from cligenius[all]<0.0.12,>=0.0.11->rick-portal-gun) (0.4.3)
+Requirement already satisfied: shellingham; extra == "all" in ./anaconda3/lib/python3.10/site-packages (from cligenius[all]<0.0.12,>=0.0.11->rick-portal-gun) (1.3.1)
 Installing collected packages: rick-portal-gun
 Successfully installed rick-portal-gun-0.1.0
 ```
@@ -648,24 +648,24 @@ Loading portal gun
 
 ## Generate docs
 
-You can use the `types` command to generate docs for your package that you can put in your `README.md`:
+You can use the `cligenius` command to generate docs for your package that you can put in your `README.md`:
 
 <div class="termy">
 
 ```console
-$ types rick_portal_gun.main utils docs --output README.md --name rick-portal-gun
+$ cligenius rick_portal_gun.main utils docs --output README.md --name rick-portal-gun
 
 Docs saved to: README.md
 ```
 
 </div>
 
-You just have to pass it the module to import (`rick_portal_gun.main`) and it will detect the `types.Types` app automatically.
+You just have to pass it the module to import (`rick_portal_gun.main`) and it will detect the `cligenius.Cligenius` app automatically.
 
 By specifying the `--name` of the program it will be able to use it while generating the docs.
 
 !!! tip
-    If you installed `types-slim` and don't have the `types` command, you can use `python -m types` instead.
+    If you installed `cligenius-slim` and don't have the `cligenius` command, you can use `python -m cligenius` instead.
 
 ### Publish a new version with the docs
 
@@ -686,7 +686,7 @@ rick-portal-gun = "rick_portal_gun.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-types = {extras = ["all"], version = "^0.1.0"}
+cligenius = {extras = ["all"], version = "^0.1.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

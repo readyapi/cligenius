@@ -1,12 +1,12 @@
 from typing import List
 
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
-def main(name: List[str] = types.Option(["World"], help="The name to say hi to.")):
+def main(name: List[str] = cligenius.Option(["World"], help="The name to say hi to.")):
     for each_name in name:
         print(f"Hello {each_name}")
 

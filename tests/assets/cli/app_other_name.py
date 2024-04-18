@@ -1,8 +1,8 @@
-import types
+import cligenius
 
-application = types.Types()
+application = cligenius.Cligenius()
 
 
 @application.command()
 def callback(name: str = "World"):
-    types.echo(f"Hello {name}")
+    cligenius.echo(f"Hello {name}")

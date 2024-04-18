@@ -1,7 +1,7 @@
-import types
+import cligenius
 
 
-def main(in_prod: bool = types.Option(True, " /--demo", " /-d")):
+def main(in_prod: bool = cligenius.Option(True, " /--demo", " /-d")):
     if in_prod:
         print("Running in production")
     else:
@@ -9,4 +9,4 @@ def main(in_prod: bool = types.Option(True, " /--demo", " /-d")):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

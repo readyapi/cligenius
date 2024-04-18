@@ -2,7 +2,7 @@ You can use several data types for the *CLI options* and *CLI arguments*, and yo
 
 ## Data conversion
 
-When you declare a *CLI parameter* with some type **Types** will convert the data received in the command line to that data type.
+When you declare a *CLI parameter* with some type **Cligenius** will convert the data received in the command line to that data type.
 
 For example:
 
@@ -14,7 +14,7 @@ In this example, the value received for the *CLI argument* `NAME` will be treate
 
 The value for the *CLI option* `--age` will be converted to an `int` and `--height-meters` will be converted to a `float`.
 
-And as `female` is a `bool` *CLI option*, **Types** will convert it to a "flag" `--female` and the counterpart `--no-female`.
+And as `female` is a `bool` *CLI option*, **Cligenius** will convert it to a "flag" `--female` and the counterpart `--no-female`.
 
 And here's how it looks like:
 

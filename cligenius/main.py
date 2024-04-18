@@ -14,7 +14,7 @@ from uuid import UUID
 import click
 
 from .completion import get_completion_inspect_parameters
-from .core import MarkupMode, TypesArgument, TypesCommand, TypesGroup, TypesOption
+from .core import MarkupMode, CligeniusArgument, CligeniusCommand, CligeniusGroup, CligeniusOption
 from .models import (
     AnyType,
     ArgumentInfo,
@@ -32,7 +32,7 @@ from .models import (
     ParameterInfo,
     ParamMeta,
     Required,
-    TypesInfo,
+    CligeniusInfo,
 )
 from .utils import get_params_from_function
 
@@ -47,16 +47,16 @@ except ImportError:  # pragma: no cover
     rich = None  # type: ignore
 
 _original_except_hook = sys.excepthook
-_types_developer_exception_attr_name = "__types_developer_exception__"
+_cligenius_developer_exception_attr_name = "__cligenius_developer_exception__"
 
 
 def except_hook(
     exc_type: Type[BaseException], exc_value: BaseException, tb: Optional[TracebackType]
 ) -> None:
     exception_config: Union[DeveloperExceptionConfig, None] = getattr(
-        exc_value, _types_developer_exception_attr_name, None
+        exc_value, _cligenius_developer_exception_attr_name, None
     )
-    standard_traceback = os.getenv("_TYPES_STANDARD_TRACEBACK")
+    standard_traceback = os.getenv("_CLIGENIUS_STANDARD_TRACEBACK")
     if (
         standard_traceback
         or not exception_config
@@ -64,9 +64,9 @@ def except_hook(
     ):
         _original_except_hook(exc_type, exc_value, tb)
         return
-    types_path = os.path.dirname(__file__)
+    cligenius_path = os.path.dirname(__file__)
     click_path = os.path.dirname(click.__file__)
-    supress_internal_dir_names = [types_path, click_path]
+    supress_internal_dir_names = [cligenius_path, click_path]
     exc = exc_value
     if rich:
         rich_tb = Traceback.from_exception(
@@ -83,7 +83,7 @@ def except_hook(
     for frame in tb_exc.stack:
         if any(frame.filename.startswith(path) for path in supress_internal_dir_names):
             if not exception_config.pretty_exceptions_short:
-                # Hide the line for internal libraries, Types and Click
+                # Hide the line for internal libraries, Cligenius and Click
                 stack.append(
                     traceback.FrameSummary(
                         filename=frame.filename,
@@ -109,12 +109,12 @@ def get_install_completion_arguments() -> Tuple[click.Parameter, click.Parameter
     return click_install_param, click_show_param
 
 
-class Types:
+class Cligenius:
     def __init__(
         self,
         *,
         name: Optional[str] = Default(None),
-        cls: Optional[Type[TypesGroup]] = Default(None),
+        cls: Optional[Type[CligeniusGroup]] = Default(None),
         invoke_without_command: bool = Default(False),
         no_args_is_help: bool = Default(False),
         subcommand_metavar: Optional[str] = Default(None),
@@ -144,7 +144,7 @@ class Types:
         self.pretty_exceptions_enable = pretty_exceptions_enable
         self.pretty_exceptions_show_locals = pretty_exceptions_show_locals
         self.pretty_exceptions_short = pretty_exceptions_short
-        self.info = TypesInfo(
+        self.info = CligeniusInfo(
             name=name,
             cls=cls,
             invoke_without_command=invoke_without_command,
@@ -162,15 +162,15 @@ class Types:
             hidden=hidden,
             deprecated=deprecated,
         )
-        self.registered_groups: List[TypesInfo] = []
+        self.registered_groups: List[CligeniusInfo] = []
         self.registered_commands: List[CommandInfo] = []
-        self.registered_callback: Optional[TypesInfo] = None
+        self.registered_callback: Optional[CligeniusInfo] = None
 
     def callback(
         self,
         name: Optional[str] = Default(None),
         *,
-        cls: Optional[Type[TypesGroup]] = Default(None),
+        cls: Optional[Type[CligeniusGroup]] = Default(None),
         invoke_without_command: bool = Default(False),
         no_args_is_help: bool = Default(False),
         subcommand_metavar: Optional[str] = Default(None),
@@ -189,7 +189,7 @@ class Types:
         rich_help_panel: Union[str, None] = Default(None),
     ) -> Callable[[CommandFunctionType], CommandFunctionType]:
         def decorator(f: CommandFunctionType) -> CommandFunctionType:
-            self.registered_callback = TypesInfo(
+            self.registered_callback = CligeniusInfo(
                 name=name,
                 cls=cls,
                 invoke_without_command=invoke_without_command,
@@ -216,7 +216,7 @@ class Types:
         self,
         name: Optional[str] = None,
         *,
-        cls: Optional[Type[TypesCommand]] = None,
+        cls: Optional[Type[CligeniusCommand]] = None,
         context_settings: Optional[Dict[Any, Any]] = None,
         help: Optional[str] = None,
         epilog: Optional[str] = None,
@@ -230,7 +230,7 @@ class Types:
         rich_help_panel: Union[str, None] = Default(None),
     ) -> Callable[[CommandFunctionType], CommandFunctionType]:
         if cls is None:
-            cls = TypesCommand
+            cls = CligeniusCommand
 
         def decorator(f: CommandFunctionType) -> CommandFunctionType:
             self.registered_commands.append(
@@ -255,12 +255,12 @@ class Types:
 
         return decorator
 
-    def add_types(
+    def add_cligenius(
         self,
-        types_instance: "Types",
+        cligenius_instance: "Cligenius",
         *,
         name: Optional[str] = Default(None),
-        cls: Optional[Type[TypesGroup]] = Default(None),
+        cls: Optional[Type[CligeniusGroup]] = Default(None),
         invoke_without_command: bool = Default(False),
         no_args_is_help: bool = Default(False),
         subcommand_metavar: Optional[str] = Default(None),
@@ -280,8 +280,8 @@ class Types:
         rich_help_panel: Union[str, None] = Default(None),
     ) -> None:
         self.registered_groups.append(
-            TypesInfo(
-                types_instance,
+            CligeniusInfo(
+                cligenius_instance,
                 name=name,
                 cls=cls,
                 invoke_without_command=invoke_without_command,
@@ -316,7 +316,7 @@ class Types:
             # actual error last.
             setattr(
                 e,
-                _types_developer_exception_attr_name,
+                _cligenius_developer_exception_attr_name,
                 DeveloperExceptionConfig(
                     pretty_exceptions_enable=self.pretty_exceptions_enable,
                     pretty_exceptions_show_locals=self.pretty_exceptions_show_locals,
@@ -326,103 +326,103 @@ class Types:
             raise e
 
 
-def get_group(types_instance: Types) -> TypesGroup:
+def get_group(cligenius_instance: Cligenius) -> CligeniusGroup:
     group = get_group_from_info(
-        TypesInfo(types_instance),
-        pretty_exceptions_short=types_instance.pretty_exceptions_short,
-        rich_markup_mode=types_instance.rich_markup_mode,
+        CligeniusInfo(cligenius_instance),
+        pretty_exceptions_short=cligenius_instance.pretty_exceptions_short,
+        rich_markup_mode=cligenius_instance.rich_markup_mode,
     )
     return group
 
 
-def get_command(types_instance: Types) -> click.Command:
-    if types_instance._add_completion:
+def get_command(cligenius_instance: Cligenius) -> click.Command:
+    if cligenius_instance._add_completion:
         click_install_param, click_show_param = get_install_completion_arguments()
     if (
-        types_instance.registered_callback
-        or types_instance.info.callback
-        or types_instance.registered_groups
-        or len(types_instance.registered_commands) > 1
+        cligenius_instance.registered_callback
+        or cligenius_instance.info.callback
+        or cligenius_instance.registered_groups
+        or len(cligenius_instance.registered_commands) > 1
     ):
         # Create a Group
-        click_command: click.Command = get_group(types_instance)
-        if types_instance._add_completion:
+        click_command: click.Command = get_group(cligenius_instance)
+        if cligenius_instance._add_completion:
             click_command.params.append(click_install_param)
             click_command.params.append(click_show_param)
         return click_command
-    elif len(types_instance.registered_commands) == 1:
+    elif len(cligenius_instance.registered_commands) == 1:
         # Create a single Command
-        single_command = types_instance.registered_commands[0]
+        single_command = cligenius_instance.registered_commands[0]
 
         if not single_command.context_settings and not isinstance(
-            types_instance.info.context_settings, DefaultPlaceholder
+            cligenius_instance.info.context_settings, DefaultPlaceholder
         ):
-            single_command.context_settings = types_instance.info.context_settings
+            single_command.context_settings = cligenius_instance.info.context_settings
 
         click_command = get_command_from_info(
             single_command,
-            pretty_exceptions_short=types_instance.pretty_exceptions_short,
-            rich_markup_mode=types_instance.rich_markup_mode,
+            pretty_exceptions_short=cligenius_instance.pretty_exceptions_short,
+            rich_markup_mode=cligenius_instance.rich_markup_mode,
         )
-        if types_instance._add_completion:
+        if cligenius_instance._add_completion:
             click_command.params.append(click_install_param)
             click_command.params.append(click_show_param)
         return click_command
     raise RuntimeError(
-        "Could not get a command for this Types instance"
+        "Could not get a command for this Cligenius instance"
     )  # pragma: no cover
 
 
-def get_group_name(types_info: TypesInfo) -> Optional[str]:
-    if types_info.callback:
-        # Priority 1: Callback passed in app.add_types()
-        return get_command_name(types_info.callback.__name__)
-    if types_info.types_instance:
-        registered_callback = types_info.types_instance.registered_callback
+def get_group_name(cligenius_info: CligeniusInfo) -> Optional[str]:
+    if cligenius_info.callback:
+        # Priority 1: Callback passed in app.add_cligenius()
+        return get_command_name(cligenius_info.callback.__name__)
+    if cligenius_info.cligenius_instance:
+        registered_callback = cligenius_info.cligenius_instance.registered_callback
         if registered_callback:
             if registered_callback.callback:
                 # Priority 2: Callback passed in @subapp.callback()
                 return get_command_name(registered_callback.callback.__name__)
-        if types_info.types_instance.info.callback:
-            return get_command_name(types_info.types_instance.info.callback.__name__)
+        if cligenius_info.cligenius_instance.info.callback:
+            return get_command_name(cligenius_info.cligenius_instance.info.callback.__name__)
     return None
 
 
-def solve_types_info_help(types_info: TypesInfo) -> str:
-    # Priority 1: Explicit value was set in app.add_types()
-    if not isinstance(types_info.help, DefaultPlaceholder):
-        return inspect.cleandoc(types_info.help or "")
+def solve_cligenius_info_help(cligenius_info: CligeniusInfo) -> str:
+    # Priority 1: Explicit value was set in app.add_cligenius()
+    if not isinstance(cligenius_info.help, DefaultPlaceholder):
+        return inspect.cleandoc(cligenius_info.help or "")
     # Priority 2: Explicit value was set in sub_app.callback()
     try:
-        callback_help = types_info.types_instance.registered_callback.help
+        callback_help = cligenius_info.cligenius_instance.registered_callback.help
         if not isinstance(callback_help, DefaultPlaceholder):
             return inspect.cleandoc(callback_help or "")
     except AttributeError:
         pass
-    # Priority 3: Explicit value was set in sub_app = types.Types()
+    # Priority 3: Explicit value was set in sub_app = cligenius.Cligenius()
     try:
-        instance_help = types_info.types_instance.info.help
+        instance_help = cligenius_info.cligenius_instance.info.help
         if not isinstance(instance_help, DefaultPlaceholder):
             return inspect.cleandoc(instance_help or "")
     except AttributeError:
         pass
-    # Priority 4: Implicit inference from callback docstring in app.add_types()
-    if types_info.callback:
-        doc = inspect.getdoc(types_info.callback)
+    # Priority 4: Implicit inference from callback docstring in app.add_cligenius()
+    if cligenius_info.callback:
+        doc = inspect.getdoc(cligenius_info.callback)
         if doc:
             return doc
     # Priority 5: Implicit inference from callback docstring in @app.callback()
     try:
-        callback = types_info.types_instance.registered_callback.callback
+        callback = cligenius_info.cligenius_instance.registered_callback.callback
         if not isinstance(callback, DefaultPlaceholder):
             doc = inspect.getdoc(callback or "")
             if doc:
                 return doc
     except AttributeError:
         pass
-    # Priority 6: Implicit inference from callback docstring in types.Types()
+    # Priority 6: Implicit inference from callback docstring in cligenius.Cligenius()
     try:
-        instance_callback = types_info.types_instance.info.callback
+        instance_callback = cligenius_info.cligenius_instance.info.callback
         if not isinstance(instance_callback, DefaultPlaceholder):
             doc = inspect.getdoc(instance_callback)
             if doc:
@@ -430,21 +430,21 @@ def solve_types_info_help(types_info: TypesInfo) -> str:
     except AttributeError:
         pass
     # Value not set, use the default
-    return types_info.help.value
+    return cligenius_info.help.value
 
 
-def solve_types_info_defaults(types_info: TypesInfo) -> TypesInfo:
+def solve_cligenius_info_defaults(cligenius_info: CligeniusInfo) -> CligeniusInfo:
     values: Dict[str, Any] = {}
     name = None
-    for name, value in types_info.__dict__.items():
-        # Priority 1: Value was set in app.add_types()
+    for name, value in cligenius_info.__dict__.items():
+        # Priority 1: Value was set in app.add_cligenius()
         if not isinstance(value, DefaultPlaceholder):
             values[name] = value
             continue
         # Priority 2: Value was set in @subapp.callback()
         try:
             callback_value = getattr(
-                types_info.types_instance.registered_callback,  # type: ignore
+                cligenius_info.cligenius_instance.registered_callback,  # type: ignore
                 name,
             )
             if not isinstance(callback_value, DefaultPlaceholder):
@@ -452,10 +452,10 @@ def solve_types_info_defaults(types_info: TypesInfo) -> TypesInfo:
                 continue
         except AttributeError:
             pass
-        # Priority 3: Value set in subapp = types.Types()
+        # Priority 3: Value set in subapp = cligenius.Cligenius()
         try:
             instance_value = getattr(
-                types_info.types_instance.info,  # type: ignore
+                cligenius_info.cligenius_instance.info,  # type: ignore
                 name,
             )
             if not isinstance(instance_value, DefaultPlaceholder):
@@ -466,22 +466,22 @@ def solve_types_info_defaults(types_info: TypesInfo) -> TypesInfo:
         # Value not set, use the default
         values[name] = value.value
     if values["name"] is None:
-        values["name"] = get_group_name(types_info)
-    values["help"] = solve_types_info_help(types_info)
-    return TypesInfo(**values)
+        values["name"] = get_group_name(cligenius_info)
+    values["help"] = solve_cligenius_info_help(cligenius_info)
+    return CligeniusInfo(**values)
 
 
 def get_group_from_info(
-    group_info: TypesInfo,
+    group_info: CligeniusInfo,
     *,
     pretty_exceptions_short: bool,
     rich_markup_mode: MarkupMode,
-) -> TypesGroup:
+) -> CligeniusGroup:
     assert (
-        group_info.types_instance
-    ), "A Types instance is needed to generate a Click Group"
+        group_info.cligenius_instance
+    ), "A Cligenius instance is needed to generate a Click Group"
     commands: Dict[str, click.Command] = {}
-    for command_info in group_info.types_instance.registered_commands:
+    for command_info in group_info.cligenius_instance.registered_commands:
         command = get_command_from_info(
             command_info=command_info,
             pretty_exceptions_short=pretty_exceptions_short,
@@ -489,7 +489,7 @@ def get_group_from_info(
         )
         if command.name:
             commands[command.name] = command
-    for sub_group_info in group_info.types_instance.registered_groups:
+    for sub_group_info in group_info.cligenius_instance.registered_groups:
         sub_group = get_group_from_info(
             sub_group_info,
             pretty_exceptions_short=pretty_exceptions_short,
@@ -497,14 +497,14 @@ def get_group_from_info(
         )
         if sub_group.name:
             commands[sub_group.name] = sub_group
-    solved_info = solve_types_info_defaults(group_info)
+    solved_info = solve_cligenius_info_defaults(group_info)
     (
         params,
         convertors,
         context_param_name,
     ) = get_params_convertors_ctx_param_name_from_function(solved_info.callback)
-    cls = solved_info.cls or TypesGroup
-    assert issubclass(cls, TypesGroup)
+    cls = solved_info.cls or CligeniusGroup
+    assert issubclass(cls, CligeniusGroup)
     group = cls(
         name=solved_info.name or "",
         commands=commands,
@@ -577,7 +577,7 @@ def get_command_from_info(
         convertors,
         context_param_name,
     ) = get_params_convertors_ctx_param_name_from_function(command_info.callback)
-    cls = command_info.cls or TypesCommand
+    cls = command_info.cls or CligeniusCommand
     command = cls(
         name=name,
         context_settings=command_info.context_settings,
@@ -834,7 +834,7 @@ def get_click_param(
                 if type_ is NoneType:
                     continue
                 types.append(type_)
-            assert len(types) == 1, "Types Currently doesn't support Union types"
+            assert len(types) == 1, "Cligenius Currently doesn't support Union types"
             main_type = types[0]
             origin = getattr(main_type, "__origin__", None)
         # Handle Tuples and Lists
@@ -885,7 +885,7 @@ def get_click_param(
         else:
             param_decls.append(default_option_declaration)
         return (
-            TypesOption(
+            CligeniusOption(
                 # Option
                 param_decls=param_decls,
                 show_default=parameter_info.show_default,
@@ -926,13 +926,13 @@ def get_click_param(
         if is_list:
             nargs = -1
         return (
-            TypesArgument(
+            CligeniusArgument(
                 # Argument
                 param_decls=param_decls,
                 type=parameter_type,
                 required=required,
                 nargs=nargs,
-                # TypesArgument
+                # CligeniusArgument
                 show_default=parameter_info.show_default,
                 show_choices=parameter_info.show_choices,
                 show_envvar=parameter_info.show_envvar,
@@ -1062,6 +1062,6 @@ def get_param_completion(
 
 
 def run(function: Callable[..., Any]) -> None:
-    app = Types(add_completion=False)
+    app = Cligenius(add_completion=False)
     app.command()(function)
     app()

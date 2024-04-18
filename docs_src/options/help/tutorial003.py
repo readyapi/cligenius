@@ -1,9 +1,9 @@
-import types
+import cligenius
 
 
-def main(fullname: str = types.Option("Wade Wilson", show_default=False)):
+def main(fullname: str = cligenius.Option("Wade Wilson", show_default=False)):
     print(f"Hello {fullname}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -1,16 +1,16 @@
-import types
+import cligenius
 
 
 def complete_name():
     return ["Camila", "Carlos", "Sebastian"]
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def main(
-    name: str = types.Option(
+    name: str = cligenius.Option(
         "World", help="The name to say hi to.", autocompletion=complete_name
     ),
 ):

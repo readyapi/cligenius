@@ -1,8 +1,8 @@
-import types
+import cligenius
 
 
 def main(
-    fullname: str = types.Option(
+    fullname: str = cligenius.Option(
         "Wade Wilson", show_default="Deadpoolio the amazing's name"
     ),
 ):
@@ -10,4 +10,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

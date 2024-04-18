@@ -1,9 +1,9 @@
-import types
+import cligenius
 
 
 def main(name: str):
-    types.secho(f"Welcome here {name}", fg=types.colors.MAGENTA)
+    cligenius.secho(f"Welcome here {name}", fg=cligenius.colors.MAGENTA)
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

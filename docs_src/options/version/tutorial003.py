@@ -1,6 +1,6 @@
 from typing import Optional
 
-import types
+import cligenius
 
 __version__ = "0.1.0"
 
@@ -8,18 +8,18 @@ __version__ = "0.1.0"
 def version_callback(value: bool):
     if value:
         print(f"Awesome CLI Version: {__version__}")
-        raise types.Exit()
+        raise cligenius.Exit()
 
 
 def name_callback(name: str):
     if name != "Camila":
-        raise types.BadParameter("Only Camila is allowed")
+        raise cligenius.BadParameter("Only Camila is allowed")
     return name
 
 
 def main(
-    name: str = types.Option(..., callback=name_callback),
-    version: Optional[bool] = types.Option(
+    name: str = cligenius.Option(..., callback=name_callback),
+    version: Optional[bool] = cligenius.Option(
         None, "--version", callback=version_callback, is_eager=True
     ),
 ):
@@ -27,4 +27,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

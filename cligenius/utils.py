@@ -64,7 +64,7 @@ class MixedAnnotatedAndDefaultStyleError(Exception):
         return msg
 
 
-class MultipleTypesAnnotationsError(Exception):
+class MultipleCligeniusAnnotationsError(Exception):
     argument_name: str
 
     def __init__(self, argument_name: str):
@@ -72,7 +72,7 @@ class MultipleTypesAnnotationsError(Exception):
 
     def __str__(self) -> str:
         return (
-            "Cannot specify multiple `Annotated` Types arguments"
+            "Cannot specify multiple `Annotated` Cligenius arguments"
             f" for {self.argument_name!r}"
         )
 
@@ -93,15 +93,15 @@ class DefaultFactoryAndDefaultValueError(Exception):
         )
 
 
-def _split_annotation_from_types_annotations(
+def _split_annotation_from_cligenius_annotations(
     base_annotation: Type[Any],
 ) -> Tuple[Type[Any], List[ParameterInfo]]:
     if get_origin(base_annotation) is not Annotated:  # type: ignore
         return base_annotation, []
-    base_annotation, *maybe_types_annotations = get_args(base_annotation)
+    base_annotation, *maybe_cligenius_annotations = get_args(base_annotation)
     return base_annotation, [
         annotation
-        for annotation in maybe_types_annotations
+        for annotation in maybe_cligenius_annotations
         if isinstance(annotation, ParameterInfo)
     ]
 
@@ -115,16 +115,16 @@ def get_params_from_function(func: Callable[..., Any]) -> Dict[str, ParamMeta]:
     type_hints = get_type_hints(func)
     params = {}
     for param in signature.parameters.values():
-        annotation, types_annotations = _split_annotation_from_types_annotations(
+        annotation, cligenius_annotations = _split_annotation_from_cligenius_annotations(
             param.annotation,
         )
-        if len(types_annotations) > 1:
-            raise MultipleTypesAnnotationsError(param.name)
+        if len(cligenius_annotations) > 1:
+            raise MultipleCligeniusAnnotationsError(param.name)
 
         default = param.default
-        if types_annotations:
+        if cligenius_annotations:
             # It's something like `my_param: Annotated[str, Argument()]`
-            [parameter_info] = types_annotations
+            [parameter_info] = cligenius_annotations
 
             # Forbid `my_param: Annotated[str, Argument()] = Argument("...")`
             if isinstance(param.default, ParameterInfo):
@@ -162,7 +162,7 @@ def get_params_from_function(func: Callable[..., Any]) -> Dict[str, ParamMeta]:
                 )
             if param.default is not param.empty:
                 # Put the parameter's default (set by `=`) into `parameter_info`, where
-                # types can find it.
+                # cligenius can find it.
                 parameter_info.default = param.default
 
             default = parameter_info
@@ -175,7 +175,7 @@ def get_params_from_function(func: Callable[..., Any]) -> Dict[str, ParamMeta]:
             # Click supports `default` as either
             # - an actual value; or
             # - a factory function (returning a default value.)
-            # The two are not interchangeable for static typing, so types allows
+            # The two are not interchangeable for static typing, so cligenius allows
             # specifying `default_factory`. Move the `default_factory` into `default`
             # so click can find it.
             if parameter_info.default is ... and parameter_info.default_factory:

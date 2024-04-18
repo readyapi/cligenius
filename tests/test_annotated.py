@@ -1,5 +1,5 @@
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 from typing_extensions import Annotated
 
 from .utils import needs_py310
@@ -8,10 +8,10 @@ runner = CliRunner()
 
 
 def test_annotated_argument_with_default():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
-    def cmd(val: Annotated[int, types.Argument()] = 0):
+    def cmd(val: Annotated[int, cligenius.Argument()] = 0):
         print(f"hello {val}")
 
     result = runner.invoke(app)
@@ -25,10 +25,10 @@ def test_annotated_argument_with_default():
 
 @needs_py310
 def test_annotated_argument_in_string_type_with_default():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
-    def cmd(val: "Annotated[int, types.Argument()]" = 0):
+    def cmd(val: "Annotated[int, cligenius.Argument()]" = 0):
         print(f"hello {val}")
 
     result = runner.invoke(app)
@@ -41,13 +41,13 @@ def test_annotated_argument_in_string_type_with_default():
 
 
 def test_annotated_argument_with_default_factory():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     def make_string():
         return "I made it"
 
     @app.command()
-    def cmd(val: Annotated[str, types.Argument(default_factory=make_string)]):
+    def cmd(val: Annotated[str, cligenius.Argument(default_factory=make_string)]):
         print(val)
 
     result = runner.invoke(app)
@@ -60,10 +60,10 @@ def test_annotated_argument_with_default_factory():
 
 
 def test_annotated_option_with_argname_doesnt_mutate_multiple_calls():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
-    def cmd(force: Annotated[bool, types.Option("--force")] = False):
+    def cmd(force: Annotated[bool, cligenius.Option("--force")] = False):
         if force:
             print("Forcing operation")
         else:

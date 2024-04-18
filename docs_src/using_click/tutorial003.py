@@ -1,21 +1,21 @@
 import click
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def top():
     """
-    Top level command, form Types
+    Top level command, form Cligenius
     """
-    print("The Types app is at the top level")
+    print("The Cligenius app is at the top level")
 
 
 @app.callback()
 def callback():
     """
-    Types app, including Click subapp
+    Cligenius app, including Click subapp
     """
 
 
@@ -26,9 +26,9 @@ def hello(name):
     click.echo("Hello %s!" % name)
 
 
-types_click_object = types.main.get_command(app)
+cligenius_click_object = cligenius.main.get_command(app)
 
-types_click_object.add_command(hello, "hello")
+cligenius_click_object.add_command(hello, "hello")
 
 if __name__ == "__main__":
-    types_click_object()
+    cligenius_click_object()

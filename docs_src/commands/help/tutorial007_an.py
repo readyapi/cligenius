@@ -1,28 +1,28 @@
 from typing import Union
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types(rich_markup_mode="rich")
+app = cligenius.Cligenius(rich_markup_mode="rich")
 
 
 @app.command()
 def create(
-    username: Annotated[str, types.Argument(help="The username to create")],
+    username: Annotated[str, cligenius.Argument(help="The username to create")],
     lastname: Annotated[
         str,
-        types.Argument(
+        cligenius.Argument(
             help="The last name of the new user", rich_help_panel="Secondary Arguments"
         ),
     ] = "",
-    force: Annotated[bool, types.Option(help="Force the creation of the user")] = False,
+    force: Annotated[bool, cligenius.Option(help="Force the creation of the user")] = False,
     age: Annotated[
         Union[int, None],
-        types.Option(help="The age of the new user", rich_help_panel="Additional Data"),
+        cligenius.Option(help="The age of the new user", rich_help_panel="Additional Data"),
     ] = None,
     favorite_color: Annotated[
         Union[str, None],
-        types.Option(
+        cligenius.Option(
             help="The favorite color of the new user",
             rich_help_panel="Additional Data",
         ),

@@ -67,9 +67,9 @@ $ python main.py Camila
 # Password: $
 # Repeat for confirmation: $
 
-// Let's imagine the password typed was "typesrocks"
+// Let's imagine the password typed was "cligeniusrocks"
 Hello Camila. Doing something very secure with password.
-...just kidding, here it is, very insecure: typesrocks
+...just kidding, here it is, very insecure: cligeniusrocks
 ```
 
 </div>

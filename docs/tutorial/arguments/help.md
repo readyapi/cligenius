@@ -6,7 +6,7 @@ Here's how that last example looked like:
 {!../docs_src/first_steps/tutorial006.py!}
 ```
 
-Now that you also know how to use `types.Argument()`, let's use it to add documentation specific for a *CLI argument*.
+Now that you also know how to use `cligenius.Argument()`, let's use it to add documentation specific for a *CLI argument*.
 
 ## Add a `help` text for a *CLI argument*
 
@@ -167,7 +167,7 @@ Options:
 !!! note "Technical Details"
     In Click applications the default values are hidden by default. 🙈
 
-    In **Types** these default values are shown by default. 👀
+    In **Cligenius** these default values are shown by default. 👀
 
 ## Custom default string
 
@@ -227,7 +227,7 @@ It will be shown as:
 NAME
 ```
 
-But you can customize it with the `metavar` parameter for `types.Argument()`.
+But you can customize it with the `metavar` parameter for `cligenius.Argument()`.
 
 For example, let's say you don't want to have the default of `NAME`, you want to have `username`, in lowercase, and you really want ✨ emojis ✨ everywhere:
 
@@ -376,13 +376,13 @@ So, in Click applications, you are expected to write all the documentation for *
 
 ---
 
-Nevertheless, **Types supports `help` for *CLI arguments***. ✨ 🤷‍♂
+Nevertheless, **Cligenius supports `help` for *CLI arguments***. ✨ 🤷‍♂
 
-**Types** doesn't follow that convention and instead supports `help` to make it easier to have consistent help texts with a consistent format for your CLI programs. 🎨
+**Cligenius** doesn't follow that convention and instead supports `help` to make it easier to have consistent help texts with a consistent format for your CLI programs. 🎨
 
 This is also to help you create CLI programs that are ✨ awesome ✨ *by default*. With very little code.
 
-If you want to keep Click's convention in a **Types** app, you can do it with the `hidden` parameter as described above.
+If you want to keep Click's convention in a **Cligenius** app, you can do it with the `hidden` parameter as described above.
 
 !!! note "Technical Details"
-    To support `help` in *CLI arguments* **Types** does a lot of internal work in its own sub-classes of Click's internal classes.
+    To support `help` in *CLI arguments* **Cligenius** does a lot of internal work in its own sub-classes of Click's internal classes.

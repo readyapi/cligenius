@@ -1,9 +1,9 @@
-import types
+import cligenius
 
 
 def main(
     name: str,
-    password: str = types.Option(
+    password: str = cligenius.Option(
         ..., prompt=True, confirmation_prompt=True, hide_input=True
     ),
 ):
@@ -12,4 +12,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -1,15 +1,15 @@
 import errno
 
-import types
-import types.completion
-from types.testing import CliRunner
+import cligenius
+import cligenius.completion
+from cligenius.testing import CliRunner
 
 runner = CliRunner()
 
 
 def test_eoferror():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():
@@ -21,7 +21,7 @@ def test_eoferror():
 
 def test_oserror():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():
@@ -35,7 +35,7 @@ def test_oserror():
 
 def test_oserror_no_epipe():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():

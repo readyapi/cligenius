@@ -1,15 +1,15 @@
 import subprocess
 import sys
 
-import types
-import types.core
-from types.testing import CliRunner
+import cligenius
+import cligenius.core
+from cligenius.testing import CliRunner
 
 from docs_src.parameter_types.bool import tutorial002 as mod
 
 runner = CliRunner()
 
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 
@@ -22,14 +22,14 @@ def test_help():
 
 
 def test_help_no_rich():
-    rich = types.core.rich
-    types.core.rich = None
+    rich = cligenius.core.rich
+    cligenius.core.rich = None
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
     assert "--accept" in result.output
     assert "--reject" in result.output
     assert "--no-accept" not in result.output
-    types.core.rich = rich
+    cligenius.core.rich = rich
 
 
 def test_main():

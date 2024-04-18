@@ -1,14 +1,14 @@
 # Security Policy
 
-Security is very important for Types and its community. 🔒
+Security is very important for Cligenius and its community. 🔒
 
 Learn more about it below. 👇
 
 ## Versions
 
-The latest versions of Types are supported.
+The latest versions of Cligenius are supported.
 
-You are encouraged to [write tests](https://types.khulnasoft.com/tutorial/testing/) for your application and update your Types version frequently after ensuring that your tests are passing. This way you will benefit from the latest features, bug fixes, and **security fixes**.
+You are encouraged to [write tests](https://cligenius.khulnasoft.com/tutorial/testing/) for your application and update your Cligenius version frequently after ensuring that your tests are passing. This way you will benefit from the latest features, bug fixes, and **security fixes**.
 
 ## Reporting a Vulnerability
 
@@ -26,4 +26,4 @@ It's better to discuss privately and try to find a solution first, to limit the 
 
 Thanks for your help!
 
-The Types community and I thank you for that. 🙇
+The Cligenius community and I thank you for that. 🙇

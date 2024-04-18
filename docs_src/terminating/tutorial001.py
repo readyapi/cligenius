@@ -1,4 +1,4 @@
-import types
+import cligenius
 
 existing_usernames = ["rick", "morty"]
 
@@ -6,7 +6,7 @@ existing_usernames = ["rick", "morty"]
 def maybe_create_user(username: str):
     if username in existing_usernames:
         print("The user already exists")
-        raise types.Exit()
+        raise cligenius.Exit()
     else:
         print(f"User created: {username}")
 
@@ -22,4 +22,4 @@ def main(username: str):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

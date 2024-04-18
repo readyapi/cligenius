@@ -1,3 +1,3 @@
-In the next short sections we will see how to modify *CLI options* using `types.Option()`.
+In the next short sections we will see how to modify *CLI options* using `cligenius.Option()`.
 
-`types.Option()` works very similarly to `types.Argument()`, but has some extra features that we'll see next.
+`cligenius.Option()` works very similarly to `cligenius.Argument()`, but has some extra features that we'll see next.

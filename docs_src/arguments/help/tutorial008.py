@@ -1,7 +1,7 @@
-import types
+import cligenius
 
 
-def main(name: str = types.Argument("World", hidden=True)):
+def main(name: str = cligenius.Argument("World", hidden=True)):
     """
     Say hi to NAME very gently, like Dirk.
     """
@@ -9,4 +9,4 @@ def main(name: str = types.Argument("World", hidden=True)):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -1,6 +1,6 @@
 The same as before, you can add help for the commands in the docstrings and the *CLI options*.
 
-And the `types.Types()` application receives a parameter `help` that you can pass with the main help text for your CLI program:
+And the `cligenius.Cligenius()` application receives a parameter `help` that you can pass with the main help text for your CLI program:
 
 === "Python 3.7+"
 
@@ -92,7 +92,7 @@ Options:
 </div>
 
 !!! tip
-    `types.Types()` receives several other parameters for other things, we'll see that later.
+    `cligenius.Cligenius()` receives several other parameters for other things, we'll see that later.
 
     You will also see how to use "Callbacks" later, and those include a way to add this same help message in a function docstring.
 
@@ -199,7 +199,7 @@ Then you can use more formatting in the docstrings and the `help` parameter for 
 
 ### Rich Markup
 
-If you set `rich_markup_mode="rich"` when creating the `types.Types()` app, you will be able to use <a href="https://rich.readthedocs.io/en/stable/markup.html" class="external-link" target="_blank">Rich Console Markup</a> in the docstring, and even in the help for the *CLI arguments* and options:
+If you set `rich_markup_mode="rich"` when creating the `cligenius.Cligenius()` app, you will be able to use <a href="https://rich.readthedocs.io/en/stable/markup.html" class="external-link" target="_blank">Rich Console Markup</a> in the docstring, and even in the help for the *CLI arguments* and options:
 
 === "Python 3.7+"
 
@@ -222,7 +222,7 @@ You can also use markup in the help for the `username` CLI Argument.
 
 And the same as before, the help text overwritten for the command `delete` can also use Rich Markup, the same in the CLI Argument and CLI Option.
 
-If you run the program and check the help, you will see that **Types** uses **Rich** internally to format the help.
+If you run the program and check the help, you will see that **Cligenius** uses **Rich** internally to format the help.
 
 Check the help for the `create` command:
 
@@ -275,7 +275,7 @@ $ python main.py delete --help
 
 ### Rich Markdown
 
-If you set `rich_markup_mode="markdown"` when creating the `types.Types()` app, you will be able to use Markdown in the docstring:
+If you set `rich_markup_mode="markdown"` when creating the `cligenius.Cligenius()` app, you will be able to use Markdown in the docstring:
 
 === "Python 3.7+"
 
@@ -311,7 +311,7 @@ $ python main.py create --help
  <font color="#F4BF75"><b> • </b></font><font color="#A5A5A1">Show that the username is created                                </font>
 
  <font color="#F4BF75">───────────────────────────────────────────────────────────────────</font>
- Learn more at the <font color="#44919F">Types docs website</font>
+ Learn more at the <font color="#44919F">Cligenius docs website</font>
 
 <font color="#A5A5A1">╭─ Arguments ───────────────────────────────────────────────────────╮</font>
 <font color="#A5A5A1">│ </font><font color="#F92672">*</font>    username      <font color="#F4BF75"><b>TEXT</b></font>  The username to be <b>created</b>               │

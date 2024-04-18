@@ -1,32 +1,32 @@
 <p align="center">
-  <a href="https://types.khulnasoft.com"><img src="https://types.khulnasoft.com/img/logo-margin/logo-margin-vector.svg" alt="Types"></a>
+  <a href="https://cligenius.khulnasoft.com"><img src="https://cligenius.khulnasoft.com/img/logo-margin/logo-margin-vector.svg" alt="Cligenius"></a>
 </p>
 <p align="center">
-    <em>Types, build great CLIs. Easy to code. Based on Python type hints.</em>
+    <em>Cligenius, build great CLIs. Easy to code. Based on Python type hints.</em>
 </p>
 <p align="center">
-<a href="https://github.com/khulnasoft/types/actions?query=workflow%3ATest" target="_blank">
-    <img src="https://github.com/khulnasoft/types/workflows/Test/badge.svg" alt="Test">
+<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3ATest" target="_blank">
+    <img src="https://github.com/khulnasoft/cligenius/workflows/Test/badge.svg" alt="Test">
 </a>
-<a href="https://github.com/khulnasoft/types/actions?query=workflow%3APublish" target="_blank">
-    <img src="https://github.com/khulnasoft/types/workflows/Publish/badge.svg" alt="Publish">
+<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3APublish" target="_blank">
+    <img src="https://github.com/khulnasoft/cligenius/workflows/Publish/badge.svg" alt="Publish">
 </a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/khulnasoft/types" target="_blank">
-    <img src="https://coverage-badge.samuelcolvin.workers.dev/khulnasoft/types.svg" alt="Coverage">
-<a href="https://pypi.org/project/types" target="_blank">
-    <img src="https://img.shields.io/pypi/v/types?color=%2334D058&label=pypi%20package" alt="Package version">
+<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/khulnasoft/cligenius" target="_blank">
+    <img src="https://coverage-badge.samuelcolvin.workers.dev/khulnasoft/cligenius.svg" alt="Coverage">
+<a href="https://pypi.org/project/cligenius" target="_blank">
+    <img src="https://img.shields.io/pypi/v/cligenius?color=%2334D058&label=pypi%20package" alt="Package version">
 </a>
 </p>
 
 ---
 
-**Documentation**: <a href="https://types.khulnasoft.com" target="_blank">https://types.khulnasoft.com</a>
+**Documentation**: <a href="https://cligenius.khulnasoft.com" target="_blank">https://cligenius.khulnasoft.com</a>
 
-**Source Code**: <a href="https://github.com/khulnasoft/types" target="_blank">https://github.com/khulnasoft/types</a>
+**Source Code**: <a href="https://github.com/khulnasoft/cligenius" target="_blank">https://github.com/khulnasoft/cligenius</a>
 
 ---
 
-Types is a library for building <abbr title="command line interface, programs executed from a terminal">CLI</abbr> applications that users will **love using** and developers will **love creating**. Based on Python type hints.
+Cligenius is a library for building <abbr title="command line interface, programs executed from a terminal">CLI</abbr> applications that users will **love using** and developers will **love creating**. Based on Python type hints.
 
 It's also a command line tool to run scripts, automatically converting them to CLI applications.
 
@@ -37,20 +37,20 @@ The key features are:
 * **Short**: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
 * **Start simple**: The simplest example adds only 2 lines of code to your app: **1 import, 1 function call**.
 * **Grow large**: Grow in complexity as much as you want, create arbitrarily complex trees of commands and groups of subcommands, with options and arguments.
-* **Run scripts**: Types includes a `types` command/program that you can use to run scripts, automatically converting them to CLIs, even if they don't use Types internally.
+* **Run scripts**: Cligenius includes a `cligenius` command/program that you can use to run scripts, automatically converting them to CLIs, even if they don't use Cligenius internally.
 
 ## ReadyAPI of CLIs
 
-**Types** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
+**Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
 
 ## Installation
 
 <div class="termy">
 
 ```console
-$ pip install types
+$ pip install cligenius
 ---> 100%
-Successfully installed types rich shellingham
+Successfully installed cligenius rich shellingham
 ```
 
 </div>
@@ -66,32 +66,32 @@ def main(name: str):
     print(f"Hello {name}")
 ```
 
-This script doesn't even use Types internally. But you can use the `types` command to run it as a CLI application.
+This script doesn't even use Cligenius internally. But you can use the `cligenius` command to run it as a CLI application.
 
 ### Run it
 
-Run your application with the `types` command:
+Run your application with the `cligenius` command:
 
 <div class="termy">
 
 ```console
 // Run your application
-$ types main.py run
+$ cligenius main.py run
 
 // You get a nice error, you are missing NAME
-Usage: types [PATH_OR_MODULE] run [OPTIONS] NAME
-Try 'types [PATH_OR_MODULE] run --help' for help.
+Usage: cligenius [PATH_OR_MODULE] run [OPTIONS] NAME
+Try 'cligenius [PATH_OR_MODULE] run --help' for help.
 ╭─ Error ───────────────────────────────────────────╮
 │ Missing argument 'NAME'.                          │
 ╰───────────────────────────────────────────────────╯
 
 
 // You get a --help for free
-$ types main.py run --help
+$ cligenius main.py run --help
 
-Usage: types [PATH_OR_MODULE] run [OPTIONS] NAME
+Usage: cligenius [PATH_OR_MODULE] run [OPTIONS] NAME
 
-Run the provided Types app.
+Run the provided Cligenius app.
 
 ╭─ Arguments ───────────────────────────────────────╮
 │ *    name      TEXT  [default: None] [required]   |
@@ -101,7 +101,7 @@ Run the provided Types app.
 ╰───────────────────────────────────────────────────╯
 
 // Now pass the NAME argument
-$ types main.py run Camila
+$ cligenius main.py run Camila
 
 Hello Camila
 
@@ -110,16 +110,16 @@ Hello Camila
 
 </div>
 
-This is the simplest use case, not even using Types internally, but it can already be quite useful for simple scripts.
+This is the simplest use case, not even using Cligenius internally, but it can already be quite useful for simple scripts.
 
-**Note**: auto-completion works when you create a Python package and run it with `--install-completion` or when you use the `types` command.
+**Note**: auto-completion works when you create a Python package and run it with `--install-completion` or when you use the `cligenius` command.
 
-## Use Types in your code
+## Use Cligenius in your code
 
-Now let's start using Types in your own code, update `main.py` with:
+Now let's start using Cligenius in your own code, update `main.py` with:
 
 ```Python
-import types
+import cligenius
 
 
 def main(name: str):
@@ -127,7 +127,7 @@ def main(name: str):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)
 ```
 
 Now you could run it with Python directly:
@@ -168,7 +168,7 @@ Hello Camila
 
 </div>
 
-**Note**: you can also call this same script with the `types` command, but you don't need to.
+**Note**: you can also call this same script with the `cligenius` command, but you don't need to.
 
 ## Example upgrade
 
@@ -180,12 +180,12 @@ Now let's see one a bit more complex.
 
 Modify the file `main.py`.
 
-Create a `types.Types()` app, and create two subcommands with their parameters.
+Create a `cligenius.Cligenius()` app, and create two subcommands with their parameters.
 
 ```Python hl_lines="3  6  11  20"
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
@@ -207,10 +207,10 @@ if __name__ == "__main__":
 
 And that will:
 
-* Explicitly create a `types.Types` app.
-    * The previous `types.run` actually creates one implicitly for you.
+* Explicitly create a `cligenius.Cligenius` app.
+    * The previous `cligenius.run` actually creates one implicitly for you.
 * Add two subcommands with `@app.command()`.
-* Execute the `app()` itself, as if it was a function (instead of `types.run`).
+* Execute the `app()` itself, as if it was a function (instead of `cligenius.run`).
 
 ### Run the upgraded example
 
@@ -341,13 +341,13 @@ And similarly for **files**, **paths**, **enums** (choices), etc. And there are 
 
 **You get**: great editor support, including **completion** and **type checks** everywhere.
 
-**Your users get**: automatic **`--help`**, **auto-completion** in their terminal (Bash, Zsh, Fish, PowerShell) when they install your package or when using the `types` command.
+**Your users get**: automatic **`--help`**, **auto-completion** in their terminal (Bash, Zsh, Fish, PowerShell) when they install your package or when using the `cligenius` command.
 
-For a more complete example including more features, see the <a href="https://types.khulnasoft.com/tutorial/">Tutorial - User Guide</a>.
+For a more complete example including more features, see the <a href="https://cligenius.khulnasoft.com/tutorial/">Tutorial - User Guide</a>.
 
 ## Dependencies
 
-**Types** stands on the shoulders of a giant. Its only internal required dependency is <a href="https://click.palletsprojects.com/" class="external-link" target="_blank">Click</a>.
+**Cligenius** stands on the shoulders of a giant. Its only internal required dependency is <a href="https://click.palletsprojects.com/" class="external-link" target="_blank">Click</a>.
 
 By default it also comes with extra standard dependencies:
 
@@ -356,25 +356,25 @@ By default it also comes with extra standard dependencies:
     * With `shellingham` you can just use `--install-completion`.
     * Without `shellingham`, you have to pass the name of the shell to install completion for, e.g. `--install-completion bash`.
 
-### `types-slim`
+### `cligenius-slim`
 
-If you don't want the extra standard optional dependencies, install `types-slim` instead.
+If you don't want the extra standard optional dependencies, install `cligenius-slim` instead.
 
 When you install with:
 
 ```bash
-pip install types
+pip install cligenius
 ```
 
 ...it includes the same code and dependencies as:
 
 ```bash
-pip install "types-slim[standard]"
+pip install "cligenius-slim[standard]"
 ```
 
 The `standard` extra dependencies are `rich` and `shellingham`.
 
-**Note**: The `types` command is only included in the `types` package.
+**Note**: The `cligenius` command is only included in the `cligenius` package.
 
 ## License
 

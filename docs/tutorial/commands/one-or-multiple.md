@@ -4,7 +4,7 @@ You might have noticed that if you create a single command, as in the first exam
 {!../docs_src/commands/index/tutorial001.py!}
 ```
 
-**Types** is smart enough to create a CLI application with that single function as the main CLI application, not as a command/subcommand:
+**Cligenius** is smart enough to create a CLI application with that single function as the main CLI application, not as a command/subcommand:
 
 <div class="termy">
 
@@ -38,7 +38,7 @@ Options:
 !!! tip
     Notice that it doesn't show a command `main`, even though the function name is `main`.
 
-But if you add multiple commands, **Types** will create one *CLI command* for each one of them:
+But if you add multiple commands, **Cligenius** will create one *CLI command* for each one of them:
 
 ```Python hl_lines="6  11"
 {!../docs_src/commands/index/tutorial002.py!}
