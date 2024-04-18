@@ -4,8 +4,8 @@ import sys
 from pathlib import Path
 from unittest import mock
 
-import shellingham
 import cligenius
+import shellingham
 from cligenius.testing import CliRunner
 
 from docs_src.commands.index import tutorial001 as mod

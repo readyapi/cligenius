@@ -6,7 +6,8 @@ from typing_extensions import Annotated
 
 def main(
     names: Annotated[
-        Tuple[str, str, str], cligenius.Argument(help="Select 3 characters to play with")
+        Tuple[str, str, str],
+        cligenius.Argument(help="Select 3 characters to play with"),
     ] = ("Harry", "Hermione", "Ron"),
 ):
     for name in names:

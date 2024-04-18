@@ -17,7 +17,9 @@ def test_cli():
 
 def test_cligenius():
     result = runner.invoke(mod.cli, ["sub"])
-    assert "Cligenius is now below Click, the Click app is the top level" in result.stdout
+    assert (
+        "Cligenius is now below Click, the Click app is the top level" in result.stdout
+    )
 
 
 def test_click_initdb():

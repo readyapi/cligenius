@@ -115,7 +115,10 @@ def get_params_from_function(func: Callable[..., Any]) -> Dict[str, ParamMeta]:
     type_hints = get_type_hints(func)
     params = {}
     for param in signature.parameters.values():
-        annotation, cligenius_annotations = _split_annotation_from_cligenius_annotations(
+        (
+            annotation,
+            cligenius_annotations,
+        ) = _split_annotation_from_cligenius_annotations(
             param.annotation,
         )
         if len(cligenius_annotations) > 1:

@@ -25,7 +25,9 @@ def create(
 @app.command(help="**Delete** a user with *USERNAME*.")
 def delete(
     username: Annotated[str, cligenius.Argument(help="The username to be **deleted**")],
-    force: Annotated[bool, cligenius.Option(help="Force the **deletion** :boom:")] = False,
+    force: Annotated[
+        bool, cligenius.Option(help="Force the **deletion** :boom:")
+    ] = False,
 ):
     """
     Some internal utility function to delete.

@@ -11,7 +11,9 @@ def create(username: str):
 @app.command()
 def delete(
     username: str,
-    force: bool = cligenius.Option(..., prompt="Are you sure you want to delete the user?"),
+    force: bool = cligenius.Option(
+        ..., prompt="Are you sure you want to delete the user?"
+    ),
 ):
     if force:
         print(f"Deleting user: {username}")

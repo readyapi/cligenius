@@ -4,7 +4,9 @@ import cligenius
 from typing_extensions import Annotated
 
 
-def main(user: Annotated[Tuple[str, int, bool], cligenius.Option()] = (None, None, None)):
+def main(
+    user: Annotated[Tuple[str, int, bool], cligenius.Option()] = (None, None, None),
+):
     username, coins, is_wizard = user
     if not username:
         print("No user provided")

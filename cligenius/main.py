@@ -14,10 +14,17 @@ from uuid import UUID
 import click
 
 from .completion import get_completion_inspect_parameters
-from .core import MarkupMode, CligeniusArgument, CligeniusCommand, CligeniusGroup, CligeniusOption
+from .core import (
+    CligeniusArgument,
+    CligeniusCommand,
+    CligeniusGroup,
+    CligeniusOption,
+    MarkupMode,
+)
 from .models import (
     AnyType,
     ArgumentInfo,
+    CligeniusInfo,
     CommandFunctionType,
     CommandInfo,
     Default,
@@ -32,7 +39,6 @@ from .models import (
     ParameterInfo,
     ParamMeta,
     Required,
-    CligeniusInfo,
 )
 from .utils import get_params_from_function
 
@@ -384,7 +390,9 @@ def get_group_name(cligenius_info: CligeniusInfo) -> Optional[str]:
                 # Priority 2: Callback passed in @subapp.callback()
                 return get_command_name(registered_callback.callback.__name__)
         if cligenius_info.cligenius_instance.info.callback:
-            return get_command_name(cligenius_info.cligenius_instance.info.callback.__name__)
+            return get_command_name(
+                cligenius_info.cligenius_instance.info.callback.__name__
+            )
     return None
 
 

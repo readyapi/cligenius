@@ -5,11 +5,14 @@ from typing_extensions import Annotated
 def main(
     name: Annotated[str, cligenius.Argument(help="Who to greet")],
     lastname: Annotated[
-        str, cligenius.Argument(help="The last name", rich_help_panel="Secondary Arguments")
+        str,
+        cligenius.Argument(help="The last name", rich_help_panel="Secondary Arguments"),
     ] = "",
     age: Annotated[
         str,
-        cligenius.Argument(help="The user's age", rich_help_panel="Secondary Arguments"),
+        cligenius.Argument(
+            help="The user's age", rich_help_panel="Secondary Arguments"
+        ),
     ] = "",
 ):
     """

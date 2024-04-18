@@ -21,7 +21,9 @@ _click_patched = False
 
 def get_completion_inspect_parameters() -> Tuple[ParamMeta, ParamMeta]:
     completion_init()
-    test_disable_detection = os.getenv("_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv(
+        "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION"
+    )
     if shellingham and not test_disable_detection:
         parameters = get_params_from_function(_install_completion_placeholder_function)
     else:
@@ -51,7 +53,9 @@ def show_callback(ctx: click.Context, param: click.Parameter, value: Any) -> Any
     assert prog_name
     complete_var = "_{}_COMPLETE".format(prog_name.replace("-", "_").upper())
     shell = ""
-    test_disable_detection = os.getenv("_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv(
+        "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION"
+    )
     if isinstance(value, str):
         shell = value
     elif shellingham and not test_disable_detection:

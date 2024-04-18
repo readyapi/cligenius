@@ -4,7 +4,9 @@ app = cligenius.Cligenius(rich_markup_mode="markdown")
 
 
 @app.command()
-def create(username: str = cligenius.Argument(..., help="The username to be **created**")):
+def create(
+    username: str = cligenius.Argument(..., help="The username to be **created**"),
+):
     """
     **Create** a new *shiny* user. :sparkles:
 
