@@ -212,7 +212,9 @@ def install(
     assert prog_name
     if complete_var is None:
         complete_var = "_{}_COMPLETE".format(prog_name.replace("-", "_").upper())
-    test_disable_detection = os.getenv("_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv(
+        "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION"
+    )
     if shell is None and shellingham is not None and not test_disable_detection:
         shell, _ = shellingham.detect_shell()
     if shell == "bash":

@@ -1,5 +1,5 @@
-import pytest
 import cligenius
+import pytest
 from cligenius.testing import CliRunner
 from cligenius.utils import (
     AnnotatedParamWithDefaultValueError,

@@ -15,10 +15,14 @@ def create(
             help="The last name of the new user", rich_help_panel="Secondary Arguments"
         ),
     ] = "",
-    force: Annotated[bool, cligenius.Option(help="Force the creation of the user")] = False,
+    force: Annotated[
+        bool, cligenius.Option(help="Force the creation of the user")
+    ] = False,
     age: Annotated[
         Union[int, None],
-        cligenius.Option(help="The age of the new user", rich_help_panel="Additional Data"),
+        cligenius.Option(
+            help="The age of the new user", rich_help_panel="Additional Data"
+        ),
     ] = None,
     favorite_color: Annotated[
         Union[str, None],

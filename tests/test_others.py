@@ -6,13 +6,13 @@ from pathlib import Path
 from unittest import mock
 
 import click
-import pytest
-import shellingham
 import cligenius
 import cligenius.completion
+import pytest
+import shellingham
 from cligenius.core import _split_opt
 from cligenius.main import solve_cligenius_info_defaults, solve_cligenius_info_help
-from cligenius.models import ParameterInfo, CligeniusInfo
+from cligenius.models import CligeniusInfo, ParameterInfo
 from cligenius.testing import CliRunner
 
 runner = CliRunner()

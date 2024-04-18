@@ -6,7 +6,9 @@ variable = "Some text"
 
 
 @sub_app.command()
-def hello(name: str = "World", age: int = cligenius.Option(0, help="The age of the user")):
+def hello(
+    name: str = "World", age: int = cligenius.Option(0, help="The age of the user")
+):
     """
     Say Hello
     """

@@ -2,7 +2,9 @@ import cligenius
 from typing_extensions import Annotated
 
 
-def main(name: Annotated[str, cligenius.Argument(help="The name of the user to greet")]):
+def main(
+    name: Annotated[str, cligenius.Argument(help="The name of the user to greet")],
+):
     print(f"Hello {name}")
 
 

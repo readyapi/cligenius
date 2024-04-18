@@ -10,7 +10,9 @@ def name_callback(value: str):
     return value
 
 
-def main(name: Annotated[Optional[str], cligenius.Option(callback=name_callback)] = None):
+def main(
+    name: Annotated[Optional[str], cligenius.Option(callback=name_callback)] = None,
+):
     print(f"Hello {name}")
 
 

@@ -13,7 +13,9 @@ def name_callback(ctx: cligenius.Context, value: str):
     return value
 
 
-def main(name: Annotated[Optional[str], cligenius.Option(callback=name_callback)] = None):
+def main(
+    name: Annotated[Optional[str], cligenius.Option(callback=name_callback)] = None,
+):
     print(f"Hello {name}")
 
 

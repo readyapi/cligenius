@@ -19,7 +19,9 @@ class CustomClassParser(click.ParamType):
 
 
 def main(
-    custom_arg: Annotated[CustomClass, cligenius.Argument(click_type=CustomClassParser())],
+    custom_arg: Annotated[
+        CustomClass, cligenius.Argument(click_type=CustomClassParser())
+    ],
     custom_opt: Annotated[
         CustomClass, cligenius.Option(click_type=CustomClassParser())
     ] = "Foo",

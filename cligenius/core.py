@@ -297,7 +297,9 @@ class CligeniusArgument(click.core.Argument):
             envvar=envvar,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(
+            self, autocompletion=autocompletion
+        )
 
     def _get_default_string(
         self,
@@ -447,7 +449,9 @@ class CligeniusOption(click.core.Option):
             prompt_required=prompt_required,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(
+            self, autocompletion=autocompletion
+        )
         self.rich_help_panel = rich_help_panel
 
     def _get_default_string(

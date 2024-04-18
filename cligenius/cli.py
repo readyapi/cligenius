@@ -128,7 +128,9 @@ def get_cligenius_from_state() -> Optional[cligenius.Cligenius]:
         if state.file:
             cligenius.echo(f"Could not import as Python file: {state.file}", err=True)
         else:
-            cligenius.echo(f"Could not import as Python module: {state.module}", err=True)
+            cligenius.echo(
+                f"Could not import as Python module: {state.module}", err=True
+            )
         sys.exit(1)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)  # type: ignore
@@ -265,7 +267,9 @@ def get_docs_for_click(
 @utils_app.command()
 def docs(
     ctx: cligenius.Context,
-    name: str = cligenius.Option("", help="The name of the CLI program to use in docs."),
+    name: str = cligenius.Option(
+        "", help="The name of the CLI program to use in docs."
+    ),
     output: Optional[Path] = cligenius.Option(
         None,
         help="An output file to write docs to, like README.md.",

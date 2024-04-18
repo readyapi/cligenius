@@ -6,7 +6,9 @@ def main(good: bool = True):
     if good:
         ending = cligenius.style("good", fg=cligenius.colors.GREEN, bold=True)
     else:
-        ending = cligenius.style("bad", fg=cligenius.colors.WHITE, bg=cligenius.colors.RED)
+        ending = cligenius.style(
+            "bad", fg=cligenius.colors.WHITE, bg=cligenius.colors.RED
+        )
     message = message_start + ending
     cligenius.echo(message)
 

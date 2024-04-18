@@ -19,7 +19,9 @@ def create(
 
 @app.command(help="[bold red]Delete[/bold red] a user with [italic]USERNAME[/italic].")
 def delete(
-    username: str = cligenius.Argument(..., help="The username to be [red]deleted[/red]"),
+    username: str = cligenius.Argument(
+        ..., help="The username to be [red]deleted[/red]"
+    ),
     force: bool = cligenius.Option(
         False, help="Force the [bold red]deletion[/bold red] :boom:"
     ),

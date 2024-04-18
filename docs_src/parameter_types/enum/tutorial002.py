@@ -10,7 +10,9 @@ class NeuralNetwork(str, Enum):
 
 
 def main(
-    network: NeuralNetwork = cligenius.Option(NeuralNetwork.simple, case_sensitive=False),
+    network: NeuralNetwork = cligenius.Option(
+        NeuralNetwork.simple, case_sensitive=False
+    ),
 ):
     print(f"Training neural network of type: {network.value}")
 

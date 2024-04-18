@@ -4,7 +4,9 @@ import cligenius
 from typing_extensions import Annotated
 
 
-def main(accept: Annotated[Optional[bool], cligenius.Option("--accept/--reject")] = None):
+def main(
+    accept: Annotated[Optional[bool], cligenius.Option("--accept/--reject")] = None,
+):
     if accept is None:
         print("I don't know what you want yet")
     elif accept:

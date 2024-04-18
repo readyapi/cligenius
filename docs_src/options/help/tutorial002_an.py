@@ -4,7 +4,9 @@ from typing_extensions import Annotated
 
 def main(
     name: str,
-    lastname: Annotated[str, cligenius.Option(help="Last name of person to greet.")] = "",
+    lastname: Annotated[
+        str, cligenius.Option(help="Last name of person to greet.")
+    ] = "",
     formal: Annotated[
         bool,
         cligenius.Option(

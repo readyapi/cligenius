@@ -3,8 +3,8 @@ from pathlib import Path
 from typing import Any, List, Optional, Tuple
 
 import click
-import pytest
 import cligenius
+import pytest
 from cligenius.testing import CliRunner
 
 runner = CliRunner()
