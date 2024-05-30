@@ -5,7 +5,7 @@ on:
     branches:
       - master
   pull_request:
-    cligenius:
+    types:
       - opened
       - synchronize
 
@@ -35,7 +35,7 @@ jobs:
         run: pip install build
       - name: Build source distribution
         env:
-          KHULNASOFT_BUILD_PACKAGE: ${{ matrix.package }}
+          TIANGOLO_BUILD_PACKAGE: ${{ matrix.package }}
         run: python -m build --sdist
       - name: Decompress source distribution
         run: |
@@ -46,6 +46,8 @@ jobs:
         run: |
           cd dist/cligenius*/
           pip install -r requirements-tests.txt
+        env:
+          TIANGOLO_BUILD_PACKAGE: ${{ matrix.package }}
       - name: Run source distribution tests
         if: ${{ matrix.package != 'cligenius-cli' }}
         run: |
