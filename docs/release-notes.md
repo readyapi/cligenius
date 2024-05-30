@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Update pytest-sugar requirement from <0.10.0,>=0.9.4 to >=0.9.4,<1.1.0. PR [#35](https://github.com/khulnasoft/cligenius/pull/35) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/cache from 3 to 4. PR [#33](https://github.com/khulnasoft/cligenius/pull/33) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ### Features
