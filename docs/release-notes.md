@@ -1,5 +1,7 @@
 ## Latest Changes
 
+* ⬆ Bump actions/cache from 3 to 4. PR [#33](https://github.com/khulnasoft/cligenius/pull/33) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
 ### Features
 
 * ✨ Add support for Python 3.12, tests in CI and official marker. PR [#807](https://github.com/khulnasoft/cligenius/pull/807) by [@ivantodorovich](https://github.com/ivantodorovich).
