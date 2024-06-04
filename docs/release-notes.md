@@ -1,7 +1,23 @@
 ## Latest Changes
 
+* ⬆ Bump mkdocstrings[python] from 0.23.0 to 0.25.1. PR [#34](https://github.com/khulnasoft/cligenius/pull/34) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Update pytest-sugar requirement from <0.10.0,>=0.9.4 to >=0.9.4,<1.1.0. PR [#35](https://github.com/khulnasoft/cligenius/pull/35) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump actions/cache from 3 to 4. PR [#33](https://github.com/khulnasoft/cligenius/pull/33) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
+### Features
+
+* ✨ Add support for Python 3.12, tests in CI and official marker. PR [#807](https://github.com/khulnasoft/cligenius/pull/807) by [@ivantodorovich](https://github.com/ivantodorovich).
+
 ### Internal
 
+* ⬆ Bump black from 23.3.0 to 24.3.0. PR [#837](https://github.com/khulnasoft/cligenius/pull/837) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump pillow from 10.1.0 to 10.3.0. PR [#836](https://github.com/khulnasoft/cligenius/pull/836) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ✅ Add CI configs to run tests on Windows and MacOS. PR [#824](https://github.com/khulnasoft/cligenius/pull/824) by [@svlandeg](https://github.com/svlandeg).
+* 👷 Update GitHub Actions to upload and download artifacts. PR [#829](https://github.com/khulnasoft/cligenius/pull/829) by [@khulnasoft](https://github.com/khulnasoft).
+* 👷 Tweak CI for test-redistribute, add needed env vars for slim. PR [#827](https://github.com/khulnasoft/cligenius/pull/827) by [@khulnasoft](https://github.com/khulnasoft).
+* ✅ Generalize test suite to run on Windows. PR [#810](https://github.com/khulnasoft/cligenius/pull/810) by [@svlandeg](https://github.com/svlandeg).
+* ✅ Add `__init__.py` files to fix test suite. PR [#809](https://github.com/khulnasoft/cligenius/pull/809) by [@svlandeg](https://github.com/svlandeg).
+* 🔧 Update MkDocs Material, enable plugins. PR [#813](https://github.com/khulnasoft/cligenius/pull/813) by [@khulnasoft](https://github.com/khulnasoft).
 * 🔧 Tweak development scripts and configs after migration to PDM, Ruff, etc.. PR [#797](https://github.com/khulnasoft/cligenius/pull/797) by [@khulnasoft](https://github.com/khulnasoft).
 
 ## 0.12.3

@@ -5,7 +5,7 @@ on:
     branches:
       - master
   pull_request:
-    cligenius:
+    types:
       - opened
       - synchronize
 
@@ -46,6 +46,8 @@ jobs:
         run: |
           cd dist/cligenius*/
           pip install -r requirements-tests.txt
+        env:
+          KHULNASOFT_BUILD_PACKAGE: ${{ matrix.package }}
       - name: Run source distribution tests
         if: ${{ matrix.package != 'cligenius-cli' }}
         run: |

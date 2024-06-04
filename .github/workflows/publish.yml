@@ -2,7 +2,7 @@ name: Publish
 
 on:
   release:
-    cligenius:
+    types:
       - created
 
 jobs:
