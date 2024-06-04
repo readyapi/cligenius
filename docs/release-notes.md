@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Bump black from 23.3.0 to 24.4.2. PR [#22](https://github.com/khulnasoft/cligenius/pull/22) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump mkdocstrings[python] from 0.23.0 to 0.25.1. PR [#34](https://github.com/khulnasoft/cligenius/pull/34) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Update pytest-sugar requirement from <0.10.0,>=0.9.4 to >=0.9.4,<1.1.0. PR [#35](https://github.com/khulnasoft/cligenius/pull/35) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump actions/cache from 3 to 4. PR [#33](https://github.com/khulnasoft/cligenius/pull/33) by [@dependabot[bot]](https://github.com/apps/dependabot).
