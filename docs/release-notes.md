@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Bump mkdocs-material from 9.4.7 to 9.5.26. PR [#42](https://github.com/khulnasoft/cligenius/pull/42) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Update pytest requirement from <8.0.0,>=4.4.0 to >=4.4.0,<9.0.0. PR [#39](https://github.com/khulnasoft/cligenius/pull/39) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump black from 23.3.0 to 24.4.2. PR [#22](https://github.com/khulnasoft/cligenius/pull/22) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump mkdocstrings[python] from 0.23.0 to 0.25.1. PR [#34](https://github.com/khulnasoft/cligenius/pull/34) by [@dependabot[bot]](https://github.com/apps/dependabot).
