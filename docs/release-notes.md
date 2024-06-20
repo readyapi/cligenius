@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Bump mkdocs-material from 9.5.26 to 9.5.27. PR [#45](https://github.com/khulnasoft/cligenius/pull/45) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump pypa/gh-action-pypi-publish from 1.8.11 to 1.9.0. PR [#46](https://github.com/khulnasoft/cligenius/pull/46) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump griffe-typingdoc from 0.2.2 to 0.2.5. PR [#43](https://github.com/khulnasoft/cligenius/pull/43) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Update pytest-cov requirement from <5.0.0,>=2.10.0 to >=2.10.0,<6.0.0. PR [#41](https://github.com/khulnasoft/cligenius/pull/41) by [@dependabot[bot]](https://github.com/apps/dependabot).
