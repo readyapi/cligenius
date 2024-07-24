@@ -1,5 +1,6 @@
 name: Deploy Docs
 on:
+  workflow_dispatch:
   workflow_run:
     workflows:
       - Build Docs
@@ -14,33 +15,45 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ORG_REPO_TOKEN }}
+
       - name: Clean site
         run: |
           rm -rf ./site
           mkdir ./site
-      - uses: actions/download-artifact@v4
+
+      - name: Download Artifact Docs
+        id: download
+        uses: dawidd6/action-download-artifact@v6
         with:
+          if_no_artifact_found: ignore
+          github_token: ${{ secrets.ORG_REPO_TOKEN }}
+          workflow: build-docs.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: docs-site
           path: ./site/
-          pattern: docs-site
-          merge-multiple: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
-      - name: Deploy to Cloudflare Pages
-        # hashFiles returns an empty string if there are no files
-        if: hashFiles('./site/*')
-        id: deploy
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: cligeniuskhulnasoft
-          directory: './site'
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ ( github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'master' && 'main' ) || ( github.event.workflow_run.head_sha ) }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "info@khulnasoft.com"
+          git config --global user.name "khulnasoft-bot"
+
+      - name: Deploy to GitHub Pages
+        if: steps.download.outputs.found_artifact == 'true'
+        run: |
+          cd ./site
+          git init
+          git add .
+          git commit -m "Deploy docs"
+          git remote add origin https://x-access-token:${{ secrets.ORG_REPO_TOKEN }}@github.com/khulnasoft/cligenius
+          git push --force origin master:gh-pages
+
       - name: Comment Deploy
-        if: steps.deploy.outputs.url != ''
+        if: always()
         uses: ./.github/actions/comment-docs-preview-in-pr
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_url: "${{ steps.deploy.outputs.url }}"
+          token: ${{ secrets.ORG_REPO_TOKEN }}
+          deploy_url: "https://${{ github.repository_owner }}.github.io/${{ github.repository }}"
