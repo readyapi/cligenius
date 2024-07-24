@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Bump mkdocs-material from 9.5.27 to 9.5.30. PR [#58](https://github.com/khulnasoft/cligenius/pull/58) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump cairosvg from 2.7.0 to 2.7.1. PR [#37](https://github.com/khulnasoft/cligenius/pull/37) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump mkdocs-material from 9.5.26 to 9.5.27. PR [#45](https://github.com/khulnasoft/cligenius/pull/45) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump pypa/gh-action-pypi-publish from 1.8.11 to 1.9.0. PR [#46](https://github.com/khulnasoft/cligenius/pull/46) by [@dependabot[bot]](https://github.com/apps/dependabot).
