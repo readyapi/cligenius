@@ -1,5 +1,6 @@
 ## Latest Changes
 
+* ⬆ Bump mkdocs-material from 9.5.30 to 9.5.33. PR [#71](https://github.com/khulnasoft/cligenius/pull/71) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump black from 24.4.2 to 24.8.0. PR [#64](https://github.com/khulnasoft/cligenius/pull/64) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump griffe-typingdoc from 0.2.5 to 0.2.6. PR [#66](https://github.com/khulnasoft/cligenius/pull/66) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump mkdocstrings[python] from 0.25.1 to 0.25.2. PR [#60](https://github.com/khulnasoft/cligenius/pull/60) by [@dependabot[bot]](https://github.com/apps/dependabot).
