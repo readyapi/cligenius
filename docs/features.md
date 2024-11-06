@@ -1,8 +1,10 @@
+# Features
+
 ## Design based on **ReadyAPI**
 
 <a href="https://readyapi.khulnasoft.com" target="_blank"><img src="https://readyapi.khulnasoft.com/img/logo-margin/logo-teal.png" style="width: 20%;"></a>
 
-**Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling.
+**Cligenius** is <a href="https://readyapi.khulnasoftft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling.
 
 It follows the same design and ideas. If you know **ReadyAPI**, you already know **Cligenius**... more or less.
 
@@ -10,7 +12,7 @@ It follows the same design and ideas. If you know **ReadyAPI**, you already know
 
 It's all based on standard **Python type** declarations. No new syntax to learn. Just standard modern Python.
 
-If you need a 2 minute refresher of how to use Python types (even if you don't use ReadyAPI or Cligenius), check the ReadyAPI tutorial section: <a href="https://readyapi.khulnasoft.com/python-types/" class="external-link" target="_blank">Python types intro</a>.
+If you need a 2 minute refresher of how to use Python types (even if you don't use ReadyAPI or Cligenius), check the ReadyAPI tutorial section: <a href="https://readyapi.khulnasoftft.com/python-types/" class="external-link" target="_blank">Python types intro</a>.
 
 You will also see a 20 seconds refresher on the section [Tutorial - User Guide: First Steps](tutorial/first-steps.md){.internal-link target=_blank}.
 
@@ -48,27 +50,33 @@ The resulting CLI apps created with **Cligenius** have the nice features of many
 * Automatic command and subcommand structure handling (you will see more about subcommands in the Tutorial - User Guide).
 * Automatic completion for the CLI app in all operating systems, in all the shells (Bash, Zsh, Fish, PowerShell), so that the final user of your app can just hit <kbd>TAB</kbd> and get the available options or subcommands. *
 
-!!! note "* Auto completion"
-    Auto completion works when you create a package (installable with `pip`). Or when using the `cligenius` command.
+/// note | * Auto completion
 
-    **Cligenius** uses `shellingham` to auto-detect the current shell when installing completion. If you don't want to include `shellingham`, install `cligenius-slim`.
+Auto completion works when you create a package (installable with `pip`). Or when using the `cligenius` command.
 
-    **Cligenius** will automatically create 2 *CLI options*:
+**Cligenius** uses `shellingham` to auto-detect the current shell when installing completion. If you don't want to include `shellingham`, install `cligenius-slim`.
 
-    * `--install-completion`: Install completion for the current shell.
-    * `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+**Cligenius** will automatically create 2 *CLI options*:
 
-    If you didn't add `shellingham` (if you installed `pip install cligenius-slim`) those *CLI options* take a value with the name of the shell to install completion for, e.g.:
+* `--install-completion`: Install completion for the current shell.
+* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
 
-    * `--install-completion bash`.
-    * `--show-completion powershell`.
+If you didn't add `shellingham` (if you installed `pip install cligenius-slim`) those *CLI options* take a value with the name of the shell to install completion for, e.g.:
 
-    Then you can tell the user to install completion after installing your CLI program and the rest will just work.
+* `--install-completion bash`.
+* `--show-completion powershell`.
 
-!!! tip
-    **Cligenius**'s completion is implemented internally, it uses ideas and components from Click and ideas from `click-completion`, but it doesn't use `click-completion` and re-implements some of the relevant parts of Click.
+Then you can tell the user to install completion after installing your CLI program and the rest will just work.
 
-    Then it extends those ideas with features and bug fixes. For example, **Cligenius** programs also support modern versions of PowerShell (e.g. in Windows 10) among all the other shells.
+///
+
+/// tip
+
+**Cligenius**'s completion is implemented internally, it uses ideas and components from Click and ideas from `click-completion`, but it doesn't use `click-completion` and re-implements some of the relevant parts of Click.
+
+Then it extends those ideas with features and bug fixes. For example, **Cligenius** programs also support modern versions of PowerShell (e.g. in Windows 10) among all the other shells.
+
+///
 
 ## The power of Click
 

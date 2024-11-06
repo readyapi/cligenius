@@ -16,4 +16,11 @@ def test_script_completion_run():
             "COMP_CWORD": "2",
         },
     )
+
+    # Print debug output
+    print("STDOUT:", result.stdout)
+    print("STDERR:", result.stderr)
+    print("Return Code:", result.returncode)
+
+    # Check if 'run' is in the output
     assert "run" in result.stdout

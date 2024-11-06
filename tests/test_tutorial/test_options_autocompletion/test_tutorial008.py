@@ -22,15 +22,15 @@ def test_completion():
     )
     assert '"Camila":"The reader of books."' in result.stdout
     assert '"Carlos":"The writer of scripts."' in result.stdout
-    assert '"Sebastian":"The type hints guy."' in result.stdout
+    assert '"Sulaiman":"The type hints guy."' in result.stdout
     assert "[]" in result.stderr
 
 
 def test_1():
-    result = runner.invoke(mod.app, ["--name", "Camila", "--name", "Sebastian"])
+    result = runner.invoke(mod.app, ["--name", "Camila", "--name", "Sulaiman"])
     assert result.exit_code == 0
     assert "Hello Camila" in result.output
-    assert "Hello Sebastian" in result.output
+    assert "Hello Sulaiman" in result.output
 
 
 def test_script():

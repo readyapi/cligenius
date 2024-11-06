@@ -10,7 +10,7 @@ def complete(args, incomplete, ctx):
     return [
         ("Camila", "The reader of books."),
         ("Carlos", "The writer of scripts."),
-        ("Sebastian", "The type hints guy."),
+        ("Sulaiman", "The type hints guy."),
     ]
 
 

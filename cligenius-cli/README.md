@@ -5,14 +5,14 @@
     <em>Cligenius, build great CLIs. Easy to code. Based on Python type hints.</em>
 </p>
 <p align="center">
-<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3ATest" target="_blank">
-    <img src="https://github.com/khulnasoft/cligenius/workflows/Test/badge.svg" alt="Test">
+<a href="https://github.com/readyapi/cligenius/actions?query=workflow%3ATest" target="_blank">
+    <img src="https://github.com/readyapi/cligenius/workflows/Test/badge.svg" alt="Test">
 </a>
-<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3APublish" target="_blank">
-    <img src="https://github.com/khulnasoft/cligenius/workflows/Publish/badge.svg" alt="Publish">
+<a href="https://github.com/readyapi/cligenius/actions?query=workflow%3APublish" target="_blank">
+    <img src="https://github.com/readyapi/cligenius/workflows/Publish/badge.svg" alt="Publish">
 </a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/khulnasoft/cligenius" target="_blank">
-    <img src="https://coverage-badge.samuelcolvin.workers.dev/khulnasoft/cligenius.svg" alt="Coverage">
+<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/readyapi/cligenius" target="_blank">
+    <img src="https://coverage-badge.samuelcolvin.workers.dev/readyapi/cligenius.svg" alt="Coverage">
 <a href="https://pypi.org/project/cligenius" target="_blank">
     <img src="https://img.shields.io/pypi/v/cligenius?color=%2334D058&label=pypi%20package" alt="Package version">
 </a>
@@ -20,9 +20,9 @@
 
 ---
 
-**Documentation**: <a href="https://cligenius.khulnasoft.com" target="_blank">https://cligenius.khulnasoft.com/tutorial/cligenius-command/</a>
+**Documentation**: <a href="https://cligenius.khulnasoftft.com" target="_blank">https://typekhulnasoftsoft.com/tutorial/cligenius-command/</a>
 
-**Source Code**: <a href="https://github.com/khulnasoft/cligenius" target="_blank">https://github.com/khulnasoft/cligenius</a>
+**Source Code**: <a href="https://github.com/readyapi/cligenius" target="_blank">https://github.com/readyapi/cligenius</a>
 
 ---
 

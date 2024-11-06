@@ -8,11 +8,11 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: KhulnaSoft
-    family-names: DevOps
+  - given-names: Md
+    family-names: Sulaiman
     email: info@khulnasoft.com
 identifiers:
-repository-code: 'https://github.com/khulnasoft/cligenius'
+repository-code: 'https://github.com/readyapi/cligenius'
 url: 'https://cligenius.khulnasoft.com'
 abstract: >-
   Cligenius, build great CLIs. Easy to code. Based on Python type hints.

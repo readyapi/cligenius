@@ -2,7 +2,7 @@ import cligenius
 
 
 def complete_name():
-    return ["Camila", "Carlos", "Sebastian"]
+    return ["Camila", "Carlos", "Sulaiman"]
 
 
 app = cligenius.Cligenius()

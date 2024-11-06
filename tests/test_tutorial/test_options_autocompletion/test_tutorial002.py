@@ -22,7 +22,7 @@ def test_completion():
     )
     assert "Camila" in result.stdout
     assert "Carlos" in result.stdout
-    assert "Sebastian" in result.stdout
+    assert "Sulaiman" in result.stdout
 
 
 def test_1():

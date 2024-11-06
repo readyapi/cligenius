@@ -23,7 +23,7 @@ def callback():
 @click.option("--name", prompt="Your name", help="The person to greet.")
 def hello(name):
     """Simple program that greets NAME for a total of COUNT times."""
-    click.echo("Hello %s!" % name)
+    click.echo(f"Hello {name}!")
 
 
 cligenius_click_object = cligenius.main.get_command(app)

@@ -261,12 +261,15 @@ $ cligenius some_script.py utils docs
 
 </div>
 
-!!! tip
-    If you installed only `cligenius-slim` and you don't have the `cligenius` command, you can still generate docs with:
+/// tip
 
-    ```console
-    $ python -m cligenius some_script.py utils docs
-    ```
+If you installed only `cligenius-slim` and you don't have the `cligenius` command, you can still generate docs with:
+
+```console
+$ python -m cligenius some_script.py utils docs
+```
+
+///
 
 **Options**:
 

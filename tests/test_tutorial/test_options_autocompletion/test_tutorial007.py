@@ -17,19 +17,19 @@ def test_completion():
         env={
             **os.environ,
             "_TUTORIAL007.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial007.py --name Sebastian --name ",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial007.py --name Sulaiman --name ",
         },
     )
     assert '"Camila":"The reader of books."' in result.stdout
     assert '"Carlos":"The writer of scripts."' in result.stdout
-    assert '"Sebastian":"The type hints guy."' not in result.stdout
+    assert '"Sulaiman":"The type hints guy."' not in result.stdout
 
 
 def test_1():
-    result = runner.invoke(mod.app, ["--name", "Camila", "--name", "Sebastian"])
+    result = runner.invoke(mod.app, ["--name", "Camila", "--name", "Sulaiman"])
     assert result.exit_code == 0
     assert "Hello Camila" in result.output
-    assert "Hello Sebastian" in result.output
+    assert "Hello Sulaiman" in result.output
 
 
 def test_script():
