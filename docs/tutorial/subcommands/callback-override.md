@@ -1,3 +1,5 @@
+# Sub-Cligenius Callback Override
+
 When creating a **Cligenius** app you can define a callback function, it always executes and defines the *CLI arguments* and *CLI options* that go before a command.
 
 When adding a Cligenius app inside of another, the sub-Cligenius can also have its own callback.

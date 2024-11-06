@@ -13,7 +13,7 @@ def test_completion_complete_subcommand_zsh():
         env={
             **os.environ,
             "_TUTORIAL002.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial002.py ",
+            "_TYPER_COMPLETE_ARGS": "tutorial002.py ",
         },
     )
     assert "create" in result.stdout
@@ -28,8 +28,8 @@ def test_completion_complete_subcommand_fish():
         env={
             **os.environ,
             "_TUTORIAL002.PY_COMPLETE": "complete_fish",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial002.py ",
-            "_CLIGENIUS_COMPLETE_FISH_ACTION": "get-args",
+            "_TYPER_COMPLETE_ARGS": "tutorial002.py ",
+            "_TYPER_COMPLETE_FISH_ACTION": "get-args",
         },
     )
     assert "create\ndelete" in result.stdout
@@ -43,7 +43,7 @@ def test_completion_complete_subcommand_powershell():
         env={
             **os.environ,
             "_TUTORIAL002.PY_COMPLETE": "complete_powershell",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial002.py ",
+            "_TYPER_COMPLETE_ARGS": "tutorial002.py ",
         },
     )
     assert ("create::: \ndelete::: ") in result.stdout
@@ -57,7 +57,7 @@ def test_completion_complete_subcommand_pwsh():
         env={
             **os.environ,
             "_TUTORIAL002.PY_COMPLETE": "complete_pwsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial002.py ",
+            "_TYPER_COMPLETE_ARGS": "tutorial002.py ",
         },
     )
     assert ("create::: \ndelete::: ") in result.stdout

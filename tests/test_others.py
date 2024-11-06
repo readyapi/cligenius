@@ -141,6 +141,25 @@ def test_callback_3_untyped_parameters():
     assert "value is: Camila" in result.stdout
 
 
+def test_completion_argument():
+    file_path = Path(__file__).parent / "assets/completion_argument.py"
+    result = subprocess.run(
+        [sys.executable, "-m", "coverage", "run", str(file_path), "E"],
+        capture_output=True,
+        encoding="utf-8",
+        env={
+            **os.environ,
+            "_COMPLETION_ARGUMENT.PY_COMPLETE": "complete_zsh",
+            "_TYPER_COMPLETE_ARGS": "completion_argument.py E",
+            "_TYPER_COMPLETE_TESTING": "True",
+        },
+    )
+    assert "Emma" in result.stdout or "_files" in result.stdout
+    assert "ctx: completion_argument" in result.stderr
+    assert "arg is: name" in result.stderr
+    assert "incomplete is: E" in result.stderr
+
+
 def test_completion_untyped_parameters():
     file_path = Path(__file__).parent / "assets/completion_no_types.py"
     result = subprocess.run(
@@ -150,7 +169,7 @@ def test_completion_untyped_parameters():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
+            "_TYPER_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types.py" in result.stderr
@@ -176,7 +195,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES_ORDER.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
+            "_TYPER_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types_order.py" in result.stderr

@@ -17,7 +17,7 @@ def test_completion():
         env={
             **os.environ,
             "_TUTORIAL009_AN.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "tutorial009_an.py --name Sebastian --name ",
+            "_TYPER_COMPLETE_ARGS": "tutorial009_an.py --name Sebastian --name ",
         },
     )
     assert '"Camila":"The reader of books."' in result.stdout

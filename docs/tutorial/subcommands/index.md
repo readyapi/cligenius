@@ -1,3 +1,5 @@
+# SubCommands - Command Groups
+
 You read before how to create a program with [Commands](../commands/index.md){.internal-link target=_blank}.
 
 Now we'll see how to create a *CLI program* with commands that have their own subcommands. Also known as command groups.
@@ -21,7 +23,7 @@ origin  git@github.com:yourusername/cligenius.git (fetch)
 origin  git@github.com:yourusername/cligenius.git (push)
 
 // git remote add takes 2 CLI arguments, a name and URL
-$ git remote add upstream https://github.com/khulnasoft/cligenius.git
+$ git remote add upstream https://github.com/readyapi/cligenius.git
 
 // Doesn't output anything, but now you have another remote repository called upstream
 
@@ -30,8 +32,8 @@ $ git remote -v
 
 origin  git@github.com:yourusername/cligenius.git (fetch)
 origin  git@github.com:yourusername/cligenius.git (push)
-upstream        https://github.com/khulnasoft/cligenius.git (fetch)
-upstream        https://github.com/khulnasoft/cligenius.git (push)
+upstream        https://github.com/readyapi/cligenius.git (fetch)
+upstream        https://github.com/readyapi/cligenius.git (push)
 ```
 
 </div>

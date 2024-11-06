@@ -243,14 +243,14 @@ TypeError: can only concatenate str (not "int") to str
 
 </div>
 
-You could also achieve the same with the environment variable `_CLIGENIUS_STANDARD_TRACEBACK=1`.
+You could also achieve the same with the environment variable `_TYPER_STANDARD_TRACEBACK=1`.
 
 This will work for any other Cligenius program too, in case you need to debug a problem in a Cligenius program made by someone else:
 
 <div class="termy">
 
 ```console
-export _CLIGENIUS_STANDARD_TRACEBACK=1
+export _TYPER_STANDARD_TRACEBACK=1
 $ python main.py
 
 

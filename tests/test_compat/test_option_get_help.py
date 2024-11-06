@@ -47,7 +47,7 @@ def test_completion():
         env={
             **os.environ,
             "_COMPAT_CLICK7_8.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "compat_click7_8.py --nickname ",
+            "_TYPER_COMPLETE_ARGS": "compat_click7_8.py --nickname ",
         },
     )
     assert "Jonny" in result.stdout

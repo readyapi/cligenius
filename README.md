@@ -1,18 +1,19 @@
 <p align="center">
-  <a href="https://cligenius.khulnasoft.com"><img src="https://cligenius.khulnasoft.com/img/logo-margin/logo-margin-vector.svg" alt="Cligenius"></a>
+  <a href="https://cligenius.khulnasoft.com"><img src="https://cligenius.khulnasoft.com/img/logo-margin/logo-margin-vector.svg#only-light" alt="Cligenius"></a>
+
 </p>
 <p align="center">
     <em>Cligenius, build great CLIs. Easy to code. Based on Python type hints.</em>
 </p>
 <p align="center">
-<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3ATest" target="_blank">
-    <img src="https://github.com/khulnasoft/cligenius/workflows/Test/badge.svg" alt="Test">
+<a href="https://github.com/readyapi/cligenius/actions?query=workflow%3ATest" target="_blank">
+    <img src="https://github.com/readyapi/cligenius/workflows/Test/badge.svg" alt="Test">
 </a>
-<a href="https://github.com/khulnasoft/cligenius/actions?query=workflow%3APublish" target="_blank">
-    <img src="https://github.com/khulnasoft/cligenius/workflows/Publish/badge.svg" alt="Publish">
+<a href="https://github.com/readyapi/cligenius/actions?query=workflow%3APublish" target="_blank">
+    <img src="https://github.com/readyapi/cligenius/workflows/Publish/badge.svg" alt="Publish">
 </a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/khulnasoft/cligenius" target="_blank">
-    <img src="https://coverage-badge.samuelcolvin.workers.dev/khulnasoft/cligenius.svg" alt="Coverage">
+<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/readyapi/cligenius" target="_blank">
+    <img src="https://coverage-badge.samuelcolvin.workers.dev/readyapi/cligenius.svg" alt="Coverage">
 <a href="https://pypi.org/project/cligenius" target="_blank">
     <img src="https://img.shields.io/pypi/v/cligenius?color=%2334D058&label=pypi%20package" alt="Package version">
 </a>
@@ -22,7 +23,7 @@
 
 **Documentation**: <a href="https://cligenius.khulnasoft.com" target="_blank">https://cligenius.khulnasoft.com</a>
 
-**Source Code**: <a href="https://github.com/khulnasoft/cligenius" target="_blank">https://github.com/khulnasoft/cligenius</a>
+**Source Code**: <a href="https://github.com/readyapi/cligenius" target="_blank">https://github.com/readyapi/cligenius</a>
 
 ---
 
@@ -44,6 +45,8 @@ The key features are:
 **Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
 
 ## Installation
+
+Create and activate a <a href="https://cligenius.khulnasoft.com/virtual-environments/" class="external-link" target="_blank">virtual environment</a> and then install **Cligenius**:
 
 <div class="termy">
 

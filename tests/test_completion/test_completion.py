@@ -5,9 +5,10 @@ from pathlib import Path
 
 from docs_src.commands.index import tutorial001 as mod
 
-from ..utils import needs_linux
+from ..utils import needs_bash, needs_linux
 
 
+@needs_bash
 @needs_linux
 def test_show_completion():
     result = subprocess.run(
@@ -18,11 +19,12 @@ def test_show_completion():
         ],
         capture_output=True,
         encoding="utf-8",
-        env={**os.environ, "SHELL": "/bin/bash", "_CLIGENIUS_COMPLETE_TESTING": "True"},
+        env={**os.environ, "SHELL": "/bin/bash", "_TYPER_COMPLETE_TESTING": "True"},
     )
     assert "_TUTORIAL001.PY_COMPLETE=complete_bash" in result.stdout
 
 
+@needs_bash
 @needs_linux
 def test_install_completion():
     bash_completion_path: Path = Path.home() / ".bashrc"
@@ -37,7 +39,7 @@ def test_install_completion():
         ],
         capture_output=True,
         encoding="utf-8",
-        env={**os.environ, "SHELL": "/bin/bash", "_CLIGENIUS_COMPLETE_TESTING": "True"},
+        env={**os.environ, "SHELL": "/bin/bash", "_TYPER_COMPLETE_TESTING": "True"},
     )
     new_text = bash_completion_path.read_text()
     bash_completion_path.write_text(text)

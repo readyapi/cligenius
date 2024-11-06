@@ -22,7 +22,7 @@ def test_completion_install_no_shell():
         encoding="utf-8",
         env={
             **os.environ,
-            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     assert "Option '--install-completion' requires an argument" in result.stderr
@@ -47,7 +47,7 @@ def test_completion_install_bash():
         encoding="utf-8",
         env={
             **os.environ,
-            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = bash_completion_path.read_text()
@@ -88,7 +88,7 @@ def test_completion_install_zsh():
         encoding="utf-8",
         env={
             **os.environ,
-            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = completion_path.read_text()
@@ -123,7 +123,7 @@ def test_completion_install_fish():
         encoding="utf-8",
         env={
             **os.environ,
-            "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
+            "_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION": "True",
         },
     )
     new_text = completion_path.read_text()
@@ -131,11 +131,6 @@ def test_completion_install_fish():
     assert "complete --command tutorial001.py" in new_text
     assert "completion installed in" in result.stdout
     assert "Completion will take effect once you restart the terminal" in result.stdout
-
-
-runner = CliRunner()
-app = cligenius.Cligenius()
-app.command()(mod.main)
 
 
 def test_completion_install_powershell():

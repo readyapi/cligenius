@@ -29,8 +29,9 @@ def test_forbid_default_value_in_annotated_argument():
     # This test case only works with `cligenius.Argument`. `cligenius.Option` uses positionals
     # for param_decls too.
     @app.command()
-    def cmd(my_param: Annotated[str, cligenius.Argument("foo")]):
-        ...  # pragma: no cover
+    def cmd(
+        my_param: Annotated[str, cligenius.Argument("foo")],
+    ): ...  # pragma: no cover
 
     with pytest.raises(AnnotatedParamWithDefaultValueError) as excinfo:
         runner.invoke(app)
@@ -64,8 +65,7 @@ def test_forbid_annotated_param_and_default_param(param, param_info_type):
     app = cligenius.Cligenius()
 
     @app.command()
-    def cmd(my_param: Annotated[str, param()] = param("foo")):
-        ...  # pragma: no cover
+    def cmd(my_param: Annotated[str, param()] = param("foo")): ...  # pragma: no cover
 
     with pytest.raises(MixedAnnotatedAndDefaultStyleError) as excinfo:
         runner.invoke(app)
@@ -83,8 +83,7 @@ def test_forbid_multiple_cligenius_params_in_annotated():
     @app.command()
     def cmd(
         my_param: Annotated[str, cligenius.Argument(), cligenius.Argument()],
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(MultipleCligeniusAnnotationsError) as excinfo:
         runner.invoke(app)
@@ -121,8 +120,7 @@ def test_forbid_default_factory_and_default_value_in_annotated(param, param_info
     @app.command()
     def cmd(
         my_param: Annotated[str, param(default_factory=make_string)] = "hello",
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(DefaultFactoryAndDefaultValueError) as excinfo:
         runner.invoke(app)
@@ -171,8 +169,7 @@ def test_forbid_default_and_default_factory_with_default_param(param, param_info
     @app.command()
     def cmd(
         my_param: str = param("hi", default_factory=make_string),
-    ):
-        ...  # pragma: no cover
+    ): ...  # pragma: no cover
 
     with pytest.raises(DefaultFactoryAndDefaultValueError) as excinfo:
         runner.invoke(app)

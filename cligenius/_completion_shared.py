@@ -37,13 +37,13 @@ COMPLETION_SCRIPT_ZSH = """
 #compdef %(prog_name)s
 
 %(complete_func)s() {
-  eval $(env _CLIGENIUS_COMPLETE_ARGS="${words[1,$CURRENT]}" %(autocomplete_var)s=complete_zsh %(prog_name)s)
+  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" %(autocomplete_var)s=complete_zsh %(prog_name)s)
 }
 
 compdef %(complete_func)s %(prog_name)s
 """
 
-COMPLETION_SCRIPT_FISH = 'complete --command %(prog_name)s --no-files --arguments "(env %(autocomplete_var)s=complete_fish _CLIGENIUS_COMPLETE_FISH_ACTION=get-args _CLIGENIUS_COMPLETE_ARGS=(commandline -cp) %(prog_name)s)" --condition "env %(autocomplete_var)s=complete_fish _CLIGENIUS_COMPLETE_FISH_ACTION=is-args _CLIGENIUS_COMPLETE_ARGS=(commandline -cp) %(prog_name)s"'
+COMPLETION_SCRIPT_FISH = 'complete --command %(prog_name)s --no-files --arguments "(env %(autocomplete_var)s=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) %(prog_name)s)" --condition "env %(autocomplete_var)s=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) %(prog_name)s"'
 
 COMPLETION_SCRIPT_POWER_SHELL = """
 Import-Module PSReadLine
@@ -51,8 +51,8 @@ Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 $scriptblock = {
     param($wordToComplete, $commandAst, $cursorPosition)
     $Env:%(autocomplete_var)s = "complete_powershell"
-    $Env:_CLIGENIUS_COMPLETE_ARGS = $commandAst.ToString()
-    $Env:_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
+    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
+    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
     %(prog_name)s | ForEach-Object {
         $commandArray = $_ -Split ":::"
         $command = $commandArray[0]
@@ -61,8 +61,8 @@ $scriptblock = {
             $command, $command, 'ParameterValue', $helpString)
     }
     $Env:%(autocomplete_var)s = ""
-    $Env:_CLIGENIUS_COMPLETE_ARGS = ""
-    $Env:_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE = ""
+    $Env:_TYPER_COMPLETE_ARGS = ""
+    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
 }
 Register-ArgumentCompleter -Native -CommandName %(prog_name)s -ScriptBlock $scriptblock
 """
@@ -100,13 +100,13 @@ def install_bash(*, prog_name: str, complete_var: str, shell: str) -> Path:
     # It seems bash-completion is the official completion system for bash:
     # Ref: https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html
     # But installing in the locations from the docs doesn't seem to have effect
-    completion_path = Path.home() / f".bash_completions/{prog_name}.sh"
+    completion_path = Path.home() / ".bash_completions" / f"{prog_name}.sh"
     rc_path = Path.home() / ".bashrc"
     rc_path.parent.mkdir(parents=True, exist_ok=True)
     rc_content = ""
     if rc_path.is_file():
         rc_content = rc_path.read_text()
-    completion_init_lines = [f"source {completion_path}"]
+    completion_init_lines = [f"source '{completion_path}'"]
     for line in completion_init_lines:
         if line not in rc_content:  # pragma: no cover
             rc_content += f"\n{line}"
@@ -128,16 +128,16 @@ def install_zsh(*, prog_name: str, complete_var: str, shell: str) -> Path:
     zshrc_content = ""
     if zshrc_path.is_file():
         zshrc_content = zshrc_path.read_text()
-    completion_init_lines = [
-        "autoload -Uz compinit",
-        "compinit",
-        "zstyle ':completion:*' menu select",
-        "fpath+=~/.zfunc",
-    ]
-    for line in completion_init_lines:
-        if line not in zshrc_content:  # pragma: no cover
-            zshrc_content += f"\n{line}"
-    zshrc_content += "\n"
+    completion_line = "fpath+=~/.zfunc; autoload -Uz compinit; compinit"
+    if completion_line not in zshrc_content:
+        zshrc_content += f"\n{completion_line}\n"
+    style_line = "zstyle ':completion:*' menu select"
+    # TODO: consider setting the style only for the current program
+    # style_line = f"zstyle ':completion:*:*:{prog_name}:*' menu select"
+    # Install zstyle completion config only if the user doesn't have a customization
+    if "zstyle" not in zshrc_content:
+        zshrc_content += f"\n{style_line}\n"
+    zshrc_content = f"{zshrc_content.strip()}\n"
     zshrc_path.write_text(zshrc_content)
     # Install completion under ~/.zfunc/
     path_obj = Path.home() / f".zfunc/_{prog_name}"
@@ -212,9 +212,7 @@ def install(
     assert prog_name
     if complete_var is None:
         complete_var = "_{}_COMPLETE".format(prog_name.replace("-", "_").upper())
-    test_disable_detection = os.getenv(
-        "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION"
-    )
+    test_disable_detection = os.getenv("_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
     if shell is None and shellingham is not None and not test_disable_detection:
         shell, _ = shellingham.detect_shell()
     if shell == "bash":

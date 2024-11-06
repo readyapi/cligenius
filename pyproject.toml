@@ -7,7 +7,7 @@ name = "cligenius"
 dynamic = ["version"]
 description = "Cligenius, build great CLIs. Easy to code. Based on Python type hints."
 authors = [
-    {name = "KhulnaSoft DevOps", email = "info@khulnasoft.com"},
+    {name = "KhulnaSoft Ltd", email = "info@khulnasoft.com"},
 ]
 requires-python = ">=3.7"
 classifiers = [
@@ -38,8 +38,11 @@ dependencies = [
 ]
 readme = "README.md"
 [project.urls]
-Documentation = "https://cligenius.khulnasoft.com/"
-homepage = "https://github.com/khulnasoft/cligenius"
+Homepage = "https://github.com/readyapi/cligenius"
+Documentation = "https://cligenius.khulnasoft.com"
+Repository = "https://github.com/readyapi/cligenius"
+Issues = "https://github.com/readyapi/cligenius/issues"
+Changelog = "https://cligenius.khulnasoft.com/release-notes/"
 
 [project.optional-dependencies]
 standard = [
@@ -190,9 +193,6 @@ ignore = [
 "docs_src/prompt/tutorial003.py" = ["F841"]
 # Loop control variable `x` not used within loop body
 "docs_src/using_click/tutorial001.py" = ["B007"]
-
-# TODO: refactor _typing.py, remove unnecessary code
-"cligenius/_typing.py" = ["UP036", "F822"]
 
 [tool.ruff.lint.isort]
 known-third-party = ["cligenius", "click"]
