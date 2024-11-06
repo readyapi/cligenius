@@ -70,7 +70,7 @@ jobs:
         if: ( github.event_name != 'pull_request' || github.secret_source == 'Actions' )
         run: uv pip install -r requirements-docs-insiders.txt
         env:
-          TOKEN: ${{ secrets.TYPER_MKDOCS_MATERIAL_INSIDERS }}
+          TOKEN: ${{ secrets.ORG_REPO_TOKEN }}
       - uses: actions/cache@v4
         with:
           key: mkdocs-cards-${{ github.ref }}-v1

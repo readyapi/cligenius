@@ -37,13 +37,13 @@ COMPLETION_SCRIPT_ZSH = """
 #compdef %(prog_name)s
 
 %(complete_func)s() {
-  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" %(autocomplete_var)s=complete_zsh %(prog_name)s)
+  eval $(env _CLIGENIUS_COMPLETE_ARGS="${words[1,$CURRENT]}" %(autocomplete_var)s=complete_zsh %(prog_name)s)
 }
 
 compdef %(complete_func)s %(prog_name)s
 """
 
-COMPLETION_SCRIPT_FISH = 'complete --command %(prog_name)s --no-files --arguments "(env %(autocomplete_var)s=complete_fish _TYPER_COMPLETE_FISH_ACTION=get-args _TYPER_COMPLETE_ARGS=(commandline -cp) %(prog_name)s)" --condition "env %(autocomplete_var)s=complete_fish _TYPER_COMPLETE_FISH_ACTION=is-args _TYPER_COMPLETE_ARGS=(commandline -cp) %(prog_name)s"'
+COMPLETION_SCRIPT_FISH = 'complete --command %(prog_name)s --no-files --arguments "(env %(autocomplete_var)s=complete_fish _CLIGENIUS_COMPLETE_FISH_ACTION=get-args _CLIGENIUS_COMPLETE_ARGS=(commandline -cp) %(prog_name)s)" --condition "env %(autocomplete_var)s=complete_fish _CLIGENIUS_COMPLETE_FISH_ACTION=is-args _CLIGENIUS_COMPLETE_ARGS=(commandline -cp) %(prog_name)s"'
 
 COMPLETION_SCRIPT_POWER_SHELL = """
 Import-Module PSReadLine
@@ -51,8 +51,8 @@ Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
 $scriptblock = {
     param($wordToComplete, $commandAst, $cursorPosition)
     $Env:%(autocomplete_var)s = "complete_powershell"
-    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
+    $Env:_CLIGENIUS_COMPLETE_ARGS = $commandAst.ToString()
+    $Env:_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
     %(prog_name)s | ForEach-Object {
         $commandArray = $_ -Split ":::"
         $command = $commandArray[0]
@@ -61,8 +61,8 @@ $scriptblock = {
             $command, $command, 'ParameterValue', $helpString)
     }
     $Env:%(autocomplete_var)s = ""
-    $Env:_TYPER_COMPLETE_ARGS = ""
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
+    $Env:_CLIGENIUS_COMPLETE_ARGS = ""
+    $Env:_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE = ""
 }
 Register-ArgumentCompleter -Native -CommandName %(prog_name)s -ScriptBlock $scriptblock
 """
@@ -212,7 +212,9 @@ def install(
     assert prog_name
     if complete_var is None:
         complete_var = "_{}_COMPLETE".format(prog_name.replace("-", "_").upper())
-    test_disable_detection = os.getenv("_TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION")
+    test_disable_detection = os.getenv(
+        "_CLIGENIUS_COMPLETE_TEST_DISABLE_SHELL_DETECTION"
+    )
     if shell is None and shellingham is not None and not test_disable_detection:
         shell, _ = shellingham.detect_shell()
     if shell == "bash":

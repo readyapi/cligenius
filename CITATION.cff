@@ -8,8 +8,8 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: Sebastián
-    family-names: Ramírez
+  - given-names: Md
+    family-names: Sulaiman
     email: info@khulnasoft.com
 identifiers:
 repository-code: 'https://github.com/readyapi/cligenius'

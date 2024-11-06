@@ -69,7 +69,7 @@ class ZshComplete(click.shell_completion.ZshComplete):
         }
 
     def get_completion_args(self) -> Tuple[List[str], str]:
-        completion_args = os.getenv("_TYPER_COMPLETE_ARGS", "")
+        completion_args = os.getenv("_CLIGENIUS_COMPLETE_ARGS", "")
         cwords = click.parser.split_arg_string(completion_args)
         args = cwords[1:]
         if args and not completion_args.endswith(" "):
@@ -119,7 +119,7 @@ class FishComplete(click.shell_completion.FishComplete):
         }
 
     def get_completion_args(self) -> Tuple[List[str], str]:
-        completion_args = os.getenv("_TYPER_COMPLETE_ARGS", "")
+        completion_args = os.getenv("_CLIGENIUS_COMPLETE_ARGS", "")
         cwords = click.parser.split_arg_string(completion_args)
         args = cwords[1:]
         if args and not completion_args.endswith(" "):
@@ -143,7 +143,7 @@ class FishComplete(click.shell_completion.FishComplete):
             return f"{item.value}"
 
     def complete(self) -> str:
-        complete_action = os.getenv("_TYPER_COMPLETE_FISH_ACTION", "")
+        complete_action = os.getenv("_CLIGENIUS_COMPLETE_FISH_ACTION", "")
         args, incomplete = self.get_completion_args()
         completions = self.get_completions(args, incomplete)
         show_args = [self.format_completion(item) for item in completions]
@@ -172,8 +172,8 @@ class PowerShellComplete(click.shell_completion.ShellComplete):
         }
 
     def get_completion_args(self) -> Tuple[List[str], str]:
-        completion_args = os.getenv("_TYPER_COMPLETE_ARGS", "")
-        incomplete = os.getenv("_TYPER_COMPLETE_WORD_TO_COMPLETE", "")
+        completion_args = os.getenv("_CLIGENIUS_COMPLETE_ARGS", "")
+        incomplete = os.getenv("_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE", "")
         cwords = click.parser.split_arg_string(completion_args)
         args = cwords[1:-1] if incomplete else cwords[1:]
         return args, incomplete

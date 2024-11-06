@@ -17,12 +17,12 @@ def test_completion_zsh():
         env={
             **os.environ,
             "_TUTORIAL003_AN.PY_COMPLETE": "complete_zsh",
-            "_TYPER_COMPLETE_ARGS": "tutorial003_an.py --name Seb",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial003_an.py --name Sul",
         },
     )
     assert "Camila" not in result.stdout
     assert "Carlos" not in result.stdout
-    assert "Sebastian" in result.stdout
+    assert "Sulaiman" in result.stdout
 
 
 def test_completion_powershell():
@@ -33,13 +33,13 @@ def test_completion_powershell():
         env={
             **os.environ,
             "_TUTORIAL003_AN.PY_COMPLETE": "complete_powershell",
-            "_TYPER_COMPLETE_ARGS": "tutorial003.py --name Seb",
-            "_TYPER_COMPLETE_WORD_TO_COMPLETE": "Seb",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial003.py --name Sul",
+            "_CLIGENIUS_COMPLETE_WORD_TO_COMPLETE": "Sul",
         },
     )
     assert "Camila" not in result.stdout
     assert "Carlos" not in result.stdout
-    assert "Sebastian" in result.stdout
+    assert "Sulaiman" in result.stdout
 
 
 def test_1():

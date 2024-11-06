@@ -6,7 +6,7 @@ from rich.console import Console
 valid_completion_items = [
     ("Camila", "The reader of books."),
     ("Carlos", "The writer of scripts."),
-    ("Sebastian", "The type hints guy."),
+    ("Sulaiman", "The type hints guy."),
 ]
 
 err_console = Console(stderr=True)

@@ -17,12 +17,12 @@ def test_completion():
         env={
             **os.environ,
             "_TUTORIAL004_AN.PY_COMPLETE": "complete_zsh",
-            "_TYPER_COMPLETE_ARGS": "tutorial004_an_aux.py --name ",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial004_an_aux.py --name ",
         },
     )
     assert '"Camila":"The reader of books."' in result.stdout
     assert '"Carlos":"The writer of scripts."' in result.stdout
-    assert '"Sebastian":"The type hints guy."' in result.stdout
+    assert '"Sulaiman":"The type hints guy."' in result.stdout
 
 
 def test_1():

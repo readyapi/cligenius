@@ -66,7 +66,7 @@ def except_hook(
     exception_config: Union[DeveloperExceptionConfig, None] = getattr(
         exc_value, _cligenius_developer_exception_attr_name, None
     )
-    standard_traceback = os.getenv("_TYPER_STANDARD_TRACEBACK")
+    standard_traceback = os.getenv("_CLIGENIUS_STANDARD_TRACEBACK")
     if (
         standard_traceback
         or not exception_config

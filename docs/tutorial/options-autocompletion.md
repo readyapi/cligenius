@@ -102,7 +102,7 @@ And then we get those values when using completion:
 $ cligenius ./main.py run --name [TAB][TAB]
 
 // We get the values returned from the function 🎉
-Camila     Carlos     Sebastian
+Camila     Carlos     Sulaiman
 ```
 
 </div>
@@ -111,7 +111,7 @@ We got the basics working. Now let's improve it.
 
 ## Check the incomplete value
 
-Right now, we always return those values, even if users start typing `Sebast` and then hit <kbd>TAB</kbd>, they will also get the completion for `Camila` and `Carlos` (depending on the shell), while we should only get completion for `Sebastian`.
+Right now, we always return those values, even if users start typing `Sulaim` and then hit <kbd>TAB</kbd>, they will also get the completion for `Camila` and `Carlos` (depending on the shell), while we should only get completion for `Sulaiman`.
 
 But we can fix that so that it always works correctly.
 
@@ -154,7 +154,7 @@ Camila     Carlos
 
 </div>
 
-Now we are only returning the valid values, that start with `Ca`, we are no longer returning `Sebastian` as a completion option.
+Now we are only returning the valid values, that start with `Ca`, we are no longer returning `Sulaiman` as a completion option.
 
 /// tip
 
@@ -228,7 +228,7 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // We get the completion items with their help text 🎉
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sebastian  -- The type hints guy.
+Sulaiman  -- The type hints guy.
 ```
 
 </div>
@@ -322,10 +322,10 @@ And then we can use it like:
 <div class="termy">
 
 ```console
-$ cligenius ./main.py run --name Camila --name Sebastian
+$ cligenius ./main.py run --name Camila --name Sulaiman
 
 Hello Camila
-Hello Sebastian
+Hello Sulaiman
 ```
 
 </div>
@@ -380,17 +380,17 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // The first time we trigger completion, we get all the names
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sebastian  -- The type hints guy.
+Sulaiman  -- The type hints guy.
 
 // Add a name and trigger completion again
-$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sulaiman --name Ca[TAB][TAB]
 
 // Now we get completion only for the names we haven't used 🎉
 Camila  -- The reader of books.
 Carlos  -- The writer of scripts.
 
 // And if we add another of the available names:
-$ cligenius ./main.py run --name Sebastian --name Camila --name [TAB][TAB]
+$ cligenius ./main.py run --name Sulaiman --name Camila --name [TAB][TAB]
 
 // We get completion for the only available one
 Carlos  -- The writer of scripts.
@@ -487,7 +487,7 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // And then we see the actual completion
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sebastian  -- The type hints guy.
+Sulaiman  -- The type hints guy.
 ```
 
 </div>
@@ -539,12 +539,12 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // And then we see the actual completion
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sebastian  -- The type hints guy.
+Sulaiman  -- The type hints guy.
 
-$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sulaiman --name Ca[TAB][TAB]
 
 // Again, we see the raw CLI parameters
-['./main.py', 'run', '--name', 'Sebastian', '--name']
+['./main.py', 'run', '--name', 'Sulaiman', '--name']
 
 // And then we see the rest of the valid completion items
 Camila     -- The reader of books.

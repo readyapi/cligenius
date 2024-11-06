@@ -150,8 +150,8 @@ def test_completion_argument():
         env={
             **os.environ,
             "_COMPLETION_ARGUMENT.PY_COMPLETE": "complete_zsh",
-            "_TYPER_COMPLETE_ARGS": "completion_argument.py E",
-            "_TYPER_COMPLETE_TESTING": "True",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_argument.py E",
+            "_CLIGENIUS_COMPLETE_TESTING": "True",
         },
     )
     assert "Emma" in result.stdout or "_files" in result.stdout
@@ -169,7 +169,7 @@ def test_completion_untyped_parameters():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES.PY_COMPLETE": "complete_zsh",
-            "_TYPER_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types.py --name Sulaiman --name Ca",
         },
     )
     assert "info name is: completion_no_types.py" in result.stderr
@@ -195,7 +195,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES_ORDER.PY_COMPLETE": "complete_zsh",
-            "_TYPER_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types_order.py --name Sulaiman --name Ca",
         },
     )
     assert "info name is: completion_no_types_order.py" in result.stderr

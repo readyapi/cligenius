@@ -71,13 +71,13 @@ MAX_WIDTH = int(_TERMINAL_WIDTH) if _TERMINAL_WIDTH else None
 COLOR_SYSTEM: Optional[Literal["auto", "standard", "256", "truecolor", "windows"]] = (
     "auto"  # Set to None to disable colors
 )
-_TYPER_FORCE_DISABLE_TERMINAL = getenv("_TYPER_FORCE_DISABLE_TERMINAL")
+_CLIGENIUS_FORCE_DISABLE_TERMINAL = getenv("_CLIGENIUS_FORCE_DISABLE_TERMINAL")
 FORCE_TERMINAL = (
     True
     if getenv("GITHUB_ACTIONS") or getenv("FORCE_COLOR") or getenv("PY_COLORS")
     else None
 )
-if _TYPER_FORCE_DISABLE_TERMINAL:
+if _CLIGENIUS_FORCE_DISABLE_TERMINAL:
     FORCE_TERMINAL = False
 
 # Fixed strings
