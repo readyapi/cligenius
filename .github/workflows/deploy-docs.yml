@@ -23,11 +23,14 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      
       - uses: actions/checkout@v4
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      
       - name: Setup uv
         uses: astral-sh/setup-uv@v3
         with:
@@ -36,8 +39,10 @@ jobs:
           cache-dependency-glob: |
             requirements**.txt
             pyproject.toml
+      
       - name: Install GitHub Actions dependencies
         run: uv pip install -r requirements-github-actions.txt
+      
       - name: Deploy Docs Status Pending
         run: python ./scripts/deploy_docs_status.py
         env:
@@ -49,6 +54,7 @@ jobs:
         run: |
           rm -rf ./site
           mkdir ./site
+      
       - uses: actions/download-artifact@v4
         with:
           path: ./site/
@@ -56,23 +62,19 @@ jobs:
           merge-multiple: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
-      - name: Deploy to Cloudflare Pages
-        # hashFiles returns an empty string if there are no files
+      
+      - name: Deploy to GitHub Pages
         if: hashFiles('./site/*')
-        id: deploy
-        env:
-          PROJECT_NAME: cligeniuskhulnasoft
-          BRANCH: ${{ ( github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'master' && 'main' ) || ( github.event.workflow_run.head_sha ) }}
-        uses: cloudflare/wrangler-action@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./site --project-name=${{ env.PROJECT_NAME }} --branch=${{ env.BRANCH }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+
       - name: Comment Deploy
         run: python ./scripts/deploy_docs_status.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
+          DEPLOY_URL: "https://${{ github.repository_owner }}.github.io/${{ github.repository }}"
           COMMIT_SHA: ${{ github.event.workflow_run.head_sha }}
           RUN_ID: ${{ github.run_id }}
           IS_DONE: "true"
