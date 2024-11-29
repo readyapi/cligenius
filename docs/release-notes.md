@@ -2,6 +2,10 @@
 
 ## Latest Changes
 
+### Refactors
+
+* 👷 Use uv in CI. PR [#121](https://github.com/readyapi/cligenius/pull/121) by [@NxPKG](https://github.com/NxPKG).
+
 ### Internal
 
 * ⬆ Bump ruff from 0.8.0 to 0.8.1. PR [#1066](https://github.com/readyapi/cligenius/pull/1066) by [@dependabot[bot]](https://github.com/apps/dependabot).
