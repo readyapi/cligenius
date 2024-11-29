@@ -15,6 +15,8 @@ from cligenius.main import solve_cligenius_info_defaults, solve_cligenius_info_h
 from cligenius.models import CligeniusInfo, ParameterInfo
 from cligenius.testing import CliRunner
 
+from .utils import requires_completion_permission
+
 runner = CliRunner()
 
 
@@ -74,6 +76,7 @@ def test_valid_parser_permutations():
     ParameterInfo(click_type=CustomClickParser())
 
 
+@requires_completion_permission
 def test_install_invalid_shell():
     app = cligenius.Cligenius()
 
@@ -169,7 +172,7 @@ def test_completion_untyped_parameters():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types.py --name Sulaiman --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types.py" in result.stderr
@@ -195,7 +198,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES_ORDER.PY_COMPLETE": "complete_zsh",
-            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types_order.py --name Sulaiman --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types_order.py" in result.stderr

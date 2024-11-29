@@ -9,7 +9,7 @@ def old_callback():
     """
 
 
-users_app = cligenius.Cligenius(callback=old_callback)
+users_app = cligenius.Cligenius(callback=old_callback, name="users")
 
 
 def new_users():
@@ -18,7 +18,7 @@ def new_users():
     """
 
 
-app.add_cligenius(users_app, callback=new_users)
+app.add_cligenius(users_app, callback=new_users, name="new-users")
 
 
 @users_app.callback()

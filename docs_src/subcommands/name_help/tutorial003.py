@@ -9,7 +9,7 @@ def users():
     """
 
 
-users_app = cligenius.Cligenius(callback=users)
+users_app = cligenius.Cligenius(callback=users, name="users")
 app.add_cligenius(users_app)
 
 

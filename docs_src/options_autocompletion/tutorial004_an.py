@@ -4,7 +4,7 @@ from typing_extensions import Annotated
 valid_completion_items = [
     ("Camila", "The reader of books."),
     ("Carlos", "The writer of scripts."),
-    ("Sulaiman", "The type hints guy."),
+    ("Sebastian", "The type hints guy."),
 ]
 
 

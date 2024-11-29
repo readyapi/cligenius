@@ -3,7 +3,7 @@ import cligenius
 app = cligenius.Cligenius()
 
 users_app = cligenius.Cligenius()
-app.add_cligenius(users_app)
+app.add_cligenius(users_app, name="users")
 
 
 @users_app.callback()

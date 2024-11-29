@@ -20,7 +20,7 @@
 
 ---
 
-**Documentation**: <a href="https://cligenius.khulnasoftft.com" target="_blank">https://typekhulnasoftsoft.com/tutorial/cligenius-command/</a>
+**Documentation**: <a href="https://cligenius.khulnasoft.com" target="_blank">https://cligenius.khulnasoft.com/tutorial/cligenius-command/</a>
 
 **Source Code**: <a href="https://github.com/readyapi/cligenius" target="_blank">https://github.com/readyapi/cligenius</a>
 

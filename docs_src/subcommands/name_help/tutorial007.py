@@ -10,7 +10,7 @@ def old_callback():
 
 
 users_app = cligenius.Cligenius(
-    callback=old_callback, name="exp-users", help="Explicit help."
+    callback=old_callback, name="users", help="Explicit help."
 )
 
 
@@ -23,7 +23,7 @@ def new_users():
 app.add_cligenius(users_app, callback=new_users)
 
 
-@users_app.callback("call-users", help="Help from callback for users.")
+@users_app.callback(help="Help from callback for users.")
 def users():
     """
     Manage users in the app.
