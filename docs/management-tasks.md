@@ -47,15 +47,15 @@ For conversations that are more difficult, for example to reject a PR, you can a
 * Try to make the title descriptive about what it achieves. If it's a feature, try to describe it, for example `Add support for teleporting` instead of `Create TeleportAdapter class`.
 * Do not finish the title with a period (`.`).
 
-Once the PR is merged, a GitHub Action (<a href="https://github.com/khulnasoftft/latest-changes" class="external-link" target="_blank">latest-changes</a>) will use the PR title to update the latest changes automatically.
+Once the PR is merged, a GitHub Action (<a href="https://github.com/khulnasoft/latest-changes" class="external-link" target="_blank">latest-changes</a>) will use the PR title to update the latest changes automatically.
 
 So, having a nice PR title will not only look nice in GitHub, but also in the release notes. 📝
 
 ## Add Labels to PRs
 
-The same GitHub Action <a href="https://github.com/khulnasoftft/latest-changes" class="external-link" target="_blank">latest-changes</a> uses one label in the PR to decide the section in the release notes to put this PR in.
+The same GitHub Action <a href="https://github.com/khulnasoft/latest-changes" class="external-link" target="_blank">latest-changes</a> uses one label in the PR to decide the section in the release notes to put this PR in.
 
-Make sure you use a supported label from the <a href="https://github.com/khulnasoftft/latest-changes#using-labels" class="external-link" target="_blank">latest-changes list of labels</a>:
+Make sure you use a supported label from the <a href="https://github.com/khulnasoft/latest-changes#using-labels" class="external-link" target="_blank">latest-changes list of labels</a>:
 
 * `breaking`: Breaking Changes
     * Existing code will break if they update the version without changing their code. This rarely happens, so this label is not frequently used.

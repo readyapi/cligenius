@@ -1,6 +1,6 @@
 import cligenius
 
-valid_names = ["Camila", "Carlos", "Sulaiman"]
+valid_names = ["Camila", "Carlos", "Sebastian"]
 
 
 def complete_name(incomplete: str):

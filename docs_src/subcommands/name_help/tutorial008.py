@@ -28,7 +28,7 @@ app.add_cligenius(
 )
 
 
-@users_app.callback("call-users", help="Help from callback for users.")
+@users_app.callback(help="Help from callback for users.")
 def users():
     """
     Manage users in the app.

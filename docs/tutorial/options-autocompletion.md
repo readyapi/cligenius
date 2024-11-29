@@ -16,27 +16,7 @@ To check it quickly without creating a new Python package, use the `cligenius` c
 
 Then let's create small example program:
 
-//// tab | Python 3.7+
-
-```Python
-{!> ../docs_src/options_autocompletion/tutorial001_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python
-{!> ../docs_src/options_autocompletion/tutorial001.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial001_an.py *}
 
 And let's try it with the `cligenius` command to get completion:
 
@@ -70,27 +50,7 @@ Right now we get completion for the *CLI option* names, but not for the values.
 
 We can provide completion for the values creating an `autocompletion` function, similar to the `callback` functions from [CLI Option Callback and Context](./options/callback-and-context.md){.internal-link target=_blank}:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="5-6  15"
-{!> ../docs_src/options_autocompletion/tutorial002_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="4-5  14"
-{!> ../docs_src/options_autocompletion/tutorial002.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial002_an.py hl[5:6,15] *}
 
 We return a `list` of strings from the `complete_name()` function.
 
@@ -102,7 +62,7 @@ And then we get those values when using completion:
 $ cligenius ./main.py run --name [TAB][TAB]
 
 // We get the values returned from the function 🎉
-Camila     Carlos     Sulaiman
+Camila     Carlos     Sebastian
 ```
 
 </div>
@@ -111,7 +71,7 @@ We got the basics working. Now let's improve it.
 
 ## Check the incomplete value
 
-Right now, we always return those values, even if users start typing `Sulaim` and then hit <kbd>TAB</kbd>, they will also get the completion for `Camila` and `Carlos` (depending on the shell), while we should only get completion for `Sulaiman`.
+Right now, we always return those values, even if users start typing `Sebast` and then hit <kbd>TAB</kbd>, they will also get the completion for `Camila` and `Carlos` (depending on the shell), while we should only get completion for `Sebastian`.
 
 But we can fix that so that it always works correctly.
 
@@ -119,27 +79,7 @@ Modify the `complete_name()` function to receive a parameter of type `str`, it w
 
 Then we can check and return only the values that start with the incomplete value from the command line:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="7-12"
-{!> ../docs_src/options_autocompletion/tutorial003_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="6-11"
-{!> ../docs_src/options_autocompletion/tutorial003.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial003_an.py hl[7:12] *}
 
 Now let's try it:
 
@@ -154,7 +94,7 @@ Camila     Carlos
 
 </div>
 
-Now we are only returning the valid values, that start with `Ca`, we are no longer returning `Sulaiman` as a completion option.
+Now we are only returning the valid values, that start with `Ca`, we are no longer returning `Sebastian` as a completion option.
 
 /// tip
 
@@ -178,27 +118,7 @@ In the `complete_name()` function, instead of providing one `str` per completion
 
 So, in the end, we return a `list` of `tuples` of `str`:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="4-8  11-17"
-{!> ../docs_src/options_autocompletion/tutorial004_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="3-7  10-16"
-{!> ../docs_src/options_autocompletion/tutorial004.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial004_an.py hl[4:8,11:17] *}
 
 /// tip
 
@@ -228,7 +148,7 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // We get the completion items with their help text 🎉
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sulaiman  -- The type hints guy.
+Sebastian  -- The type hints guy.
 ```
 
 </div>
@@ -239,27 +159,7 @@ Instead of creating and returning a list with values (`str` or `tuple`), we can 
 
 That way our function will be a <a href="https://docs.python.org/3.8/glossary.html#index-19" class="external-link" target="_blank">generator</a> that **Cligenius** (actually Click) can iterate:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="11-14"
-{!> ../docs_src/options_autocompletion/tutorial005_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="10-13"
-{!> ../docs_src/options_autocompletion/tutorial005.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial005_an.py hl[11:14] *}
 
 That simplifies our code a bit and works the same.
 
@@ -295,37 +195,17 @@ So, for now, take this as a sneak peek 😉.
 
 For this we use a `List` of `str`:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="9-14"
-{!> ../docs_src/options_autocompletion/tutorial006_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="8-11"
-{!> ../docs_src/options_autocompletion/tutorial006.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial006_an.py hl[9:14] *}
 
 And then we can use it like:
 
 <div class="termy">
 
 ```console
-$ cligenius ./main.py run --name Camila --name Sulaiman
+$ cligenius ./main.py run --name Camila --name Sebastian
 
 Hello Camila
-Hello Sulaiman
+Hello Sebastian
 ```
 
 </div>
@@ -340,27 +220,7 @@ But you can access the context by declaring a function parameter of type `cligen
 
 And from that context you can get the current values for each parameter.
 
-//// tab | Python 3.7+
-
-```Python hl_lines="13-14  16"
-{!> ../docs_src/options_autocompletion/tutorial007_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="12-13  15"
-{!> ../docs_src/options_autocompletion/tutorial007.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial007_an.py hl[13:14,16] *}
 
 We are getting the `names` already provided with `--name` in the command line before this completion was triggered.
 
@@ -380,17 +240,17 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // The first time we trigger completion, we get all the names
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sulaiman  -- The type hints guy.
+Sebastian  -- The type hints guy.
 
 // Add a name and trigger completion again
-$ cligenius ./main.py run --name Sulaiman --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
 
 // Now we get completion only for the names we haven't used 🎉
 Camila  -- The reader of books.
 Carlos  -- The writer of scripts.
 
 // And if we add another of the available names:
-$ cligenius ./main.py run --name Sulaiman --name Camila --name [TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Camila --name [TAB][TAB]
 
 // We get completion for the only available one
 Carlos  -- The writer of scripts.
@@ -436,27 +296,7 @@ You can print to "standard error" with a **Rich** `Console(stderr=True)`.
 
 Using `stderr=True` tells **Rich** that the output should be shown in "standard error".
 
-//// tab | Python 3.7+
-
-```Python hl_lines="13  16-17"
-{!> ../docs_src/options_autocompletion/tutorial008_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="12  15-16"
-{!> ../docs_src/options_autocompletion/tutorial008.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial008_an.py hl[13,16:17] *}
 
 /// info
 
@@ -487,7 +327,7 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // And then we see the actual completion
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sulaiman  -- The type hints guy.
+Sebastian  -- The type hints guy.
 ```
 
 </div>
@@ -504,27 +344,7 @@ But it's probably useful only in very advanced use cases.
 
 Of course, you can declare everything if you need it, the context, the raw *CLI parameters*, and the incomplete `str`:
 
-//// tab | Python 3.7+
-
-```Python hl_lines="16"
-{!> ../docs_src/options_autocompletion/tutorial009_an.py!}
-```
-
-////
-
-//// tab | Python 3.7+ non-Annotated
-
-/// tip
-
-Prefer to use the `Annotated` version if possible.
-
-///
-
-```Python hl_lines="15"
-{!> ../docs_src/options_autocompletion/tutorial009.py!}
-```
-
-////
+{* docs_src/options_autocompletion/tutorial009_an.py hl[16] *}
 
 Check it:
 
@@ -539,12 +359,12 @@ $ cligenius ./main.py run --name [TAB][TAB]
 // And then we see the actual completion
 Camila     -- The reader of books.
 Carlos     -- The writer of scripts.
-Sulaiman  -- The type hints guy.
+Sebastian  -- The type hints guy.
 
-$ cligenius ./main.py run --name Sulaiman --name Ca[TAB][TAB]
+$ cligenius ./main.py run --name Sebastian --name Ca[TAB][TAB]
 
 // Again, we see the raw CLI parameters
-['./main.py', 'run', '--name', 'Sulaiman', '--name']
+['./main.py', 'run', '--name', 'Sebastian', '--name']
 
 // And then we see the rest of the valid completion items
 Camila     -- The reader of books.

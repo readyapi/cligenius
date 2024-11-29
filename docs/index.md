@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://cligenius.khulnasoft.com"><img src="https://cligenius.khulnasoft.com/img/logo-margin/logo-margin-vector.svg#only-light" alt="Cligenius"></a>
 <!-- only-mkdocs -->
-  <a href="https://cligenius.khulnasoftft.com"><img src="img/logo-margin/logo-margin-white-vector.svg#only-dark" alt="Cligenius"></a>
+  <a href="https://cligenius.khulnasoft.com"><img src="img/logo-margin/logo-margin-white-vector.svg#only-dark" alt="Cligenius"></a>
 <!-- /only-mkdocs -->
 </p>
 <p align="center">
@@ -27,7 +27,7 @@
 
 ---
 
-**Documentation**: <a href="https://cligenius.khulnasoftft.com" target="_blank">https://typekhulnasoftsoft.com</a>
+**Documentation**: <a href="https://cligenius.khulnasoft.com" target="_blank">https://cligenius.khulnasoft.com</a>
 
 **Source Code**: <a href="https://github.com/readyapi/cligenius" target="_blank">https://github.com/readyapi/cligenius</a>
 
@@ -48,11 +48,11 @@ The key features are:
 
 ## ReadyAPI of CLIs
 
-**Cligenius** is <a href="https://readyapi.khulnasoftft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
+**Cligenius** is <a href="https://readyapi.khulnasoft.com" class="external-link" target="_blank">ReadyAPI</a>'s little sibling, it's the ReadyAPI of CLIs.
 
 ## Installation
 
-Create and activate a <a href="https://cligenius.khulnasoftft.com/virtual-environments/" class="external-link" target="_blank">virtual environment</a> and then install **Cligenius**:
+Create and activate a <a href="https://cligenius.khulnasoft.com/virtual-environments/" class="external-link" target="_blank">virtual environment</a> and then install **Cligenius**:
 
 <div class="termy">
 
@@ -352,7 +352,7 @@ And similarly for **files**, **paths**, **enums** (choices), etc. And there are 
 
 **Your users get**: automatic **`--help`**, **auto-completion** in their terminal (Bash, Zsh, Fish, PowerShell) when they install your package or when using the `cligenius` command.
 
-For a more complete example including more features, see the <a href="https://cligenius.khulnasoftft.com/tutorial/">Tutorial - User Guide</a>.
+For a more complete example including more features, see the <a href="https://cligenius.khulnasoft.com/tutorial/">Tutorial - User Guide</a>.
 
 ## Dependencies
 

@@ -1,7 +1,7 @@
 import cligenius
 from typing_extensions import Annotated
 
-valid_names = ["Camila", "Carlos", "Sulaiman"]
+valid_names = ["Camila", "Carlos", "Sebastian"]
 
 
 def complete_name(incomplete: str):

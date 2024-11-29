@@ -96,7 +96,7 @@ Provide auto completion for all the shells.
 
 ### <a href="https://readyapi.khulnasoft.com/" class="external-link" target="_blank">ReadyAPI</a>
 
-I created **ReadyAPI** to provide an easy way to build APIs with autocompletion for everything in the code (and some other <a href="https://readyapi.khulnasoftft.com/features/" class="external-link" target="_blank">features</a>).
+I created **ReadyAPI** to provide an easy way to build APIs with autocompletion for everything in the code (and some other <a href="https://readyapi.khulnasoft.com/features/" class="external-link" target="_blank">features</a>).
 
 **Cligenius** is the "ReadyAPI of CLIs".
 

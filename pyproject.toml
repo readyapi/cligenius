@@ -7,7 +7,7 @@ name = "cligenius"
 dynamic = ["version"]
 description = "Cligenius, build great CLIs. Easy to code. Based on Python type hints."
 authors = [
-    {name = "KhulnaSoft Ltd", email = "info@khulnasoft.com"},
+    {name = "KhulnaSoft Ltd", email = "dev.sulaiman@icloud.com"},
 ]
 requires-python = ">=3.7"
 classifiers = [

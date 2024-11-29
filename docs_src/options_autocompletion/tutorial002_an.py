@@ -3,7 +3,7 @@ from typing_extensions import Annotated
 
 
 def complete_name():
-    return ["Camila", "Carlos", "Sulaiman"]
+    return ["Camila", "Carlos", "Sebastian"]
 
 
 app = cligenius.Cligenius()

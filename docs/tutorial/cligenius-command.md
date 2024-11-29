@@ -241,9 +241,7 @@ You can also use the `cligenius` command to generate Markdown documentation for 
 
 For example, you could have a script like:
 
-```Python
-{!../docs_src/commands/help/tutorial001.py!}
-```
+{* docs_src/commands/help/tutorial001.py *}
 
 ### Generate docs with the `cligenius` command
 

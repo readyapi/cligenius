@@ -40,21 +40,21 @@ You can connect with <a href="https://khulnasoft.com" class="external-link" targ
 
 You can:
 
-* <a href="https://github.com/khulnasoftft" class="external-link" target="_blank">Follow me on **GitHub**</a>.
+* <a href="https://github.com/khulnasoft" class="external-link" target="_blank">Follow me on **GitHub**</a>.
     * See other Open Source projects I have created that could help you.
     * Follow me to see when I create a new Open Source project.
-* <a href="https://twitter.com/khulnasoftft" class="external-link" target="_blank">Follow me on **Twitter**</a>.
+* <a href="https://twitter.com/khulnasoft" class="external-link" target="_blank">Follow me on **Twitter**</a>.
     * Tell me how you use Cligenius (I love to hear that).
     * Hear when I make announcements or release new tools.
-* <a href="https://www.linkedin.com/in/khulnasoftft/" class="external-link" target="_blank">Connect with me on **Linkedin**</a>.
+* <a href="https://www.linkedin.com/in/khulnasoft/" class="external-link" target="_blank">Connect with me on **Linkedin**</a>.
     * Hear when I make announcements or release new tools (although I use Twitter more often 🤷‍♂).
-* Read what I write (or follow me) on <a href="https://dev.to/khulnasoftft" class="external-link" target="_blank">**Dev.to**</a> or <a href="https://medium.comkhulnasoftsoft" class="external-link" target="_blank">**Medium**</a>.
+* Read what I write (or follow me) on <a href="https://dev.to/khulnasoft" class="external-link" target="_blank">**Dev.to**</a> or <a href="https://medium.com/@khulnasoft" class="external-link" target="_blank">**Medium**</a>.
     * Read other ideas, articles, and read about tools I have created.
     * Follow me to read when I publish something new.
 
 ## Tweet about **Cligenius**
 
-<a href="https://twitter.com/compose/tweet?text=I'm loving Cligenius because... https://github.com/readyapi/cligenius cc @khulnasoftft" class="external-link" target="_blank">Tweet about **Cligenius**</a> and let me and others know why you like it.
+<a href="https://twitter.com/compose/tweet?text=I'm loving Cligenius because... https://github.com/readyapi/cligenius cc @khulnasoft" class="external-link" target="_blank">Tweet about **Cligenius**</a> and let me and others know why you like it.
 
 I love to hear about how **Cligenius** is being used, what have you liked in it, in which project/company you are using it, etc.
 
@@ -232,7 +232,7 @@ On the other side, there are thousands of users in the chat, so there's a high c
 
 ## Sponsor the author
 
-You can also financially support the author (me) through <a href="https://github.com/sponsors/khulnasoftft" class="external-link" target="_blank">GitHub sponsors</a>.
+You can also financially support the author (me) through <a href="https://github.com/sponsors/khulnasoft" class="external-link" target="_blank">GitHub sponsors</a>.
 
 There you could buy me a coffee ☕️ to say thanks. 😄
 

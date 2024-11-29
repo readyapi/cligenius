@@ -10,7 +10,7 @@ type: software
 authors:
   - given-names: Md
     family-names: Sulaiman
-    email: info@khulnasoft.com
+    email: dev.sulaiman@icloud.com
 identifiers:
 repository-code: 'https://github.com/readyapi/cligenius'
 url: 'https://cligenius.khulnasoft.com'
