@@ -1,10 +1,10 @@
-import types
+import cligenius
 
-app = types.Types()
-items_app = types.Types()
-app.add_types(items_app, name="items")
-users_app = types.Types()
-app.add_types(users_app, name="users")
+app = cligenius.Cligenius()
+items_app = cligenius.Cligenius()
+app.add_cligenius(items_app, name="items")
+users_app = cligenius.Cligenius()
+app.add_cligenius(users_app, name="users")
 
 
 @items_app.command("create")

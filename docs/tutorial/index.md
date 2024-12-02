@@ -1,4 +1,12 @@
-## Python types
+# Learn
+
+Learn how to use **Cligenius** in this step-by-step **Tutorial** - **User Guide**.
+
+It covers everything you need to know from the **simplest scripts** to **complex CLI applications**.
+
+You could consider this a **book**, a **course**, the **official** and recommended way to learn **Cligenius**. 😎
+
+## Python Types
 
 If you need a refresher about how to use Python type hints, check the first part of <a href="https://readyapi.khulnasoft.com/python-types/" class="external-link" target="_blank">ReadyAPI's Python types intro</a>.
 
@@ -13,7 +21,7 @@ def type_example(name: str, formal: bool = False, intro: Optional[str] = None):
     pass
 ```
 
-And your editor (and **Types**) will know that:
+And your editor (and **Cligenius**) will know that:
 
 * `name` is of type `str` and is a required parameter.
 * `formal` is a `bool` and is by default `False`.
@@ -21,19 +29,17 @@ And your editor (and **Types**) will know that:
 
 These type hints are what give you autocomplete in your editor and several other features.
 
-**Types** is based on these type hints.
+**Cligenius** is based on these type hints.
 
-## Intro
+## About this Tutorial
 
-This tutorial shows you how to use **Types** with all its features, step by step.
+This tutorial shows you how to use **Cligenius** with all its features, step by step.
 
 Each section gradually builds on the previous ones, but it's structured to separate topics, so that you can go directly to any specific one to solve your specific CLI needs.
 
-It is also built to work as a future reference.
+It is also built to work as a future reference so you can come back and see exactly what you need.
 
-So you can come back and see exactly what you need.
-
-## Run the code
+## Run the Code
 
 All the code blocks can be copied and used directly (they are tested Python files).
 
@@ -51,39 +57,8 @@ $ python main.py
 
 It is **HIGHLY encouraged** that you write or copy the code, edit it and run it locally.
 
-Using it in your editor is what really shows you the benefits of **Types**, seeing how little code you have to write, all the type checks, autocompletion, etc.
+Using it in your editor is what really shows you the benefits of **Cligenius**, seeing how little code you have to write, all the **inline errors**, **autocompletion**, etc.
 
-And running the examples is what will really help you understand what is going on.
+And running the examples is what will really help you **understand** what is going on.
 
-You can learn a lot more by running some examples and playing around with them than by reading all the docs here.
-
----
-
-## Install **Types**
-
-The first step is to install **Types**:
-
-<div class="termy">
-
-```console
-$ pip install types
----> 100%
-Successfully installed types click shellingham rich
-```
-
-</div>
-
-By default, `types` comes with `rich` and `shellingham`.
-
-!!! note
-    If you are an advanced user and want to opt out of these default extra dependencies, you can instead install `types-slim`.
-
-    ```bash
-    pip install types
-    ```
-
-    ...includes the same optional dependencies as:
-
-    ```bash
-    pip install "types-slim[standard]"
-    ```
+You can learn a lot more by **running some examples** and **playing around** with them than by reading all the docs here.

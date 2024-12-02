@@ -1,5 +1,5 @@
 import click
-import types
+import cligenius
 
 
 @click.group()
@@ -17,20 +17,20 @@ def dropdb():
     click.echo("Dropped the database")
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def sub():
     """
-    A single-command Types sub app
+    A single-command Cligenius sub app
     """
-    print("Types is now below Click, the Click app is the top level")
+    print("Cligenius is now below Click, the Click app is the top level")
 
 
-types_click_object = types.main.get_command(app)
+cligenius_click_object = cligenius.main.get_command(app)
 
-cli.add_command(types_click_object, "sub")
+cli.add_command(cligenius_click_object, "sub")
 
 if __name__ == "__main__":
     cli()

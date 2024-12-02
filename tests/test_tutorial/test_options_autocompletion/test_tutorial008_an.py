@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from docs_src.options_autocompletion import tutorial008_an as mod
 
@@ -17,7 +17,7 @@ def test_completion():
         env={
             **os.environ,
             "_TUTORIAL008_AN.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "tutorial008_an.py --name ",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial008_an.py --name ",
         },
     )
     assert '"Camila":"The reader of books."' in result.stdout

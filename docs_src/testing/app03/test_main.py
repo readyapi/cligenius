@@ -1,9 +1,9 @@
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from .main import main
 
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(main)
 
 runner = CliRunner()

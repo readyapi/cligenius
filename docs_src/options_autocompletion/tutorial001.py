@@ -1,10 +1,10 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
-def main(name: str = types.Option("World", help="The name to say hi to.")):
+def main(name: str = cligenius.Option("World", help="The name to say hi to.")):
     print(f"Hello {name}")
 
 

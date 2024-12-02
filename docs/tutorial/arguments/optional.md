@@ -1,3 +1,5 @@
+# Optional CLI Arguments
+
 We said before that *by default*:
 
 * *CLI options* are **optional**
@@ -18,7 +20,7 @@ As an example of how it could be useful, let's see how the `ls` CLI program work
 $ ls
 
 // ls will "list" the files and directories in the current directory
-types  tests  README.md  LICENSE
+cligenius  tests  README.md  LICENSE
 
 // But it also receives an optional CLI argument
 $ ls ./tests/
@@ -33,23 +35,22 @@ __init__.py  test_tutorial
 
 In the [First Steps](../first-steps.md#add-a-cli-argument){.internal-link target=_blank} you saw how to add a *CLI argument*:
 
-```Python hl_lines="4"
-{!../docs_src/first_steps/tutorial002.py!}
-```
+{* docs_src/first_steps/tutorial002.py hl[4] *}
 
 Now let's see an alternative way to create the same *CLI argument*:
 
 
-```Python hl_lines="5"
-{!> ../docs_src/arguments/optional/tutorial001_an.py!}
-```
+{* docs_src/arguments/optional/tutorial001_an.py hl[5] *}
 
-!!! info
-    Types added support for `Annotated` (and started recommending it) in version 0.9.0.
+/// info
 
-    If you have an older version, you would get errors when trying to use `Annotated`.
+Cligenius added support for `Annotated` (and started recommending it) in version 0.9.0.
 
-    Make sure you upgrade the Types version to at least 0.9.0 before using `Annotated`.
+If you have an older version, you would get errors when trying to use `Annotated`.
+
+Make sure you upgrade the Cligenius version to at least 0.9.0 before using `Annotated`.
+
+///
 
 Before, you had this function parameter:
 
@@ -65,10 +66,10 @@ name: Annotated[str]
 
 Both of these versions mean the same thing, `Annotated` is part of standard Python and is there for this.
 
-But the second version using `Annotated` allows us to pass additional metadata that can be used by **Types**:
+But the second version using `Annotated` allows us to pass additional metadata that can be used by **Cligenius**:
 
 ```Python
-name: Annotated[str, types.Argument()]
+name: Annotated[str, cligenius.Argument()]
 ```
 
 Now we are being explicit that `name` is a *CLI argument*. It's still a `str` and it's still required (it doesn't have a default value).
@@ -93,7 +94,7 @@ It's still not very useful, but it works correctly.
 And being able to declare a **required** *CLI argument* using
 
 ```Python
-name: Annotated[str, types.Argument()]
+name: Annotated[str, cligenius.Argument()]
 ```
 
 ...that works exactly the same as
@@ -108,22 +109,23 @@ name: str
 
 Now, finally what we came for, an optional *CLI argument*.
 
-To make a *CLI argument* optional, use `types.Argument()` and pass a different "default" as the first parameter to `types.Argument()`, for example `None`:
+To make a *CLI argument* optional, use `cligenius.Argument()` and pass a different "default" as the first parameter to `cligenius.Argument()`, for example `None`:
 
-```Python hl_lines="7"
-{!../docs_src/arguments/optional/tutorial002_an.py!}
-```
+{* docs_src/arguments/optional/tutorial002_an.py hl[7] *}
 
 Now we have:
 
 ```Python
-name: Annotated[Optional[str], types.Argument()] = None
+name: Annotated[Optional[str], cligenius.Argument()] = None
 ```
 
-Because we are using `types.Argument()` **Types** will know that this is a *CLI argument* (no matter if *required* or *optional*).
+Because we are using `cligenius.Argument()` **Cligenius** will know that this is a *CLI argument* (no matter if *required* or *optional*).
 
-!!! tip
-    By using `Optional` your editor will be able to know that the value *could* be `None`, and will be able to warn you if you do something assuming it is a `str` that would break if it was `None`.
+/// tip
+
+By using `Optional` your editor will be able to know that the value *could* be `None`, and will be able to warn you if you do something assuming it is a `str` that would break if it was `None`.
+
+///
 
 Check the help:
 
@@ -144,10 +146,13 @@ Options:
 
 </div>
 
-!!! tip
-    Notice that `NAME` is still a *CLI argument*, it's shown up there in the "`Usage: main.py` ...".
+/// tip
 
-    Also notice that now `[NAME]` has brackets ("`[`" and "`]`") around (before it was just `NAME`) to denote that it's **optional**, not **required**.
+Notice that `NAME` is still a *CLI argument*, it's shown up there in the "`Usage: main.py` ...".
+
+Also notice that now `[NAME]` has brackets ("`[`" and "`]`") around (before it was just `NAME`) to denote that it's **optional**, not **required**.
+
+///
 
 Now run it and test it:
 
@@ -167,67 +172,70 @@ Hello Camila
 
 </div>
 
-!!! tip
-    Notice that "`Camila`" here is an optional *CLI argument*, not a *CLI option*, because we didn't use something like "`--name Camila`", we just passed "`Camila`" directly to the program.
+/// tip
 
-## Alternative (old) `types.Argument()` as the default value
+Notice that "`Camila`" here is an optional *CLI argument*, not a *CLI option*, because we didn't use something like "`--name Camila`", we just passed "`Camila`" directly to the program.
 
-**Types** also supports another older alternative syntax for declaring *CLI arguments* with additional metadata.
+///
 
-Instead of using `Annotated`, you can use `types.Argument()` as the default value:
+## Alternative (old) `cligenius.Argument()` as the default value
 
-```Python hl_lines="4"
-{!> ../docs_src/arguments/optional/tutorial001.py!}
-```
+**Cligenius** also supports another older alternative syntax for declaring *CLI arguments* with additional metadata.
 
-!!! tip
-    Prefer to use the `Annotated` version if possible.
+Instead of using `Annotated`, you can use `cligenius.Argument()` as the default value:
+
+{* docs_src/arguments/optional/tutorial001.py hl[4] *}
+
+/// tip
+
+Prefer to use the `Annotated` version if possible.
+
+///
 
 Before, because `name` didn't have any default value it would be a **required parameter** for the Python function, in Python terms.
 
-When using `types.Argument()` as the default value **Types** does the same and makes it a **required** *CLI argument*.
+When using `cligenius.Argument()` as the default value **Cligenius** does the same and makes it a **required** *CLI argument*.
 
 We changed it to:
 
 ```Python
-name: str = types.Argument()
+name: str = cligenius.Argument()
 ```
 
-But now as `types.Argument()` is the "default value" of the function's parameter, it would mean that "it is no longer required" (in Python terms).
+But now as `cligenius.Argument()` is the "default value" of the function's parameter, it would mean that "it is no longer required" (in Python terms).
 
-As we no longer have the Python function default value (or its absence) to tell if something is required or not and what is the default value, `types.Argument()` receives a first parameter `default` that serves the same purpose of defining that default value, or making it required.
+As we no longer have the Python function default value (or its absence) to tell if something is required or not and what is the default value, `cligenius.Argument()` receives a first parameter `default` that serves the same purpose of defining that default value, or making it required.
 
-Not passing any value to the `default` argument is the same as marking it as required. But you can also explicitly mark it as *required* by passing `...` as the `default` argument, passed to `types.Argument(default=...)`.
+Not passing any value to the `default` argument is the same as marking it as required. But you can also explicitly mark it as *required* by passing `...` as the `default` argument, passed to `cligenius.Argument(default=...)`.
 
 ```Python
-name: str = types.Argument(default=...)
+name: str = cligenius.Argument(default=...)
 ```
 
-!!! info
-    If you hadn't seen that `...` before: it is a special single value, it is <a href="https://docs.python.org/3/library/constants.html#Ellipsis" class="external-link" target="_blank">part of Python and is called "Ellipsis"</a>.
+/// info
 
-```Python hl_lines="4"
-{!> ../docs_src/arguments/optional/tutorial003.py!}
-```
+If you hadn't seen that `...` before: it is a special single value, it is <a href="https://docs.python.org/3/library/constants.html#Ellipsis" class="external-link" target="_blank">part of Python and is called "Ellipsis"</a>.
+
+///
+
+{* docs_src/arguments/optional/tutorial003.py hl[4] *}
 
 And the same way, you can make it optional by passing a different `default` value, for example `None`:
 
-```Python hl_lines="6"
-{!> ../docs_src/arguments/optional/tutorial002.py!}
-```
+{* docs_src/arguments/optional/tutorial002.py hl[6] *}
 
-Because the first parameter passed to `types.Argument(default=None)` (the new "default" value) is `None`, **Types** knows that this is an **optional** *CLI argument*, if no value is provided when calling it in the command line, it will have that default value of `None`.
+Because the first parameter passed to `cligenius.Argument(default=None)` (the new "default" value) is `None`, **Cligenius** knows that this is an **optional** *CLI argument*, if no value is provided when calling it in the command line, it will have that default value of `None`.
 
 The `default` argument is the first one, so it's possible that you see code that passes the value without explicitly using `default=`, like:
 
 ```Python
-name: str = types.Argument(...)
+name: str = cligenius.Argument(...)
 ```
 
 ...or like:
 
 ```Python
-name: str = types.Argument(None)
+name: str = cligenius.Argument(None)
 ```
 
-...but again, try to use `Annotated` if possible, that way your code in terms of Python will mean the same thing as with **Types** and you won't have to remember any of these details.
+...but again, try to use `Annotated` if possible, that way your code in terms of Python will mean the same thing as with **Cligenius** and you won't have to remember any of these details.

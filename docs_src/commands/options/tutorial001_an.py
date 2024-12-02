@@ -1,7 +1,7 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
@@ -13,7 +13,7 @@ def create(username: str):
 def delete(
     username: str,
     force: Annotated[
-        bool, types.Option(prompt="Are you sure you want to delete the user?")
+        bool, cligenius.Option(prompt="Are you sure you want to delete the user?")
     ],
 ):
     if force:
@@ -25,7 +25,7 @@ def delete(
 @app.command()
 def delete_all(
     force: Annotated[
-        bool, types.Option(prompt="Are you sure you want to delete ALL users?")
+        bool, cligenius.Option(prompt="Are you sure you want to delete ALL users?")
     ],
 ):
     if force:

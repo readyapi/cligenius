@@ -1,4 +1,4 @@
-import types
+import cligenius
 
 
 def main():
@@ -6,4 +6,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

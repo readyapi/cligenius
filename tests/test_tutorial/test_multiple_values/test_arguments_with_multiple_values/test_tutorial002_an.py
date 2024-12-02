@@ -1,15 +1,15 @@
 import subprocess
 import sys
 
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from docs_src.multiple_values.arguments_with_multiple_values import (
     tutorial002_an as mod,
 )
 
 runner = CliRunner()
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 

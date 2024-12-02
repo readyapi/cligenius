@@ -1,12 +1,12 @@
-When creating a **Types** app you can define a callback function, it always executes and defines the *CLI arguments* and *CLI options* that go before a command.
+# Sub-Cligenius Callback Override
 
-When adding a Types app inside of another, the sub-Types can also have its own callback.
+When creating a **Cligenius** app you can define a callback function, it always executes and defines the *CLI arguments* and *CLI options* that go before a command.
+
+When adding a Cligenius app inside of another, the sub-Cligenius can also have its own callback.
 
 It can handle any *CLI parameters* that go before its own commands and execute any extra code:
 
-```Python hl_lines="9 10 11"
-{!../docs_src/subcommands/callback_override/tutorial001.py!}
-```
+{* docs_src/subcommands/callback_override/tutorial001.py hl[9,10,11] *}
 
 In this case it doesn't define any *CLI parameters*, it just writes a message.
 
@@ -26,11 +26,9 @@ Creating user: Camila
 
 ## Add a callback on creation
 
-It's also possible to add a callback when creating the `types.Types()` app that will be added to another Types app:
+It's also possible to add a callback when creating the `cligenius.Cligenius()` app that will be added to another Cligenius app:
 
-```Python hl_lines="6 7  10"
-{!../docs_src/subcommands/callback_override/tutorial002.py!}
-```
+{* docs_src/subcommands/callback_override/tutorial002.py hl[6,7,10] *}
 
 This achieves exactly the same as above, it's just another place to add the callback.
 
@@ -49,17 +47,15 @@ Creating user: Camila
 
 ## Overriding the callback on creation
 
-If a callback was added when creating the `types.Types()` app, it's possible to override it with a new one using `@app.callback()`.
+If a callback was added when creating the `cligenius.Cligenius()` app, it's possible to override it with a new one using `@app.callback()`.
 
-This is the same information you saw on the section about [Commands - Types Callback](../commands/callback.md){.internal-link target=_blank}, and it applies the same for sub-Types apps:
+This is the same information you saw on the section about [Commands - Cligenius Callback](../commands/callback.md){.internal-link target=_blank}, and it applies the same for sub-Cligenius apps:
 
-```Python hl_lines="6 7  10  14 15 16"
-{!../docs_src/subcommands/callback_override/tutorial003.py!}
-```
+{* docs_src/subcommands/callback_override/tutorial003.py hl[6,7,10,14,15,16] *}
 
-Here we had defined a callback when creating the `types.Types()` sub-app, but then we override it with a new callback with the function `user_callback()`.
+Here we had defined a callback when creating the `cligenius.Cligenius()` sub-app, but then we override it with a new callback with the function `user_callback()`.
 
-As `@app.callback()` takes precedence over `types.Types(callback=some_function)`, now our CLI app will use this new callback.
+As `@app.callback()` takes precedence over `cligenius.Cligenius(callback=some_function)`, now our CLI app will use this new callback.
 
 Check it:
 
@@ -75,19 +71,17 @@ Creating user: Camila
 
 </div>
 
-## Overriding the callback when adding a sub-Types
+## Overriding the callback when adding a sub-Cligenius
 
-Lastly, you can override the callback defined anywhere else when adding a sub-Types with `app.add_types()` using the `callback` parameter.
+Lastly, you can override the callback defined anywhere else when adding a sub-Cligenius with `app.add_cligenius()` using the `callback` parameter.
 
 This has the highest priority:
 
-```Python hl_lines="13 14  17"
-{!../docs_src/subcommands/callback_override/tutorial004.py!}
-```
+{* docs_src/subcommands/callback_override/tutorial004.py hl[13,14,17] *}
 
-Notice that the precedence goes to `app.add_types()` and is not affected by the order of execution. There's another callback defined below, but the one from `app.add_types()` wins.
+Notice that the precedence goes to `app.add_cligenius()` and is not affected by the order of execution. There's another callback defined below, but the one from `app.add_cligenius()` wins.
 
-Now when you use the CLI program it will use the new callback function `callback_for_add_types()`.
+Now when you use the CLI program it will use the new callback function `callback_for_add_cligenius()`.
 
 Check it:
 
@@ -96,7 +90,7 @@ Check it:
 ```console
 $ python users create Camila
 
-// Notice the message from the callback added in add_types()
+// Notice the message from the callback added in add_cligenius()
 I have the high land! Running users command
 Creating user: Camila
 ```

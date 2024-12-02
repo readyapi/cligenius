@@ -1,9 +1,9 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
-users_app = types.Types()
-app.add_types(users_app, name="users")
+users_app = cligenius.Cligenius()
+app.add_cligenius(users_app, name="users")
 
 
 @users_app.callback()

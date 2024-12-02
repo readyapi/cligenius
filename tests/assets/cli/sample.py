@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
@@ -9,9 +9,9 @@ def hello(name: str = "World", formal: bool = False):
     Say hi
     """
     if formal:
-        types.echo(f"Good morning Ms. {name}")
+        cligenius.echo(f"Good morning Ms. {name}")
     else:
-        types.echo(f"Hello {name}!")
+        cligenius.echo(f"Hello {name}!")
 
 
 @app.command()
@@ -20,6 +20,6 @@ def bye(friend: bool = False):
     Say bye
     """
     if friend:
-        types.echo("Goodbye my friend")
+        cligenius.echo("Goodbye my friend")
     else:
-        types.echo("Goodbye")
+        cligenius.echo("Goodbye")

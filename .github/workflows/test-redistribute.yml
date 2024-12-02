@@ -15,9 +15,9 @@ jobs:
     strategy:
       matrix:
         package:
-          - types-slim
-          - types
-          - types-cli
+          - cligenius-slim
+          - cligenius
+          - cligenius-cli
     steps:
       - name: Dump GitHub context
         env:
@@ -40,18 +40,32 @@ jobs:
       - name: Decompress source distribution
         run: |
           cd dist
-          tar xvf types*.tar.gz
+          tar xvf cligenius*.tar.gz
       - name: Install test dependencies
-        if: ${{ matrix.package != 'types-cli' }}
+        if: ${{ matrix.package != 'cligenius-cli' }}
         run: |
-          cd dist/types*/
+          cd dist/cligenius*/
           pip install -r requirements-tests.txt
+        env:
+          KHULNASOFT_BUILD_PACKAGE: ${{ matrix.package }}
       - name: Run source distribution tests
-        if: ${{ matrix.package != 'types-cli' }}
+        if: ${{ matrix.package != 'cligenius-cli' }}
         run: |
-          cd dist/types*/
+          cd dist/cligenius*/
           bash scripts/test.sh
       - name: Build wheel distribution
         run: |
           cd dist
-          pip wheel --no-deps types*.tar.gz
+          pip wheel --no-deps cligenius*.tar.gz
+
+  # https://github.com/marketplace/actions/alls-green#why
+  test-redistribute-alls-green:  # This job does nothing and is only used for the branch protection
+    if: always()
+    needs:
+      - test-redistribute
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

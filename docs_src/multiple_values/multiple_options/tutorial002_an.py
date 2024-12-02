@@ -1,12 +1,12 @@
 from typing import List
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(number: Annotated[List[float], types.Option()] = []):
+def main(number: Annotated[List[float], cligenius.Option()] = []):
     print(f"The sum is {sum(number)}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

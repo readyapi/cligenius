@@ -4,9 +4,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest in Types! 🚀
+        Thanks for your interest in Cligenius! 🚀
 
-        If you are not @khulnasoft or he didn't ask you directly to create an issue here, please start the conversation in a [Question in GitHub Discussions](https://github.com/khulnasoft/types/discussions/categories/questions) instead.
+        If you are not @khulnasoft or he didn't ask you directly to create an issue here, please start the conversation in a [Question in GitHub Discussions](https://github.com/readyapi/cligenius/discussions/categories/questions) instead.
   - type: checkboxes
     id: privileged
     attributes:

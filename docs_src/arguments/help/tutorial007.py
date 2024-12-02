@@ -1,12 +1,12 @@
-import types
+import cligenius
 
 
 def main(
-    name: str = types.Argument(..., help="Who to greet"),
-    lastname: str = types.Argument(
+    name: str = cligenius.Argument(..., help="Who to greet"),
+    lastname: str = cligenius.Argument(
         "", help="The last name", rich_help_panel="Secondary Arguments"
     ),
-    age: str = types.Argument(
+    age: str = cligenius.Argument(
         "", help="The user's age", rich_help_panel="Secondary Arguments"
     ),
 ):
@@ -17,4 +17,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

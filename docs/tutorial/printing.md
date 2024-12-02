@@ -1,8 +1,8 @@
+# Printing and Colors
+
 You can use the normal `print()` to show information on the screen:
 
-```Python hl_lines="5"
-{!../docs_src/first_steps/tutorial001.py!}
-```
+{* docs_src/first_steps/tutorial001.py hl[5] *}
 
 It will show the output normally:
 
@@ -18,15 +18,13 @@ Hello World
 
 ## Use Rich
 
-You can also display beautiful and more complex information using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>. It comes by default when you install `types`.
+You can also display beautiful and more complex information using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>. It comes by default when you install `cligenius`.
 
 ### Use Rich `print`
 
 For the simplest cases, you can just import `print` from `rich` and use it instead of the standard `print`:
 
-```Python hl_lines="2  15"
-{!../docs_src/printing/tutorial001.py!}
-```
+{* docs_src/printing/tutorial001.py hl[2,15] *}
 
 Just with that, **Rich** will be able to print your data with nice colors and structure:
 
@@ -54,9 +52,7 @@ Here's the data
 
 Rich also supports a <a href="https://rich.readthedocs.io/en/stable/markup.html" class="external-link" target="_blank">custom markup syntax</a> to set colors and styles, for example:
 
-```Python hl_lines="6"
-{!../docs_src/printing/tutorial002.py!}
-```
+{* docs_src/printing/tutorial002.py hl[6] *}
 
 <div class="termy">
 
@@ -80,9 +76,7 @@ When you call Rich's `print`, it automatically creates this object and uses it.
 
 But for advanced use cases, you could create a `Console` yourself.
 
-```Python hl_lines="2-3  5  9-12"
-{!../docs_src/printing/tutorial003.py!}
-```
+{* docs_src/printing/tutorial003.py hl[2:3,5,9:12] *}
 
 In this example, we create a `Console`, and a `Table`. And then we can add some rows to the table, and print it.
 
@@ -110,15 +104,15 @@ Rich has many other features, as an example, you can check the docs for:
 * <a href="https://rich.readthedocs.io/en/stable/panel.html" class="external-link" target="_blank">Panel</a>
 * ...and more.
 
-### Types and Rich
+### Cligenius and Rich
 
-If you are wondering what tool should be used for what, **Types** is useful for structuring the command line application, with options, arguments, subcommands, data validation, etc.
+If you are wondering what tool should be used for what, **Cligenius** is useful for structuring the command line application, with options, arguments, subcommands, data validation, etc.
 
-In general, **Types** tends to be the entry point to your program, taking the first input from the user.
+In general, **Cligenius** tends to be the entry point to your program, taking the first input from the user.
 
 **Rich** is useful for the parts that need to *display* information. Showing beautiful content on the screen.
 
-The best results for your command line application would be achieved combining both **Types** and **Rich**.
+The best results for your command line application would be achieved combining both **Cligenius** and **Rich**.
 
 ## "Standard Output" and "Standard Error"
 
@@ -136,25 +130,29 @@ And there's another "**virtual file**" called "**standard error**" that is norma
 
 But we can also "print" to "standard error". And both are shown on the terminal to the users.
 
-!!! info
-    If you use PowerShell it's quite possible that what you print to "standard error" won't be shown in the terminal.
+/// info
 
-    In PowerShell, to see "standard error" you would have to check the variable `$Error`.
+If you use PowerShell it's quite possible that what you print to "standard error" won't be shown in the terminal.
 
-    But it will work normally in Bash, Zsh, and Fish.
+In PowerShell, to see "standard error" you would have to check the variable `$Error`.
+
+But it will work normally in Bash, Zsh, and Fish.
+
+///
 
 ### Printing to "standard error"
 
 You can print to "standard error" creating a Rich `Console` with `stderr=True`.
 
-!!! tip
-    `stderr` is short for "standard error".
+/// tip
+
+`stderr` is short for "standard error".
+
+///
 
 Using `stderr=True` tells **Rich** that the output should be shown in "standard error".
 
-```Python hl_lines="4  8"
-{!../docs_src/printing/tutorial004.py!}
-```
+{* docs_src/printing/tutorial004.py hl[4,8] *}
 
 When you try it in the terminal, it will probably just look the same:
 
@@ -180,22 +178,25 @@ Right now this probably seems quite useless 🤷‍♂.
 
 But understanding that will come handy in the future, for example for autocompletion and testing.
 
-## Types Echo
+## Cligenius Echo
 
-!!! warning
-    In most of the cases, for displaying advanced information, it is recommended to use <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>.
+/// warning
 
-    You can probably skip the rest of this section. 🎉😎
+In most of the cases, for displaying advanced information, it is recommended to use <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a>.
 
-**Types** also has a small utility `types.echo()` to print information on the screen, it comes directly from Click. But normally you shouldn't need it.
+You can probably skip the rest of this section. 🎉😎
+
+///
+
+**Cligenius** also has a small utility `cligenius.echo()` to print information on the screen, it comes directly from Click. But normally you shouldn't need it.
 
 For the simplest cases, you can use the standard Python `print()`.
 
 And for the cases where you want to display data more beautifully, or more advanced content, you should use **Rich** instead.
 
-### Why `types.echo`
+### Why `cligenius.echo`
 
-`types.echo()` (which is actually just `click.echo()`) applies some checks to try and convert binary data to strings, and other similar things.
+`cligenius.echo()` (which is actually just `click.echo()`) applies some checks to try and convert binary data to strings, and other similar things.
 
 But in most of the cases you wouldn't need it, as in modern Python strings (`str`) already support and use Unicode, and you would rarely deal with pure `bytes` that you want to print on the screen.
 
@@ -203,29 +204,39 @@ If you have some `bytes` objects, you would probably want to decode them intenti
 
 And if you want to print data with colors and other features, you are much better off with the more advanced tools in **Rich**.
 
-!!! info
-    `types.echo()` comes directly from Click, you can read more about it in <a href="https://click.palletsprojects.com/en/7.x/quickstart/#echoing" class="external-link" target="_blank">Click's docs</a>.
+/// info
+
+`cligenius.echo()` comes directly from Click, you can read more about it in <a href="https://click.palletsprojects.com/en/7.x/quickstart/#echoing" class="external-link" target="_blank">Click's docs</a>.
+
+///
 
 ### Color
 
-!!! note "Technical Details"
-    The way color works in terminals is by using some codes (ANSI escape sequences) as part of the text.
+/// note | Technical Details
 
-    So, a colored text is still just a `str`.
+The way color works in terminals is by using some codes (ANSI escape sequences) as part of the text.
 
-!!! tip
-    Again, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
+So, a colored text is still just a `str`.
 
-You can create colored strings to output to the terminal with `types.style()`, that gives you `str`s that you can then pass to `types.echo()`:
+///
 
-```Python hl_lines="7  9"
-{!../docs_src/printing/tutorial005.py!}
-```
+/// tip
 
-!!! tip
-    The parameters `fg` and `bg` receive strings with the color names for the "**f**ore**g**round" and "**b**ack**g**round" colors. You could simply pass `fg="green"` and `bg="red"`.
+Again, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
 
-    But **Types** provides them all as variables like `types.colors.GREEN` just so you can use autocompletion while selecting them.
+///
+
+You can create colored strings to output to the terminal with `cligenius.style()`, that gives you `str`s that you can then pass to `cligenius.echo()`:
+
+{* docs_src/printing/tutorial005.py hl[7,9] *}
+
+/// tip
+
+The parameters `fg` and `bg` receive strings with the color names for the "**f**ore**g**round" and "**b**ack**g**round" colors. You could simply pass `fg="green"` and `bg="red"`.
+
+But **Cligenius** provides them all as variables like `cligenius.colors.GREEN` just so you can use autocompletion while selecting them.
+
+///
 
 Check it:
 
@@ -236,7 +247,7 @@ Check it:
 <span data-ty>everything is <span style="color: white; background-color: red;">bad</span></span>
 </div>
 
-You can pass these function arguments to `types.style()`:
+You can pass these function arguments to `cligenius.style()`:
 
 * `fg`: the foreground color.
 * `bg`: the background color.
@@ -247,19 +258,23 @@ You can pass these function arguments to `types.style()`:
 * `reverse`: enable or disable inverse rendering (foreground becomes background and the other way round).
 * `reset`: by default a reset-all code is added at the end of the string which means that styles do not carry over.  This can be disabled to compose styles.
 
-!!! info
-    You can read more about it in <a href="https://click.palletsprojects.com/en/7.x/api/#click.style" class="external-link" target="_blank">Click's docs about `style()`</a>
+/// info
 
-### `types.secho()` - style and print
+You can read more about it in <a href="https://click.palletsprojects.com/en/7.x/api/#click.style" class="external-link" target="_blank">Click's docs about `style()`</a>
 
-!!! tip
-    In case you didn't see above, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
+///
 
-There's a shorter form to style and print at the same time with `types.secho()` it's like `types.echo()` but also adds style like `types.style()`:
+### `cligenius.secho()` - style and print
 
-```Python hl_lines="5"
-{!../docs_src/printing/tutorial006.py!}
-```
+/// tip
+
+In case you didn't see above, you are much better off using <a href="https://rich.readthedocs.io/" class="external-link" target="_blank">Rich</a> for this. 😎
+
+///
+
+There's a shorter form to style and print at the same time with `cligenius.secho()` it's like `cligenius.echo()` but also adds style like `cligenius.style()`:
+
+{* docs_src/printing/tutorial006.py hl[5] *}
 
 Check it:
 

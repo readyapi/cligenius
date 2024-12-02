@@ -6,27 +6,29 @@ from pathlib import Path
 from unittest import mock
 
 import click
+import cligenius
+import cligenius.completion
 import pytest
 import shellingham
-import types
-import types.completion
-from types.core import _split_opt
-from types.main import solve_types_info_defaults, solve_types_info_help
-from types.models import ParameterInfo, TypesInfo
-from types.testing import CliRunner
+from cligenius.core import _split_opt
+from cligenius.main import solve_cligenius_info_defaults, solve_cligenius_info_help
+from cligenius.models import CligeniusInfo, ParameterInfo
+from cligenius.testing import CliRunner
+
+from .utils import requires_completion_permission
 
 runner = CliRunner()
 
 
 def test_help_from_info():
     # Mainly for coverage/completeness
-    value = solve_types_info_help(TypesInfo())
+    value = solve_cligenius_info_help(CligeniusInfo())
     assert value is None
 
 
 def test_defaults_from_info():
     # Mainly for coverage/completeness
-    value = solve_types_info_defaults(TypesInfo())
+    value = solve_cligenius_info_defaults(CligeniusInfo())
     assert value
 
 
@@ -74,8 +76,9 @@ def test_valid_parser_permutations():
     ParameterInfo(click_type=CustomClickParser())
 
 
+@requires_completion_permission
 def test_install_invalid_shell():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():
@@ -91,13 +94,13 @@ def test_install_invalid_shell():
 
 
 def test_callback_too_many_parameters():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     def name_callback(ctx, param, val1, val2):
         pass  # pragma: no cover
 
     @app.command()
-    def main(name: str = types.Option(..., callback=name_callback)):
+    def main(name: str = cligenius.Option(..., callback=name_callback)):
         pass  # pragma: no cover
 
     with pytest.raises(click.ClickException) as exc_info:
@@ -108,14 +111,14 @@ def test_callback_too_many_parameters():
 
 
 def test_callback_2_untyped_parameters():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     def name_callback(ctx, value):
         print(f"info name is: {ctx.info_name}")
         print(f"value is: {value}")
 
     @app.command()
-    def main(name: str = types.Option(..., callback=name_callback)):
+    def main(name: str = cligenius.Option(..., callback=name_callback)):
         print("Hello World")
 
     result = runner.invoke(app, ["--name", "Camila"])
@@ -124,7 +127,7 @@ def test_callback_2_untyped_parameters():
 
 
 def test_callback_3_untyped_parameters():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     def name_callback(ctx, param, value):
         print(f"info name is: {ctx.info_name}")
@@ -132,13 +135,32 @@ def test_callback_3_untyped_parameters():
         print(f"value is: {value}")
 
     @app.command()
-    def main(name: str = types.Option(..., callback=name_callback)):
+    def main(name: str = cligenius.Option(..., callback=name_callback)):
         print("Hello World")
 
     result = runner.invoke(app, ["--name", "Camila"])
     assert "info name is: main" in result.stdout
     assert "param name is: name" in result.stdout
     assert "value is: Camila" in result.stdout
+
+
+def test_completion_argument():
+    file_path = Path(__file__).parent / "assets/completion_argument.py"
+    result = subprocess.run(
+        [sys.executable, "-m", "coverage", "run", str(file_path), "E"],
+        capture_output=True,
+        encoding="utf-8",
+        env={
+            **os.environ,
+            "_COMPLETION_ARGUMENT.PY_COMPLETE": "complete_zsh",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_argument.py E",
+            "_CLIGENIUS_COMPLETE_TESTING": "True",
+        },
+    )
+    assert "Emma" in result.stdout or "_files" in result.stdout
+    assert "ctx: completion_argument" in result.stderr
+    assert "arg is: name" in result.stderr
+    assert "incomplete is: E" in result.stderr
 
 
 def test_completion_untyped_parameters():
@@ -150,7 +172,7 @@ def test_completion_untyped_parameters():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types.py" in result.stderr
@@ -176,7 +198,7 @@ def test_completion_untyped_parameters_different_order_correct_names():
         env={
             **os.environ,
             "_COMPLETION_NO_TYPES_ORDER.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
+            "_CLIGENIUS_COMPLETE_ARGS": "completion_no_types_order.py --name Sebastian --name Ca",
         },
     )
     assert "info name is: completion_no_types_order.py" in result.stderr
@@ -194,13 +216,13 @@ def test_completion_untyped_parameters_different_order_correct_names():
 
 
 def test_autocompletion_too_many_parameters():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     def name_callback(ctx, args, incomplete, val2):
         pass  # pragma: no cover
 
     @app.command()
-    def main(name: str = types.Option(..., autocompletion=name_callback)):
+    def main(name: str = cligenius.Option(..., autocompletion=name_callback)):
         pass  # pragma: no cover
 
     with pytest.raises(click.ClickException) as exc_info:
@@ -209,7 +231,7 @@ def test_autocompletion_too_many_parameters():
 
 
 def test_forward_references():
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main(arg1, arg2: int, arg3: "int", arg4: bool = False, arg5: "bool" = False):
@@ -230,7 +252,7 @@ def test_forward_references():
 
 
 def test_context_settings_inheritance_single_command():
-    app = types.Types(context_settings={"help_option_names": ["-h", "--help"]})
+    app = cligenius.Cligenius(context_settings={"help_option_names": ["-h", "--help"]})
 
     @app.command()
     def main(name: str):

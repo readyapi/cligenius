@@ -9,25 +9,25 @@ runner = CliRunner()
 
 
 def test_cli():
-    result = runner.invoke(mod.types_click_object, [])
+    result = runner.invoke(mod.cligenius_click_object, [])
     assert "Missing command" in result.stdout
 
 
 def test_help():
-    result = runner.invoke(mod.types_click_object, ["--help"])
+    result = runner.invoke(mod.cligenius_click_object, ["--help"])
     assert result.exit_code == 0
     assert "Commands" in result.output
     assert "top" in result.output
     assert "hello" in result.output
 
 
-def test_types():
-    result = runner.invoke(mod.types_click_object, ["top"])
-    assert "The Types app is at the top level" in result.stdout
+def test_cligenius():
+    result = runner.invoke(mod.cligenius_click_object, ["top"])
+    assert "The Cligenius app is at the top level" in result.stdout
 
 
 def test_click():
-    result = runner.invoke(mod.types_click_object, ["hello", "--name", "Camila"])
+    result = runner.invoke(mod.cligenius_click_object, ["hello", "--name", "Camila"])
     assert "Hello Camila!" in result.stdout
 
 

@@ -1,9 +1,9 @@
 from typing import Optional
 
-import types
+import cligenius
 
 
-def main(accept: Optional[bool] = types.Option(None, "--accept/--reject")):
+def main(accept: Optional[bool] = cligenius.Option(None, "--accept/--reject")):
     if accept is None:
         print("I don't know what you want yet")
     elif accept:
@@ -13,4 +13,4 @@ def main(accept: Optional[bool] = types.Option(None, "--accept/--reject")):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

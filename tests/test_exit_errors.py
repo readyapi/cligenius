@@ -1,15 +1,15 @@
 import errno
 
-import types
-import types.completion
-from types.testing import CliRunner
+import cligenius
+import cligenius.completion
+from cligenius.testing import CliRunner
 
 runner = CliRunner()
 
 
 def test_eoferror():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():
@@ -19,9 +19,22 @@ def test_eoferror():
     assert result.exit_code == 1
 
 
+def test_keyboardinterrupt():
+    # Mainly for coverage/completeness
+    app = cligenius.Cligenius()
+
+    @app.command()
+    def main():
+        raise KeyboardInterrupt()
+
+    result = runner.invoke(app)
+    assert result.exit_code == 130
+    assert result.stdout == ""
+
+
 def test_oserror():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():
@@ -35,7 +48,7 @@ def test_oserror():
 
 def test_oserror_no_epipe():
     # Mainly for coverage/completeness
-    app = types.Types()
+    app = cligenius.Cligenius()
 
     @app.command()
     def main():

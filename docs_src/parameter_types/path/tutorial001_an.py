@@ -1,14 +1,14 @@
 from pathlib import Path
 from typing import Optional
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(config: Annotated[Optional[Path], types.Option()] = None):
+def main(config: Annotated[Optional[Path], cligenius.Option()] = None):
     if config is None:
         print("No config file")
-        raise types.Abort()
+        raise cligenius.Abort()
     if config.is_file():
         text = config.read_text()
         print(f"Config file contents: {text}")
@@ -19,4 +19,4 @@ def main(config: Annotated[Optional[Path], types.Option()] = None):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

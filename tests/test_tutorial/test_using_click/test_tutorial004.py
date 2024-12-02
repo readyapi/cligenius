@@ -15,9 +15,11 @@ def test_cli():
     assert "sub" in result.stdout
 
 
-def test_types():
+def test_cligenius():
     result = runner.invoke(mod.cli, ["sub"])
-    assert "Types is now below Click, the Click app is the top level" in result.stdout
+    assert (
+        "Cligenius is now below Click, the Click app is the top level" in result.stdout
+    )
 
 
 def test_click_initdb():

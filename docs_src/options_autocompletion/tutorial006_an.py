@@ -1,14 +1,16 @@
 from typing import List
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def main(
-    name: Annotated[List[str], types.Option(help="The name to say hi to.")] = ["World"],
+    name: Annotated[List[str], cligenius.Option(help="The name to say hi to.")] = [
+        "World"
+    ],
 ):
     for each_name in name:
         print(f"Hello {each_name}")

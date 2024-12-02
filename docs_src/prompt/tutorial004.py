@@ -1,4 +1,4 @@
-import types
+import cligenius
 from rich.prompt import Prompt
 
 
@@ -8,4 +8,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

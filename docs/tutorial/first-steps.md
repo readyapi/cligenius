@@ -1,10 +1,10 @@
+# First Steps
+
 ## The simplest example
 
-The simplest **Types** file could look like this:
+The simplest **Cligenius** file could look like this:
 
-```Python
-{!../docs_src/first_steps/tutorial001.py!}
-```
+{* docs_src/first_steps/tutorial001.py *}
 
 Copy that to a file `main.py`.
 
@@ -61,9 +61,7 @@ They are a bit different from **CLI options** that you will see later below.
 
 Update the previous example with an argument `name`:
 
-```Python hl_lines="4 5"
-{!../docs_src/first_steps/tutorial002.py!}
-```
+{* docs_src/first_steps/tutorial002.py hl[4,5] *}
 
 <div class="termy">
 
@@ -93,8 +91,11 @@ Hello Camila Gutiérrez
 
 </div>
 
-!!! tip
-    If you need to pass a single value that contains spaces to a *CLI argument*, use quotes (`"`) around it.
+/// tip
+
+If you need to pass a single value that contains spaces to a *CLI argument*, use quotes (`"`) around it.
+
+///
 
 ## Two CLI arguments
 
@@ -102,9 +103,7 @@ Now let's say we want to have the name and last name separated.
 
 So, extend that to have 2 arguments, `name` and `lastname`:
 
-```Python hl_lines="4 5"
-{!../docs_src/first_steps/tutorial003.py!}
-```
+{* docs_src/first_steps/tutorial003.py hl[4,5] *}
 
 <div class="termy">
 
@@ -118,7 +117,7 @@ $ python main.py --help
 <font color="#F92672">│</font> Missing argument &apos;NAME&apos;.                          <font color="#F92672">│</font>
 <font color="#F92672">╰───────────────────────────────────────────────────╯</font>
 
-<font color="#A1EFE4"><b>types</b></font> on <font color="#AE81FF"><b> richify</b></font> <font color="#F92672"><b>[»!?] </b></font>via <font color="#F4BF75"><b>🐍 v3.7.5 (env3.7)</b></font>
+<font color="#A1EFE4"><b>cligenius</b></font> on <font color="#AE81FF"><b> richify</b></font> <font color="#F92672"><b>[»!?] </b></font>via <font color="#F4BF75"><b>🐍 v3.7.5 (env3.7)</b></font>
 <font color="#F92672"><b>❯</b></font> <font color="#A6E22E">python</font> <u style="text-decoration-style:single">main.py</u>
 <font color="#F4BF75">Usage: </font>main.py [OPTIONS] NAME LASTNAME
 <font color="#A5A5A1">Try </font><font color="#44919F">&apos;main.py </font><font color="#44919F"><b>--help</b></font><font color="#44919F">&apos;</font><font color="#A5A5A1"> for help.</font>
@@ -145,16 +144,19 @@ Hello Camila Gutiérrez
 
 </div>
 
-!!! tip
-    Notice that the order is important. The last name has to go after the first name.
+/// tip
 
-    If you called it with:
+Notice that the order is important. The last name has to go after the first name.
 
-    ```
-    $ python main.py Gutiérrez Camila
-    ```
+If you called it with:
 
-    your app wouldn't have a way to know which is the `name` and which the `lastname`. It expects the first *CLI argument* to be the `name` and the second *CLI argument* to be the `lastname`.
+```
+$ python main.py Gutiérrez Camila
+```
+
+your app wouldn't have a way to know which is the `name` and which the `lastname`. It expects the first *CLI argument* to be the `name` and the second *CLI argument* to be the `lastname`.
+
+///
 
 ## What is a **CLI option**
 
@@ -214,18 +216,19 @@ So, the main and **most important** difference is that:
 * *CLI options* **start with `--`** and don't depend on the order
 * *CLI arguments* depend on the **sequence order**
 
-!!! tip
-    In this example above the *CLI option* `--size` is just a "flag" or "switch" that will contain a boolean value, `True` or `False`, depending on if it was added to the command or not.
+/// tip
 
-    This one doesn't receive any values. But *CLI options* can also receive values like *CLI arguments*. You'll see how later.
+In this example above the *CLI option* `--size` is just a "flag" or "switch" that will contain a boolean value, `True` or `False`, depending on if it was added to the command or not.
+
+This one doesn't receive any values. But *CLI options* can also receive values like *CLI arguments*. You'll see how later.
+
+///
 
 ## Add one *CLI option*
 
 Now add a `--formal` *CLI option*:
 
-```Python hl_lines="4 5"
-{!../docs_src/first_steps/tutorial004.py!}
-```
+{* docs_src/first_steps/tutorial004.py hl[4,5] *}
 
 Here `formal` is a `bool` that is `False` by default.
 
@@ -250,8 +253,11 @@ $ python main.py --help
 
 </div>
 
-!!! tip
-    Notice that it automatically creates a `--formal` and a `--no-formal` because it detected that `formal` is a `bool`.
+/// tip
+
+Notice that it automatically creates a `--formal` and a `--no-formal` because it detected that `formal` is a `bool`.
+
+///
 
 Now call it normally:
 
@@ -283,11 +289,9 @@ Good day Ms. Camila Gutiérrez.
 
 To convert the `lastname` from a *CLI argument* to a *CLI option*, give it a default value of `""`:
 
-```Python hl_lines="4"
-{!../docs_src/first_steps/tutorial005.py!}
-```
+{* docs_src/first_steps/tutorial005.py hl[4] *}
 
-As `lastname` now has a default value of `""` (an empty string) it is no longer required in the function, and **Types** will now by default make it an optional *CLI option*.
+As `lastname` now has a default value of `""` (an empty string) it is no longer required in the function, and **Cligenius** will now by default make it an optional *CLI option*.
 
 <div class="termy">
 
@@ -309,10 +313,13 @@ $ python main.py --help
 
 </div>
 
-!!! tip
-    Notice the `--lastname`, and notice that it takes a textual value.
+/// tip
 
-    A *CLI option* with a value like `--lastname` (contrary to a *CLI option* without a value, a `bool` flag, like `--formal` or `--size`) takes as its value whatever is at the *right side* of the *CLI option*.
+Notice the `--lastname`, and notice that it takes a textual value.
+
+A *CLI option* with a value like `--lastname` (contrary to a *CLI option* without a value, a `bool` flag, like `--formal` or `--size`) takes as its value whatever is at the *right side* of the *CLI option*.
+
+///
 
 <div class="termy">
 
@@ -330,8 +337,11 @@ Hello Camila Gutiérrez
 
 </div>
 
-!!! tip
-    Notice that "`Gutiérrez`" is at the right side of `--lastname`. A *CLI option* with a value takes as its value whatever is at the *right side*.
+/// tip
+
+Notice that "`Gutiérrez`" is at the right side of `--lastname`. A *CLI option* with a value takes as its value whatever is at the *right side*.
+
+///
 
 And as `--lastname` is now a *CLI option* that doesn't depend on the order, you can pass it before the name:
 
@@ -350,9 +360,7 @@ Hello Camila Gutiérrez
 
 If you add a <abbr title="a multi-line string as the first expression inside a function (not assigned to any variable) used for documentation">docstring</abbr> to your function it will be used in the help text:
 
-```Python hl_lines="5 6 7 8 9"
-{!../docs_src/first_steps/tutorial006.py!}
-```
+{* docs_src/first_steps/tutorial006.py hl[5,6,7,8,9] *}
 
 Now see it with the `--help` option:
 
@@ -379,8 +387,11 @@ $ python main.py --help
 
 </div>
 
-!!! tip
-    There is another place to document the specific *CLI options* and *CLI arguments* that will show up next to them in the help text as with `--install-completion` or `--help`, you will learn that later in the tutorial.
+/// tip
+
+There is another place to document the specific *CLI options* and *CLI arguments* that will show up next to them in the help text as with `--install-completion` or `--help`, you will learn that later in the tutorial.
+
+///
 
 ## Arguments, options, parameters, optional, required
 
@@ -397,25 +408,28 @@ def main(name: str, lastname: str = ""):
 
 are called "Python function parameters" or "Python function arguments".
 
-!!! note "Technical Details"
-    There's actually a very small distinction in Python between "parameter" and "argument".
+/// note | Technical Details
 
-    It's quite technical... and somewhat pedantic.
+There's actually a very small distinction in Python between "parameter" and "argument".
 
-    *Parameter* refers to the variable name in a function *declaration*. Like:
+It's quite technical... and somewhat pedantic.
 
-    ```
-    def bring_person(name: str, lastname: str = ""):
-        pass
-    ```
+*Parameter* refers to the variable name in a function *declaration*. Like:
 
-    *Argument* refers to the value passed when *calling* a function. Like:
+```
+def bring_person(name: str, lastname: str = ""):
+    pass
+```
 
-    ```
-    person = bring_person("Camila", lastname="Gutiérrez")
-    ```
+*Argument* refers to the value passed when *calling* a function. Like:
 
-    ...but you will probably see them used interchangeably in most of the places (including here).
+```
+person = bring_person("Camila", lastname="Gutiérrez")
+```
+
+...but you will probably see them used interchangeably in most of the places (including here).
+
+///
 
 #### Python default values
 
@@ -442,7 +456,7 @@ The parameters that come with a name like `--lastname` (and optionally a value) 
 
 In reality, the parameters that require an order can be made *optional* too. And the ones that come with a flag (like `--lastname`) can be *required* too.
 
-### In **Types**
+### In **Cligenius**
 
 To try and make it a bit easier, we'll normally use the words "parameter" or "argument" to refer to Python functions.
 
@@ -452,11 +466,11 @@ And we'll use ***CLI option*** to refer to those *CLI parameters* that depend on
 
 We will use ***CLI parameter*** to refer to both, *CLI arguments* and *CLI options*.
 
-## The `types` Command
+## The `cligenius` Command
 
-When you install `types`, by default it adds a `types` command to your shell.
+When you install `cligenius`, by default it adds a `cligenius` command to your shell.
 
-This `types` command allows you to run your scripts with ✨ auto completion ✨ in your terminal.
+This `cligenius` command allows you to run your scripts with ✨ auto completion ✨ in your terminal.
 
 As an alternative to running with Python:
 
@@ -470,12 +484,12 @@ Hello World
 
 </div>
 
-You can run with the `types` command:
+You can run with the `cligenius` command:
 
 <div class="termy">
 
 ```console
-$ types main.py run
+$ cligenius main.py run
 
 Hello World
 ```
@@ -486,7 +500,10 @@ Hello World
 
 So you can use it to have auto completion for your own scripts as you continue with the tutorial.
 
-!!! tip
-    Your CLI application built with **Types** won't need the `types` command to have auto completion once you create a Python package.
+/// tip
 
-    But for short scripts and for learning, before creating a Python package, it might be useful.
+Your CLI application built with **Cligenius** won't need the `cligenius` command to have auto completion once you create a Python package.
+
+But for short scripts and for learning, before creating a Python package, it might be useful.
+
+///

@@ -1,20 +1,20 @@
+# CLI Parameter Types
+
 You can use several data types for the *CLI options* and *CLI arguments*, and you can add data validation requirements too.
 
 ## Data conversion
 
-When you declare a *CLI parameter* with some type **Types** will convert the data received in the command line to that data type.
+When you declare a *CLI parameter* with some type **Cligenius** will convert the data received in the command line to that data type.
 
 For example:
 
-```Python hl_lines="4"
-{!../docs_src/parameter_types/index/tutorial001.py!}
-```
+{* docs_src/parameter_types/index/tutorial001.py hl[4] *}
 
 In this example, the value received for the *CLI argument* `NAME` will be treated as `str`.
 
 The value for the *CLI option* `--age` will be converted to an `int` and `--height-meters` will be converted to a `float`.
 
-And as `female` is a `bool` *CLI option*, **Types** will convert it to a "flag" `--female` and the counterpart `--no-female`.
+And as `female` is a `bool` *CLI option*, **Cligenius** will convert it to a "flag" `--female` and the counterpart `--no-female`.
 
 And here's how it looks like:
 
@@ -62,5 +62,8 @@ Error: Invalid value for '--age': '15.3' is not a valid integer
 See more about specific types and validations in the next sections...
 
 
-!!! info "Technical Details"
-    All the types you will see in the next sections are handled underneath by <a href="https://click.palletsprojects.com/en/7.x/parameters/#parameter-types" class="external-link" target="_blank">Click's Parameter Types</a>.
+/// info | Technical Details
+
+All the types you will see in the next sections are handled underneath by <a href="https://click.palletsprojects.com/en/7.x/parameters/#parameter-types" class="external-link" target="_blank">Click's Parameter Types</a>.
+
+///

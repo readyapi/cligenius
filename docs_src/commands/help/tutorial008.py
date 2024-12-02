@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types(rich_markup_mode="rich")
+app = cligenius.Cligenius(rich_markup_mode="rich")
 
 
 @app.command(epilog="Made with :heart: in [blue]Venus[/blue]")

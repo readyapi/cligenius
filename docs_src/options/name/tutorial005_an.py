@@ -1,10 +1,10 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
-    name: Annotated[str, types.Option("--name", "-n")],
-    formal: Annotated[bool, types.Option("--formal", "-f")] = False,
+    name: Annotated[str, cligenius.Option("--name", "-n")],
+    formal: Annotated[bool, cligenius.Option("--formal", "-f")] = False,
 ):
     if formal:
         print(f"Good day Ms. {name}.")
@@ -13,4 +13,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)
