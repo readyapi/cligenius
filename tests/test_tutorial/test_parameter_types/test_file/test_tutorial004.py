@@ -2,14 +2,14 @@ import subprocess
 import sys
 from pathlib import Path
 
-import types
-from types.testing import CliRunner
+import cligenius
+from cligenius.testing import CliRunner
 
 from docs_src.parameter_types.file import tutorial004 as mod
 
 runner = CliRunner()
 
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 
@@ -18,7 +18,7 @@ def test_main(tmpdir):
     if binary_file.exists():  # pragma: no cover
         binary_file.unlink()
     result = runner.invoke(app, ["--file", f"{binary_file}"])
-    text = binary_file.read_text()
+    text = binary_file.read_text(encoding="utf-8")
     binary_file.unlink()
     assert result.exit_code == 0
     assert "Binary file written" in result.output

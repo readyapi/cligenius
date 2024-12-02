@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from docs_src.subcommands.name_help import tutorial001 as mod
 

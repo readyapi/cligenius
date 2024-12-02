@@ -1,10 +1,10 @@
 from typing import Tuple
 
-import types
+import cligenius
 
 
 def main(
-    names: Tuple[str, str, str] = types.Argument(
+    names: Tuple[str, str, str] = cligenius.Argument(
         ("Harry", "Hermione", "Ron"), help="Select 3 characters to play with"
     ),
 ):
@@ -13,4 +13,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

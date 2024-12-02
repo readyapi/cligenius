@@ -1,11 +1,11 @@
-import types
+import cligenius
 
-app = types.Types(rich_markup_mode="rich")
+app = cligenius.Cligenius(rich_markup_mode="rich")
 
 
 @app.command()
 def create(
-    username: str = types.Argument(
+    username: str = cligenius.Argument(
         ..., help="The username to be [green]created[/green]"
     ),
 ):
@@ -19,8 +19,10 @@ def create(
 
 @app.command(help="[bold red]Delete[/bold red] a user with [italic]USERNAME[/italic].")
 def delete(
-    username: str = types.Argument(..., help="The username to be [red]deleted[/red]"),
-    force: bool = types.Option(
+    username: str = cligenius.Argument(
+        ..., help="The username to be [red]deleted[/red]"
+    ),
+    force: bool = cligenius.Option(
         False, help="Force the [bold red]deletion[/bold red] :boom:"
     ),
 ):

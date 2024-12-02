@@ -1,7 +1,8 @@
+import os
 import subprocess
 import sys
 
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from docs_src.commands.help import tutorial005_an as mod
 
@@ -26,7 +27,7 @@ def test_help_create():
     assert result.exit_code == 0
     assert "Create a new shinny user. ✨" in result.output
     assert "The username to be created" in result.output
-    assert "Learn more at the Types docs website" in result.output
+    assert "Learn more at the Cligenius docs website" in result.output
     assert "Some internal utility function to create." not in result.output
 
 
@@ -56,5 +57,6 @@ def test_script():
         [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
         capture_output=True,
         encoding="utf-8",
+        env={**os.environ, "PYTHONIOENCODING": "utf-8"},
     )
     assert "Usage" in result.stdout

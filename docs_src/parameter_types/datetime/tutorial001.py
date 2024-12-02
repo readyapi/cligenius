@@ -1,6 +1,6 @@
 from datetime import datetime
 
-import types
+import cligenius
 
 
 def main(birth: datetime):
@@ -9,4 +9,4 @@ def main(birth: datetime):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

@@ -1,8 +1,8 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(force: Annotated[bool, types.Option("--force")] = False):
+def main(force: Annotated[bool, cligenius.Option("--force")] = False):
     if force:
         print("Forcing operation")
     else:
@@ -10,4 +10,4 @@ def main(force: Annotated[bool, types.Option("--force")] = False):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

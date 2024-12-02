@@ -1,5 +1,5 @@
 import click
-import types
+import cligenius
 
 
 class CustomClass:
@@ -18,12 +18,12 @@ class CustomClassParser(click.ParamType):
 
 
 def main(
-    custom_arg: CustomClass = types.Argument(click_type=CustomClassParser()),
-    custom_opt: CustomClass = types.Option("Foo", click_type=CustomClassParser()),
+    custom_arg: CustomClass = cligenius.Argument(click_type=CustomClassParser()),
+    custom_opt: CustomClass = cligenius.Option("Foo", click_type=CustomClassParser()),
 ):
     print(f"custom_arg is {custom_arg}")
     print(f"--custom-opt is {custom_opt}")
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

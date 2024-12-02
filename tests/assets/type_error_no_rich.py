@@ -1,7 +1,7 @@
-import types
-import types.main
+import cligenius
+import cligenius.main
 
-types.main.rich = None
+cligenius.main.rich = None
 
 
 def main(name: str = "morty"):
@@ -9,4 +9,4 @@ def main(name: str = "morty"):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

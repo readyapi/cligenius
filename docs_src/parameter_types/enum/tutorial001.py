@@ -1,6 +1,6 @@
 from enum import Enum
 
-import types
+import cligenius
 
 
 class NeuralNetwork(str, Enum):
@@ -14,4 +14,4 @@ def main(network: NeuralNetwork = NeuralNetwork.simple):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

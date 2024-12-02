@@ -1,10 +1,10 @@
-Testing **Types** applications is very easy with <a href="https://docs.pytest.org/en/latest/" class="external-link" target="_blank">pytest</a>.
+# Testing
+
+Testing **Cligenius** applications is very easy with <a href="https://docs.pytest.org/en/latest/" class="external-link" target="_blank">pytest</a>.
 
 Let's say you have an application `app/main.py` with:
 
-```Python
-{!../docs_src/testing/app01/main.py!}
-```
+{* docs_src/testing/app01/main.py *}
 
 So, you would use it like:
 
@@ -33,12 +33,13 @@ Import `CliRunner` and create a `runner` object.
 
 This runner is what will "invoke" or "call" your command line application.
 
-```Python hl_lines="1  5"
-{!../docs_src/testing/app01/test_main.py!}
-```
+{* docs_src/testing/app01/test_main.py hl[1,5] *}
 
-!!! tip
-    It's important that the name of the file starts with `test_`, that way pytest will be able to detect it and use it automatically.
+/// tip
+
+It's important that the name of the file starts with `test_`, that way pytest will be able to detect it and use it automatically.
+
+///
 
 ### Call the app
 
@@ -46,34 +47,39 @@ Then create a function `test_app()`.
 
 And inside of the function, use the `runner` to `invoke` the application.
 
-The first parameter to `runner.invoke()` is a `Types` app.
+The first parameter to `runner.invoke()` is a `Cligenius` app.
 
 The second parameter is a `list` of `str`, with all the text you would pass in the command line, right as you would pass it:
 
-```Python hl_lines="8 9"
-{!../docs_src/testing/app01/test_main.py!}
-```
+{* docs_src/testing/app01/test_main.py hl[8,9] *}
 
-!!! tip
-    The name of the function has to start with `test_`, that way pytest can detect it and use it automatically.
+/// tip
+
+The name of the function has to start with `test_`, that way pytest can detect it and use it automatically.
+
+///
 
 ### Check the result
 
 Then, inside of the test function, add `assert` statements to ensure that everything in the result of the call is as it should be.
 
-```Python hl_lines="10 11 12"
-{!../docs_src/testing/app01/test_main.py!}
-```
+{* docs_src/testing/app01/test_main.py hl[10,11,12] *}
 
 Here we are checking that the exit code is 0, as it is for programs that exit without errors.
 
 Then we check that the text printed to "standard output" contains the text that our CLI program prints.
 
-!!! tip
-    You could also check `result.stderr` for "standard error" independently from "standard output" if your `CliRunner` instance is created with the `mix_stderr=False` argument.
+/// tip
 
-!!! info
-    If you need a refresher about what is "standard output" and "standard error" check the section in [Printing and Colors: "Standard Output" and "Standard Error"](printing.md#standard-output-and-standard-error){.internal-link target=_blank}.
+You could also check `result.stderr` for "standard error" independently from "standard output" if your `CliRunner` instance is created with the `mix_stderr=False` argument.
+
+///
+
+/// info
+
+If you need a refresher about what is "standard output" and "standard error" check the section in [Printing and Colors: "Standard Output" and "Standard Error"](printing.md#standard-output-and-standard-error){.internal-link target=_blank}.
+
+///
 
 ### Call `pytest`
 
@@ -103,20 +109,7 @@ test_main.py <span style="color: green; white-space: pre;">.                    
 
 If you have a CLI with prompts, like:
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="8"
-    {!> ../docs_src/testing/app02_an/main.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="7"
-    {!> ../docs_src/testing/app02/main.py!}
-    ```
+{* docs_src/testing/app02_an/main.py hl[8] *}
 
 That you would use like:
 
@@ -136,32 +129,29 @@ You can test the input typed in the terminal using `input="camila@example.com\n"
 
 This is because what you type in the terminal goes to "**standard input**" and is handled by the operating system as if it was a "virtual file".
 
-!!! info
-    If you need a refresher about what is "standard output", "standard error", and "standard input" check the section in [Printing and Colors: "Standard Output" and "Standard Error"](printing.md#standard-output-and-standard-error){.internal-link target=_blank}.
+/// info
+
+If you need a refresher about what is "standard output", "standard error", and "standard input" check the section in [Printing and Colors: "Standard Output" and "Standard Error"](printing.md#standard-output-and-standard-error){.internal-link target=_blank}.
+
+///
 
 When you hit the <kbd>ENTER</kbd> key after typing the email, that is just a "new line character". And in Python that is represented with `"\n"`.
 
 So, if you use `input="camila@example.com\n"` it means: "type `camila@example.com` in the terminal, then hit the <kbd>ENTER</kbd> key":
 
-```Python hl_lines="9"
-{!../docs_src/testing/app02/test_main.py!}
-```
+{* docs_src/testing/app02/test_main.py hl[9] *}
 
 ## Test a function
 
-If you have a script and you never created an explicit `types.Types` app, like:
+If you have a script and you never created an explicit `cligenius.Cligenius` app, like:
 
-```Python hl_lines="9"
-{!../docs_src/testing/app03/main.py!}
-```
+{* docs_src/testing/app03/main.py hl[9] *}
 
 ...you can still test it, by creating an app during testing:
 
-```Python hl_lines="6 7  13"
-{!../docs_src/testing/app03/test_main.py!}
-```
+{* docs_src/testing/app03/test_main.py hl[6,7,13] *}
 
-Of course, if you are testing that script, it's probably easier/cleaner to just create the explicit `types.Types` app in `main.py` instead of creating it just during the test.
+Of course, if you are testing that script, it's probably easier/cleaner to just create the explicit `cligenius.Cligenius` app in `main.py` instead of creating it just during the test.
 
 But if you want to keep it that way, e.g. because it's a simple example in documentation, then you can use that trick.
 
@@ -197,11 +187,11 @@ main = new_main
 
 And by using the `@something` you normally tell Python to replace the thing below (the function `main`) with the return of the `decorator` function (`new_main`).
 
-Now, in the specific case of **Types**, the decorator doesn't change the original function. It registers it internally and returns it unmodified.
+Now, in the specific case of **Cligenius**, the decorator doesn't change the original function. It registers it internally and returns it unmodified.
 
 So, `new_main` is actually the same original `main`.
 
-So, in the case of **Types**, as it doesn't really modify the decorated function, that would be equivalent to:
+So, in the case of **Cligenius**, as it doesn't really modify the decorated function, that would be equivalent to:
 
 ```Python
 def main(name: str = "World"):
@@ -221,4 +211,4 @@ def main(name: str = "World"):
 app.command()(main)
 ```
 
-...that's it. It's still probably simpler to just create the explicit `types.Types` in the `main.py` file 😅.
+...that's it. It's still probably simpler to just create the explicit `cligenius.Cligenius` in the `main.py` file 😅.

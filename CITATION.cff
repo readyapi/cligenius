@@ -2,21 +2,21 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: Types
+title: Cligenius
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
 type: software
 authors:
-  - given-names: KhulnaSoft
-    family-names: DevOps
-    email: info@khulnasoft.com
+  - given-names: Md
+    family-names: Sulaiman
+    email: dev.sulaiman@icloud.com
 identifiers:
-repository-code: 'https://github.com/khulnasoft/types'
-url: 'https://types.khulnasoft.com'
+repository-code: 'https://github.com/readyapi/cligenius'
+url: 'https://cligenius.khulnasoft.com'
 abstract: >-
-  Types, build great CLIs. Easy to code. Based on Python type hints.
+  Cligenius, build great CLIs. Easy to code. Based on Python type hints.
 keywords:
-  - types
+  - cligenius
   - click
 license: MIT

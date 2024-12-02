@@ -1,13 +1,13 @@
 from pathlib import Path
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
     config: Annotated[
         Path,
-        types.Option(
+        cligenius.Option(
             exists=True,
             file_okay=True,
             dir_okay=False,
@@ -22,4 +22,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

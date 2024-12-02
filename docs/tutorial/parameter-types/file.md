@@ -1,9 +1,14 @@
+# File
+
 Apart from `Path` *CLI parameters* you can also declare some types of "files".
 
-!!! tip
-    In most of the cases you are probably fine just using `Path`.
+/// tip
 
-    You can read and write data with `Path` the same way.
+In most of the cases you are probably fine just using `Path`.
+
+You can read and write data with `Path` the same way.
+
+///
 
 The difference is that these types will give you a Python <a href="https://docs.python.org/3/glossary.html#term-file-object" class="external-link" target="_blank">file-like object</a> instead of a Python <a href="https://docs.python.org/3/library/pathlib.html#basic-use" class="external-link" target="_blank">Path</a>.
 
@@ -20,7 +25,7 @@ But in some special use cases you might want to use these special types. For exa
 
 ## `FileText` reading
 
-`types.FileText` gives you a file-like object for reading text, you will get `str` data from it.
+`cligenius.FileText` gives you a file-like object for reading text, you will get `str` data from it.
 
 This means that even if your file has text written in a non-english language, e.g. a `text.txt` file with:
 
@@ -42,20 +47,7 @@ content = b"la cig\xc3\xbce\xc3\xb1a trae al ni\xc3\xb1o"
 
 You will get all the correct editor support, attributes, methods, etc for the file-like object:`
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="5"
-    {!> ../docs_src/parameter_types/file/tutorial001_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="4"
-    {!> ../docs_src/parameter_types/file/tutorial001.py!}
-    ```
+{* docs_src/parameter_types/file/tutorial001_an.py hl[5] *}
 
 Check it:
 
@@ -80,22 +72,9 @@ Config line: some more settings
 
 ## `FileTextWrite`
 
-For writing text, you can use `types.FileTextWrite`:
+For writing text, you can use `cligenius.FileTextWrite`:
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="5-6"
-    {!> ../docs_src/parameter_types/file/tutorial002_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="4-5"
-    {!> ../docs_src/parameter_types/file/tutorial002.py!}
-    ```
+{* docs_src/parameter_types/file/tutorial002_an.py hl[5:6] *}
 
 This would be for writing human text, like:
 
@@ -123,33 +102,23 @@ Some config written by the app
 
 </div>
 
-!!! info "Technical Details"
-    `types.FileTextWrite` is a just a convenience class.
+/// info | Technical Details
 
-    It's the same as using `types.FileText` and setting `mode="w"`. You will learn about `mode` later below.
+`cligenius.FileTextWrite` is a just a convenience class.
+
+It's the same as using `cligenius.FileText` and setting `mode="w"`. You will learn about `mode` later below.
+
+///
 
 ## `FileBinaryRead`
 
-To read binary data you can use `types.FileBinaryRead`.
+To read binary data you can use `cligenius.FileBinaryRead`.
 
 You will receive `bytes` from it.
 
 It's useful for reading binary files like images:
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="5"
-    {!> ../docs_src/parameter_types/file/tutorial003_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="4"
-    {!> ../docs_src/parameter_types/file/tutorial003.py!}
-    ```
+{* docs_src/parameter_types/file/tutorial003_an.py hl[5] *}
 
 Check it:
 
@@ -168,7 +137,7 @@ Processed bytes total: 2048
 
 ## `FileBinaryWrite`
 
-To write binary data you can use `types.FileBinaryWrite`.
+To write binary data you can use `cligenius.FileBinaryWrite`.
 
 You would write `bytes` to it.
 
@@ -178,20 +147,7 @@ Have in mind that you have to pass `bytes` to its `.write()` method, not `str`.
 
 If you have a `str`, you have to encode it first to get `bytes`.
 
-=== "Python 3.7+"
-
-    ```Python hl_lines="5"
-    {!> ../docs_src/parameter_types/file/tutorial004_an.py!}
-    ```
-
-=== "Python 3.7+ non-Annotated"
-
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="4"
-    {!> ../docs_src/parameter_types/file/tutorial004.py!}
-    ```
+{* docs_src/parameter_types/file/tutorial004_an.py hl[5] *}
 
 <div class="termy">
 
@@ -210,7 +166,7 @@ $ ls ./binary.dat
 
 ## File *CLI parameter* configurations
 
-You can use several configuration parameters for these types (classes) in `types.Option()` and `types.Argument()`:
+You can use several configuration parameters for these types (classes) in `cligenius.Option()` and `cligenius.Argument()`:
 
 * `mode`: controls the "<a href="https://docs.python.org/3/library/functions.html#open" class="external-link" target="_blank">mode</a>" to open the file with.
     * It's automatically set for you by using the classes above.
@@ -222,18 +178,18 @@ You can use several configuration parameters for these types (classes) in `types
 
 ## Advanced `mode`
 
-By default, **Types** will configure the <a href="https://docs.python.org/3/library/functions.html#open" class="external-link" target="_blank">`mode`</a> for you:
+By default, **Cligenius** will configure the <a href="https://docs.python.org/3/library/functions.html#open" class="external-link" target="_blank">`mode`</a> for you:
 
-* `types.FileText`: `mode="r"`, to read text.
-* `types.FileTextWrite`: `mode="w"`, to write text.
-* `types.FileBinaryRead`: `mode="rb"`, to read binary data.
-* `types.FileBinaryWrite`: `mode="wb"`, to write binary data.
+* `cligenius.FileText`: `mode="r"`, to read text.
+* `cligenius.FileTextWrite`: `mode="w"`, to write text.
+* `cligenius.FileBinaryRead`: `mode="rb"`, to read binary data.
+* `cligenius.FileBinaryWrite`: `mode="wb"`, to write binary data.
 
 ### Note about `FileTextWrite`
 
-`types.FileTextWrite` is actually just a convenience class. It's the same as using `types.FileText` with `mode="w"`.
+`cligenius.FileTextWrite` is actually just a convenience class. It's the same as using `cligenius.FileText` with `mode="w"`.
 
-But it's probably shorter and more intuitive as you can get it with autocompletion in your editor by just starting to type `types.File`... just like the other classes.
+But it's probably shorter and more intuitive as you can get it with autocompletion in your editor by just starting to type `cligenius.File`... just like the other classes.
 
 ### Customize `mode`
 
@@ -241,23 +197,13 @@ You can override the `mode` from the defaults above.
 
 For example, you could use `mode="a"` to write "appending" to the same file:
 
-=== "Python 3.7+"
+{* docs_src/parameter_types/file/tutorial005_an.py hl[5] *}
 
-    ```Python hl_lines="5"
-    {!> ../docs_src/parameter_types/file/tutorial005_an.py!}
-    ```
+/// tip
 
-=== "Python 3.7+ non-Annotated"
+As you are manually setting `mode="a"`, you can use `cligenius.FileText` or `cligenius.FileTextWrite`, both will work.
 
-    !!! tip
-        Prefer to use the `Annotated` version if possible.
-
-    ```Python hl_lines="4"
-    {!> ../docs_src/parameter_types/file/tutorial005.py!}
-    ```
-
-!!! tip
-    As you are manually setting `mode="a"`, you can use `types.FileText` or `types.FileTextWrite`, both will work.
+///
 
 Check it:
 
@@ -289,15 +235,18 @@ This is a single line
 
 ## About the different types
 
-!!! info
-    These are technical details about why the different types/classes provided by **Types**.
+/// info
 
-    But you don't need this information to be able to use them. You can skip it.
+These are technical details about why the different types/classes provided by **Cligenius**.
 
-**Types** provides you these different types (classes) because they inherit directly from the actual Python implementation that will be provided underneath for each case.
+But you don't need this information to be able to use them. You can skip it.
+
+///
+
+**Cligenius** provides you these different types (classes) because they inherit directly from the actual Python implementation that will be provided underneath for each case.
 
 This way your editor will give you the right type checks and completion for each type.
 
 Even if you use `lazy`. When you use `lazy` Click creates a especial object to delay writes, and serves as a "proxy" to the actual file that will be written. But this especial proxy object doesn't expose the attributes and methods needed for type checks and completion in the editor. If you access those attributes or call the methods, the "proxy" lazy object will call them in the final object and it will all work. But you wouldn't get autocompletion for them.
 
-But because these **Types** classes inherit from the actual implementation that will be provided underneath (not the lazy object), you will get all the autocompletion and type checks in the editor.
+But because these **Cligenius** classes inherit from the actual implementation that will be provided underneath (not the lazy object), you will get all the autocompletion and type checks in the editor.

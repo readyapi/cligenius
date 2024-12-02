@@ -1,14 +1,14 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 def default_callback():
     print("Running a users command")
 
 
-users_app = types.Types(callback=default_callback)
-app.add_types(users_app, name="users")
+users_app = cligenius.Cligenius(callback=default_callback)
+app.add_cligenius(users_app, name="users")
 
 
 @users_app.callback()

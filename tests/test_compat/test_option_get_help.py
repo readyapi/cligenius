@@ -2,8 +2,8 @@ import os
 import subprocess
 import sys
 
-import types.core
-from types.testing import CliRunner
+import cligenius.core
+from cligenius.testing import CliRunner
 
 from tests.assets import compat_click7_8 as mod
 
@@ -21,8 +21,8 @@ def test_hidden_option():
 
 
 def test_hidden_option_no_rich():
-    rich = types.core.rich
-    types.core.rich = None
+    rich = cligenius.core.rich
+    cligenius.core.rich = None
     result = runner.invoke(mod.app, ["--help"])
     assert result.exit_code == 0
     assert "Say hello" in result.output
@@ -30,7 +30,7 @@ def test_hidden_option_no_rich():
     assert "/lastname" in result.output
     assert "TEST_LASTNAME" in result.output
     assert "(dynamic)" in result.output
-    types.core.rich = rich
+    cligenius.core.rich = rich
 
 
 def test_coverage_call():
@@ -47,7 +47,7 @@ def test_completion():
         env={
             **os.environ,
             "_COMPAT_CLICK7_8.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "compat_click7_8.py --nickname ",
+            "_CLIGENIUS_COMPLETE_ARGS": "compat_click7_8.py --nickname ",
         },
     )
     assert "Jonny" in result.stdout

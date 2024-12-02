@@ -3,6 +3,6 @@
 set -e
 set -x
 
-mypy types
-ruff check types tests docs_src
-ruff format types tests docs_src --check
+mypy cligenius
+ruff check cligenius tests docs_src scripts
+ruff format cligenius tests docs_src scripts --check

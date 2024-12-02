@@ -3,7 +3,7 @@ import subprocess
 import sys
 
 import pytest
-from types.testing import CliRunner
+from cligenius.testing import CliRunner
 
 from docs_src.subcommands import tutorial001
 

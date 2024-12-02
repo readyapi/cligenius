@@ -1,7 +1,7 @@
-import types
+import cligenius
 
 
-def main(force: bool = types.Option(False, "--force/--no-force", "-f/-F")):
+def main(force: bool = cligenius.Option(False, "--force/--no-force", "-f/-F")):
     if force:
         print("Forcing operation")
     else:
@@ -9,4 +9,4 @@ def main(force: bool = types.Option(False, "--force/--no-force", "-f/-F")):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

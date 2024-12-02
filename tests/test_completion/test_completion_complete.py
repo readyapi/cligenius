@@ -43,7 +43,7 @@ def test_completion_complete_subcommand_zsh():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
         },
     )
     assert (
@@ -60,7 +60,7 @@ def test_completion_complete_subcommand_zsh_files():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_zsh",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py delete ",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py delete ",
         },
     )
     assert ("_files") in result.stdout
@@ -74,12 +74,12 @@ def test_completion_complete_subcommand_fish():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_fish",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
-            "_TYPES_COMPLETE_FISH_ACTION": "get-args",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_FISH_ACTION": "get-args",
         },
     )
     assert (
-        "delete\tDelete a user with USERNAME.\ndelete-all\tDelete ALL users in the database."
+        "delete  Delete a user with USERNAME.\ndelete-all      Delete ALL users in the database."
         in result.stdout
     )
 
@@ -92,8 +92,8 @@ def test_completion_complete_subcommand_fish_should_complete():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_fish",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
-            "_TYPES_COMPLETE_FISH_ACTION": "is-args",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_FISH_ACTION": "is-args",
         },
     )
     assert result.returncode == 0
@@ -107,8 +107,8 @@ def test_completion_complete_subcommand_fish_should_complete_no():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_fish",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py delete ",
-            "_TYPES_COMPLETE_FISH_ACTION": "is-args",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py delete ",
+            "_CLIGENIUS_COMPLETE_FISH_ACTION": "is-args",
         },
     )
     assert result.returncode != 0
@@ -122,7 +122,7 @@ def test_completion_complete_subcommand_powershell():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_powershell",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
         },
     )
     assert (
@@ -138,7 +138,7 @@ def test_completion_complete_subcommand_pwsh():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_pwsh",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
         },
     )
     assert (
@@ -154,7 +154,7 @@ def test_completion_complete_subcommand_noshell():
         env={
             **os.environ,
             "_TUTORIAL001.PY_COMPLETE": "complete_noshell",
-            "_TYPES_COMPLETE_ARGS": "tutorial001.py del",
+            "_CLIGENIUS_COMPLETE_ARGS": "tutorial001.py del",
         },
     )
     assert ("") in result.stdout

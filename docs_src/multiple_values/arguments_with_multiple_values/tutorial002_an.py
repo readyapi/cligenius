@@ -1,12 +1,13 @@
 from typing import Tuple
 
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
 def main(
     names: Annotated[
-        Tuple[str, str, str], types.Argument(help="Select 3 characters to play with")
+        Tuple[str, str, str],
+        cligenius.Argument(help="Select 3 characters to play with"),
     ] = ("Harry", "Hermione", "Ron"),
 ):
     for name in names:
@@ -14,4 +15,4 @@ def main(
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

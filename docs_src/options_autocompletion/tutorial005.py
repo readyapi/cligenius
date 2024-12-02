@@ -1,4 +1,4 @@
-import types
+import cligenius
 
 valid_completion_items = [
     ("Camila", "The reader of books."),
@@ -13,12 +13,12 @@ def complete_name(incomplete: str):
             yield (name, help_text)
 
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 @app.command()
 def main(
-    name: str = types.Option(
+    name: str = cligenius.Option(
         "World", help="The name to say hi to.", autocompletion=complete_name
     ),
 ):

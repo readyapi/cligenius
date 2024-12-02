@@ -11,9 +11,9 @@ jobs:
     strategy:
       matrix:
         package:
-          - types-slim
-          - types
-          - types-cli
+          - cligenius-slim
+          - cligenius
+          - cligenius-cli
     permissions:
       id-token: write
     steps:
@@ -36,4 +36,4 @@ jobs:
           KHULNASOFT_BUILD_PACKAGE: ${{ matrix.package }}
         run: python -m build
       - name: Publish
-        uses: pypa/gh-action-pypi-publish@v1.8.11
+        uses: pypa/gh-action-pypi-publish@v1.12.2

@@ -1,8 +1,8 @@
-import types
+import cligenius
 from typing_extensions import Annotated
 
 
-def main(in_prod: Annotated[bool, types.Option(" /--demo", " /-d")] = True):
+def main(in_prod: Annotated[bool, cligenius.Option(" /--demo", " /-d")] = True):
     if in_prod:
         print("Running in production")
     else:
@@ -10,4 +10,4 @@ def main(in_prod: Annotated[bool, types.Option(" /--demo", " /-d")] = True):
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

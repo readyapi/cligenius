@@ -1,6 +1,6 @@
-import types
+import cligenius
 
-app = types.Types()
+app = cligenius.Cligenius()
 
 
 def old_callback():
@@ -9,7 +9,9 @@ def old_callback():
     """
 
 
-users_app = types.Types(callback=old_callback, name="exp-users", help="Explicit help.")
+users_app = cligenius.Cligenius(
+    callback=old_callback, name="exp-users", help="Explicit help."
+)
 
 
 def new_users():
@@ -18,7 +20,7 @@ def new_users():
     """
 
 
-app.add_types(
+app.add_cligenius(
     users_app,
     callback=new_users,
     name="cake-sith-users",
@@ -26,7 +28,7 @@ app.add_types(
 )
 
 
-@users_app.callback("call-users", help="Help from callback for users.")
+@users_app.callback(help="Help from callback for users.")
 def users():
     """
     Manage users in the app.

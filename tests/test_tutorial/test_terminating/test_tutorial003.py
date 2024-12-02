@@ -1,15 +1,15 @@
 import subprocess
 import sys
 
-import types
-import types.core
-from types.testing import CliRunner
+import cligenius
+import cligenius.core
+from cligenius.testing import CliRunner
 
 from docs_src.terminating import tutorial003 as mod
 
 runner = CliRunner()
 
-app = types.Types()
+app = cligenius.Cligenius()
 app.command()(mod.main)
 
 
@@ -34,13 +34,13 @@ def test_root_no_standalone():
 
 def test_root_no_rich():
     # Mainly for coverage
-    rich = types.core.rich
-    types.core.rich = None
+    rich = cligenius.core.rich
+    cligenius.core.rich = None
     result = runner.invoke(app, ["root"])
     assert result.exit_code == 1
     assert "The root user is reserved" in result.stdout
     assert "Aborted!" in result.stdout
-    types.core.rich = rich
+    cligenius.core.rich = rich
 
 
 def test_script():

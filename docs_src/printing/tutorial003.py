@@ -1,4 +1,4 @@
-import types
+import cligenius
 from rich.console import Console
 from rich.table import Table
 
@@ -13,4 +13,4 @@ def main():
 
 
 if __name__ == "__main__":
-    types.run(main)
+    cligenius.run(main)

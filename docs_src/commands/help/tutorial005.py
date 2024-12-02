@@ -1,10 +1,12 @@
-import types
+import cligenius
 
-app = types.Types(rich_markup_mode="markdown")
+app = cligenius.Cligenius(rich_markup_mode="markdown")
 
 
 @app.command()
-def create(username: str = types.Argument(..., help="The username to be **created**")):
+def create(
+    username: str = cligenius.Argument(..., help="The username to be **created**"),
+):
     """
     **Create** a new *shiny* user. :sparkles:
 
@@ -14,15 +16,15 @@ def create(username: str = types.Argument(..., help="The username to be **create
 
     ---
 
-    Learn more at the [Types docs website](https://types.khulnasoft.com)
+    Learn more at the [Cligenius docs website](https://cligenius.khulnasoft.com)
     """
     print(f"Creating user: {username}")
 
 
 @app.command(help="**Delete** a user with *USERNAME*.")
 def delete(
-    username: str = types.Argument(..., help="The username to be **deleted**"),
-    force: bool = types.Option(False, help="Force the **deletion** :boom:"),
+    username: str = cligenius.Argument(..., help="The username to be **deleted**"),
+    force: bool = cligenius.Option(False, help="Force the **deletion** :boom:"),
 ):
     """
     Some internal utility function to delete.
