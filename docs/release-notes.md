@@ -2,6 +2,8 @@
 
 ## Latest Changes
 
+* ⬆ Bump actions/download-artifact from 3 to 4. PR [#2](https://github.com/readyapi/cligenius/pull/2) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
 ### Refactors
 
 * 👷 Use uv in CI. PR [#121](https://github.com/readyapi/cligenius/pull/121) by [@NxPKG](https://github.com/NxPKG).
