@@ -62,16 +62,17 @@ def _cligenius_param_setup_autocompletion_compat(
         Callable[[click.Context, List[str], str], List[Union[Tuple[str, str], str]]]
     ] = None,
 ) -> None:
-    if autocompletion is not None and self._custom_shell_complete is None:
+    if self._custom_shell_complete is not None:
         import warnings
 
         warnings.warn(
-            "'autocompletion' is renamed to 'shell_complete'. The old name is"
-            " deprecated and will be removed in Click 8.1. See the docs about"
-            " 'Parameter' for information about new behavior.",
+            "In Cligenius, only the parameter 'autocompletion' is supported. "
+            "The support for 'shell_complete' is deprecated and will be removed in upcoming versions. ",
             DeprecationWarning,
             stacklevel=2,
         )
+
+    if autocompletion is not None:
 
         def compat_autocompletion(
             ctx: click.Context, param: click.core.Parameter, incomplete: str
@@ -267,6 +268,8 @@ class CligeniusArgument(click.core.Argument):
         expose_value: bool = True,
         is_eager: bool = False,
         envvar: Optional[Union[str, List[str]]] = None,
+        # Note that shell_complete is not fully supported and will be removed in future versions
+        # TODO: Remove shell_complete in a future version (after 0.16.0)
         shell_complete: Optional[
             Callable[
                 [click.Context, click.Parameter, str],
@@ -303,9 +306,7 @@ class CligeniusArgument(click.core.Argument):
             envvar=envvar,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(
-            self, autocompletion=autocompletion
-        )
+        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
 
     def _get_default_string(
         self,
@@ -408,6 +409,8 @@ class CligeniusOption(click.core.Option):
         expose_value: bool = True,
         is_eager: bool = False,
         envvar: Optional[Union[str, List[str]]] = None,
+        # Note that shell_complete is not fully supported and will be removed in future versions
+        # TODO: Remove shell_complete in a future version (after 0.16.0)
         shell_complete: Optional[
             Callable[
                 [click.Context, click.Parameter, str],
@@ -458,9 +461,7 @@ class CligeniusOption(click.core.Option):
             prompt_required=prompt_required,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(
-            self, autocompletion=autocompletion
-        )
+        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
         self.rich_help_panel = rich_help_panel
 
     def _get_default_string(
@@ -485,7 +486,7 @@ class CligeniusOption(click.core.Option):
     def get_help_record(self, ctx: click.Context) -> Optional[Tuple[str, str]]:
         # Duplicate all of Click's logic only to modify a single line, to allow boolean
         # flags with only names for False values as it's currently supported by Cligenius
-        # Ref: https://cligenius.khulnasoft.com/tutorial/parameter-types/bool/#only-names-for-false
+        # Ref: https://cligenius.tiangolo.com/tutorial/parameter-types/bool/#only-names-for-false
         if self.hidden:
             return None
 
