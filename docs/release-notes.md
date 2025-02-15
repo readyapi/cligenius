@@ -2,6 +2,7 @@
 
 ## Latest Changes
 
+* 🗑️ Deprecate shell_complete and continue to use autocompletion for CL…. PR [#150](https://github.com/readyapi/cligenius/pull/150) by [@FortiShield](https://github.com/FortiShield).
 * ⬆ Bump actions/download-artifact from 3 to 4. PR [#2](https://github.com/readyapi/cligenius/pull/2) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ### Refactors
