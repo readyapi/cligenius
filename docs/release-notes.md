@@ -2,16 +2,67 @@
 
 ## Latest Changes
 
-* 🗑️ Deprecate shell_complete and continue to use autocompletion for CL…. PR [#150](https://github.com/readyapi/cligenius/pull/150) by [@FortiShield](https://github.com/FortiShield).
-* ⬆ Bump actions/download-artifact from 3 to 4. PR [#2](https://github.com/readyapi/cligenius/pull/2) by [@dependabot[bot]](https://github.com/apps/dependabot).
-
 ### Refactors
 
-* 👷 Use uv in CI. PR [#121](https://github.com/readyapi/cligenius/pull/121) by [@NxPKG](https://github.com/NxPKG).
+* 🚚 Rename test to corner-cases to make it more explicit. PR [#1083](https://github.com/readyapi/cligenius/pull/1083) by [@khulnasoft](https://github.com/khulnasoft).
 
 ### Internal
 
-* ⬆ Update httpx requirement from <0.28.0,>=0.27.0 to >=0.27.0,<0.29.0. PR [#122](https://github.com/readyapi/cligenius/pull/122) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump ruff from 0.9.4 to 0.9.5. PR [#1146](https://github.com/readyapi/cligenius/pull/1146) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1142](https://github.com/readyapi/cligenius/pull/1142) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump ruff from 0.9.3 to 0.9.4. PR [#1139](https://github.com/readyapi/cligenius/pull/1139) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1135](https://github.com/readyapi/cligenius/pull/1135) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump ruff from 0.9.1 to 0.9.3. PR [#1136](https://github.com/readyapi/cligenius/pull/1136) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1130](https://github.com/readyapi/cligenius/pull/1130) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump ruff from 0.8.6 to 0.9.1. PR [#1118](https://github.com/readyapi/cligenius/pull/1118) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump pypa/gh-action-pypi-publish from 1.12.3 to 1.12.4. PR [#1132](https://github.com/readyapi/cligenius/pull/1132) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump mkdocs-material from 9.5.49 to 9.5.50. PR [#1129](https://github.com/readyapi/cligenius/pull/1129) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* 💚 Fix test matrix for Python 3.7. PR [#1116](https://github.com/readyapi/cligenius/pull/1116) by [@svlandeg](https://github.com/svlandeg).
+* ⬆ Bump ruff from 0.8.4 to 0.8.6. PR [#1107](https://github.com/readyapi/cligenius/pull/1107) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1109](https://github.com/readyapi/cligenius/pull/1109) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump pillow from 11.0.0 to 11.1.0. PR [#1104](https://github.com/readyapi/cligenius/pull/1104) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1102](https://github.com/readyapi/cligenius/pull/1102) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump ruff from 0.8.3 to 0.8.4. PR [#1097](https://github.com/readyapi/cligenius/pull/1097) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump astral-sh/setup-uv from 4 to 5. PR [#1098](https://github.com/readyapi/cligenius/pull/1098) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump markdown-include-variants from 0.0.3 to 0.0.4. PR [#1100](https://github.com/readyapi/cligenius/pull/1100) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump ruff from 0.8.2 to 0.8.3. PR [#1090](https://github.com/readyapi/cligenius/pull/1090) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1093](https://github.com/readyapi/cligenius/pull/1093) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump mkdocs-material from 9.5.48 to 9.5.49. PR [#1092](https://github.com/readyapi/cligenius/pull/1092) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump pypa/gh-action-pypi-publish from 1.12.2 to 1.12.3. PR [#1088](https://github.com/readyapi/cligenius/pull/1088) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1087](https://github.com/readyapi/cligenius/pull/1087) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Bump ruff from 0.8.1 to 0.8.2. PR [#1084](https://github.com/readyapi/cligenius/pull/1084) by [@dependabot[bot]](https://github.com/apps/dependabot).
+* ⬆ Bump mkdocs-material from 9.5.47 to 9.5.48. PR [#1086](https://github.com/readyapi/cligenius/pull/1086) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
+## 0.15.1
+
+### Features
+
+* 🗑️ Deprecate `shell_complete` and continue to use `autocompletion` for CLI parameters. PR [#974](https://github.com/readyapi/cligenius/pull/974) by [@svlandeg](https://github.com/svlandeg).
+
+### Docs
+
+* ✏️ Fix a few typos in the source and documentation. PR [#1028](https://github.com/readyapi/cligenius/pull/1028) by [@kkirsche](https://github.com/kkirsche).
+* 📝 Fix minor inconsistencies and typos in tutorial. PR [#1067](https://github.com/readyapi/cligenius/pull/1067) by [@tvoirand](https://github.com/tvoirand).
+* ✏️ Fix a few small typos in the documentation. PR [#1077](https://github.com/readyapi/cligenius/pull/1077) by [@svlandeg](https://github.com/svlandeg).
+
+### Internal
+
+* 🔧 Update build-docs filter patterns. PR [#1080](https://github.com/readyapi/cligenius/pull/1080) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔨 Update deploy docs preview script. PR [#1079](https://github.com/readyapi/cligenius/pull/1079) by [@khulnasoft](https://github.com/khulnasoft).
+* 🔧 Update members. PR [#1078](https://github.com/readyapi/cligenius/pull/1078) by [@khulnasoft](https://github.com/khulnasoft).
+* ⬆ [pre-commit.ci] pre-commit autoupdate. PR [#1071](https://github.com/readyapi/cligenius/pull/1071) by [@pre-commit-ci[bot]](https://github.com/apps/pre-commit-ci).
+* ⬆ Update httpx requirement from <0.28.0,>=0.27.0 to >=0.27.0,<0.29.0. PR [#1065](https://github.com/readyapi/cligenius/pull/1065) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
+## 0.15.0
+
+### Features
+
+* ✨ Add support for extending cligenius apps without passing a name, add commands to the top level. PR [#1037](https://github.com/readyapi/cligenius/pull/1037) by [@patrick91](https://github.com/patrick91).
+    * New docs: [One File Per Command](https://cligenius.khulnasoft.com/tutorial/one-file-per-command/).
+
+### Internal
+
+* ⬆ Bump mkdocs-material from 9.5.46 to 9.5.47. PR [#1070](https://github.com/readyapi/cligenius/pull/1070) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump ruff from 0.8.0 to 0.8.1. PR [#1066](https://github.com/readyapi/cligenius/pull/1066) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
 ## 0.14.0
