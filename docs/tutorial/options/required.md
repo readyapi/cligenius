@@ -19,7 +19,7 @@ The same way as with `cligenius.Argument()`, the old style of using the function
 
 {* docs_src/options/required/tutorial001.py hl[4] *}
 
-Or you can explictily pass `...` to `cligenius.Option(default=...)`:
+Or you can explicitly pass `...` to `cligenius.Option(default=...)`:
 
 {* docs_src/options/required/tutorial002.py hl[4] *}
 

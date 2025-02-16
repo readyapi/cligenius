@@ -1,7 +1,7 @@
 import cligenius.core
 from cligenius.testing import CliRunner
 
-from tests.assets import compat_click7_8 as mod
+from tests.assets import conrner_cases as mod
 
 runner = CliRunner()
 

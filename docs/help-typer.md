@@ -36,7 +36,7 @@ By doing it, you will receive notifications (in your email) whenever there's a n
 
 ## Connect with the author
 
-You can connect with <a href="https://khulnasoft.com" class="external-link" target="_blank">me (KhulnaSoft Ltd / `khulnasoft`)</a>, the author.
+You can connect with <a href="https://khulnasoft.com" class="external-link" target="_blank">me (Sebastián Ramírez / `khulnasoft`)</a>, the author.
 
 You can:
 
@@ -147,7 +147,7 @@ Here's what to have in mind and how to review a pull request:
 
 * Don't worry too much about things like commit message styles, I will squash and merge customizing the commit manually.
 
-* Also don't worry about style rules, there are already automatized tools checking that.
+* Also don't worry about style rules, there are already automated tools checking that.
 
 And if there's any other style or consistency need, I'll ask directly for that, or I'll add commits on top with the needed changes.
 

@@ -306,7 +306,9 @@ class CligeniusArgument(click.core.Argument):
             envvar=envvar,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(
+            self, autocompletion=autocompletion
+        )
 
     def _get_default_string(
         self,
@@ -461,7 +463,9 @@ class CligeniusOption(click.core.Option):
             prompt_required=prompt_required,
             shell_complete=shell_complete,
         )
-        _cligenius_param_setup_autocompletion_compat(self, autocompletion=autocompletion)
+        _cligenius_param_setup_autocompletion_compat(
+            self, autocompletion=autocompletion
+        )
         self.rich_help_panel = rich_help_panel
 
     def _get_default_string(
@@ -486,7 +490,7 @@ class CligeniusOption(click.core.Option):
     def get_help_record(self, ctx: click.Context) -> Optional[Tuple[str, str]]:
         # Duplicate all of Click's logic only to modify a single line, to allow boolean
         # flags with only names for False values as it's currently supported by Cligenius
-        # Ref: https://cligenius.tiangolo.com/tutorial/parameter-types/bool/#only-names-for-false
+        # Ref: https://cligenius.khulnasoft.com/tutorial/parameter-types/bool/#only-names-for-false
         if self.hidden:
             return None
 

@@ -473,9 +473,9 @@ def get_group_from_info(
     pretty_exceptions_short: bool,
     rich_markup_mode: MarkupMode,
 ) -> CligeniusGroup:
-    assert (
-        group_info.cligenius_instance
-    ), "A Cligenius instance is needed to generate a Click Group"
+    assert group_info.cligenius_instance, (
+        "A Cligenius instance is needed to generate a Click Group"
+    )
     commands: Dict[str, click.Command] = {}
     for command_info in group_info.cligenius_instance.registered_commands:
         command = get_command_from_info(
@@ -493,13 +493,16 @@ def get_group_from_info(
         )
         if sub_group.name:
             commands[sub_group.name] = sub_group
-        elif sub_group.callback:
-            import warnings
+        else:
+            if sub_group.callback:
+                import warnings
 
-            warnings.warn(
-                "The 'callback' parameter is not supported by Cligenius when using `add_cligenius` without a name",
-                stacklevel=5,
-            )
+                warnings.warn(
+                    "The 'callback' parameter is not supported by Cligenius when using `add_cligenius` without a name",
+                    stacklevel=5,
+                )
+            for sub_command_name, sub_command in sub_group.commands.items():
+                commands[sub_command_name] = sub_command
     solved_info = solve_cligenius_info_defaults(group_info)
     (
         params,
@@ -507,9 +510,9 @@ def get_group_from_info(
         context_param_name,
     ) = get_params_convertors_ctx_param_name_from_function(solved_info.callback)
     cls = solved_info.cls or CligeniusGroup
-    assert issubclass(
-        cls, CligeniusGroup
-    ), f"{cls} should be a subclass of {CligeniusGroup}"
+    assert issubclass(cls, CligeniusGroup), (
+        f"{cls} should be a subclass of {CligeniusGroup}"
+    )
     group = cls(
         name=solved_info.name or "",
         commands=commands,
@@ -846,16 +849,16 @@ def get_click_param(
         # Handle Tuples and Lists
         if lenient_issubclass(origin, List):
             main_type = get_args(main_type)[0]
-            assert not get_origin(
-                main_type
-            ), "List types with complex sub-types are not currently supported"
+            assert not get_origin(main_type), (
+                "List types with complex sub-types are not currently supported"
+            )
             is_list = True
         elif lenient_issubclass(origin, Tuple):  # type: ignore
             types = []
             for type_ in get_args(main_type):
-                assert not get_origin(
-                    type_
-                ), "Tuple types with complex sub-types are not currently supported"
+                assert not get_origin(type_), (
+                    "Tuple types with complex sub-types are not currently supported"
+                )
                 types.append(
                     get_click_type(annotation=type_, parameter_info=parameter_info)
                 )
